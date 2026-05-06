@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Paweł Depta | Dietetyka & Konsultacje Żywieniowe</title>
+  <meta name="description" content="Student dietetyki. Oferuję konsultacje żywieniowe, jadłospisy i analizę nawyków żywieniowych. Umów wizytę online."/>
+  <meta name="robots" content="index, follow"/>
+  <link rel="canonical" href="https://twoja-domena.pl"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--sage:#7a9e7e;--sage-dark:#4e7353;--sage-light:#c5d9c7;--cream:#faf7f2;--cream-dark:#f0ebe0;--terra:#c9784b;--terra-light:#f2d5c4;--brown:#3d2b1f;--text:#2e2a25;--text-muted:#7a7068;--white:#ffffff;--border:#e2dbd0}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;font-size:16px}
+    body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);line-height:1.7;overflow-x:hidden}
+    img{max-width:100%;display:block}
+    a{color:inherit;text-decoration:none}
+    h1,h2,h3,h4{font-family:'Playfair Display',serif;line-height:1.25}
+
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(250,247,242,0.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px}
+    .nav-logo{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:600;color:var(--sage-dark);cursor:pointer;user-select:none;transition:opacity .15s}
+    .nav-logo:active{opacity:.7}
+    .nav-links{display:flex;gap:2rem;list-style:none}
+    .nav-links a{font-size:.875rem;font-weight:500;letter-spacing:.04em;color:var(--text-muted);transition:color .2s}
+    .nav-links a:hover{color:var(--sage-dark)}
+    .nav-cta{background:var(--sage-dark);color:var(--white)!important;padding:.5rem 1.25rem;border-radius:100px;transition:background .2s!important}
+    .nav-cta:hover{background:var(--terra)!important}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}
+    .hamburger span{width:24px;height:2px;background:var(--text);transition:.3s}
+    .mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;background:var(--cream);border-bottom:1px solid var(--border);flex-direction:column;padding:1.5rem 2rem;gap:1.25rem;z-index:998}
+    .mobile-menu.open{display:flex}
+    .mobile-menu a{font-size:1.05rem;color:var(--text)}
+    @media(max-width:768px){.nav-links{display:none}.hamburger{display:flex}}
+
+    /* SECTIONS */
+    section{padding:5rem 2rem}
+    .container{max-width:1100px;margin:0 auto}
+    .section-tag{display:inline-block;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--sage-dark);font-weight:500;margin-bottom:.75rem}
+    .section-title{font-size:clamp(1.75rem,4vw,2.75rem);color:var(--brown);margin-bottom:1rem}
+    .section-sub{font-size:1.05rem;color:var(--text-muted);max-width:560px;line-height:1.75}
+
+    /* HERO */
+    #hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:4rem;padding-top:8rem;padding-bottom:5rem}
+    .hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:var(--terra-light);color:var(--terra);font-size:.8rem;font-weight:500;padding:.375rem 1rem;border-radius:100px;margin-bottom:1.5rem}
+    .hero-badge::before{content:"🌿"}
+    .hero-title{font-size:clamp(2.25rem,5vw,3.5rem);color:var(--brown);margin-bottom:1.25rem;line-height:1.15}
+    .hero-title em{color:var(--sage-dark);font-style:italic}
+    .hero-desc{font-size:1.1rem;color:var(--text-muted);margin-bottom:2.5rem;max-width:480px;line-height:1.8}
+    .hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+    .btn-primary{background:var(--sage-dark);color:var(--white);padding:.875rem 2rem;border-radius:100px;font-weight:500;font-size:.95rem;transition:background .2s,transform .15s;display:inline-block}
+    .btn-primary:hover{background:var(--terra);transform:translateY(-1px)}
+    .btn-outline{border:1.5px solid var(--sage-dark);color:var(--sage-dark);padding:.875rem 2rem;border-radius:100px;font-weight:500;font-size:.95rem;transition:all .2s;display:inline-block}
+    .btn-outline:hover{background:var(--sage-dark);color:var(--white)}
+    .hero-image-wrap{position:relative;border-radius:24px;overflow:hidden;aspect-ratio:3/4;max-height:560px}
+    .hero-img{width:100%;height:100%;object-fit:cover}
+    .hero-img-placeholder{width:100%;height:100%;background:linear-gradient(135deg,var(--sage-light) 0%,var(--cream-dark) 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--sage-dark);font-size:.9rem;text-align:center;padding:2rem;gap:.75rem}
+    .hero-img-placeholder span{font-size:3rem}
+    .hero-img-placeholder small{color:var(--text-muted);font-size:.8rem}
+    .hero-card{position:absolute;bottom:1.5rem;left:1.5rem;right:1.5rem;background:rgba(255,255,255,.92);backdrop-filter:blur(6px);border-radius:16px;padding:1rem 1.25rem;display:flex;align-items:center;gap:1rem}
+    .hero-card-icon{font-size:2rem}
+    .hero-card-text strong{display:block;font-size:.9rem;color:var(--brown)}
+    .hero-card-text span{font-size:.8rem;color:var(--text-muted)}
+    @media(max-width:820px){#hero{grid-template-columns:1fr;padding-top:6rem}.hero-image-wrap{max-height:380px;aspect-ratio:auto}}
+
+    /* O MNIE */
+    #o-mnie{background:var(--cream-dark)}
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+    .about-img-wrap{border-radius:20px;overflow:hidden;aspect-ratio:4/5}
+    .about-img-placeholder{width:100%;height:100%;background:linear-gradient(160deg,var(--sage-light),var(--terra-light));display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.5rem;color:var(--sage-dark);font-size:.85rem;text-align:center;padding:2rem}
+    .about-img-placeholder span{font-size:3.5rem}
+    .about-list{list-style:none;margin-top:1.5rem;display:flex;flex-direction:column;gap:.75rem}
+    .about-list li{display:flex;align-items:flex-start;gap:.75rem;font-size:.95rem}
+    .about-list li::before{content:"✦";color:var(--terra);margin-top:2px;flex-shrink:0}
+    .student-note{margin-top:1.5rem;background:var(--terra-light);border-left:3px solid var(--terra);border-radius:0 12px 12px 0;padding:1rem 1.25rem;font-size:.88rem;color:var(--brown);line-height:1.65}
+    @media(max-width:768px){.about-grid{grid-template-columns:1fr}}
+
+    /* OFERTA */
+    #oferta{background:var(--cream)}
+    .offer-intro{max-width:640px;margin-bottom:3rem}
+    .offer-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem}
+    .offer-card{background:var(--white);border:1px solid var(--border);border-radius:20px;padding:2rem;transition:transform .2s,box-shadow .2s}
+    .offer-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.06)}
+    .offer-icon{font-size:2rem;margin-bottom:1rem}
+    .offer-card h3{font-size:1.15rem;color:var(--brown);margin-bottom:.5rem}
+    .offer-card p{font-size:.9rem;color:var(--text-muted);line-height:1.7;margin-bottom:1.25rem}
+    .offer-price{font-size:1.3rem;font-weight:600;color:var(--sage-dark);margin-bottom:1rem}
+    .offer-price span{font-size:.8rem;color:var(--text-muted);font-weight:400}
+    .btn-offer{display:block;text-align:center;background:var(--cream-dark);color:var(--sage-dark);border:1.5px solid var(--sage-light);padding:.65rem 1rem;border-radius:100px;font-size:.875rem;font-weight:500;transition:all .2s}
+    .btn-offer:hover{background:var(--sage-dark);color:var(--white);border-color:var(--sage-dark)}
+
+    /* REZERWACJA */
+    #rezerwacja{background:var(--cream-dark)}
+    .booking-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+    .booking-steps{display:flex;flex-direction:column;gap:1.5rem;margin-top:2rem}
+    .step{display:flex;gap:1rem;align-items:flex-start}
+    .step-num{width:36px;height:36px;flex-shrink:0;background:var(--sage-dark);color:var(--white);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.875rem;font-weight:600}
+    .step-text strong{display:block;color:var(--brown);font-size:.95rem;margin-bottom:.25rem}
+    .step-text span{font-size:.875rem;color:var(--text-muted)}
+    .booking-widget{background:var(--white);border:1px solid var(--border);border-radius:24px;padding:2rem;text-align:center}
+    .booking-widget p{font-size:.9rem;color:var(--text-muted);margin-bottom:1.5rem;line-height:1.7}
+    .btn-naffy-big{display:inline-block;background:var(--terra);color:var(--white);padding:1rem 2rem;border-radius:100px;font-weight:500;font-size:1rem;transition:background .2s,transform .15s}
+    .btn-naffy-big:hover{background:var(--sage-dark);transform:translateY(-2px)}
+    @media(max-width:768px){.booking-grid{grid-template-columns:1fr}}
+
+    /* BLOG */
+    #blog{background:var(--cream)}
+    .blog-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:2.5rem;flex-wrap:wrap;gap:1rem}
+    .blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem}
+    .blog-card{background:var(--white);border-radius:20px;overflow:hidden;border:1px solid var(--border);transition:transform .2s,box-shadow .2s}
+    .blog-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.07)}
+    .blog-thumb{aspect-ratio:16/9;overflow:hidden;background:var(--cream-dark);display:flex;align-items:center;justify-content:center}
+    .blog-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
+    .blog-card:hover .blog-thumb img{transform:scale(1.04)}
+    .blog-thumb-placeholder{width:100%;height:100%;background:linear-gradient(120deg,var(--sage-light),var(--cream-dark));display:flex;align-items:center;justify-content:center;font-size:2.5rem}
+    .blog-body{padding:1.5rem}
+    .blog-tag{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--terra);font-weight:500;margin-bottom:.5rem;display:block}
+    .blog-body h3{font-size:1.05rem;color:var(--brown);margin-bottom:.5rem;line-height:1.4}
+    .blog-body p{font-size:.875rem;color:var(--text-muted);line-height:1.65;margin-bottom:1rem}
+    .blog-meta{font-size:.78rem;color:var(--text-muted);margin-bottom:.75rem}
+    .blog-link{display:inline-block;font-size:.875rem;color:var(--sage-dark);font-weight:500;border-bottom:1px solid var(--sage-light);transition:color .2s}
+    .blog-link:hover{color:var(--terra)}
+
+    /* KONTAKT */
+    #kontakt{background:var(--sage-dark)}
+    #kontakt .section-tag{color:var(--sage-light)}
+    #kontakt .section-title{color:var(--white)}
+    #kontakt .section-sub{color:rgba(255,255,255,.7)}
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-top:3rem}
+    .contact-info{display:flex;flex-direction:column;gap:1.25rem}
+    .contact-item{display:flex;align-items:flex-start;gap:1rem}
+    .contact-item-icon{width:44px;height:44px;flex-shrink:0;background:rgba(255,255,255,.12);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.1rem}
+    .contact-item-text strong{display:block;color:var(--white);font-size:.9rem;margin-bottom:.2rem}
+    .contact-item-text span{font-size:.875rem;color:rgba(255,255,255,.65)}
+    .contact-form{display:flex;flex-direction:column;gap:1rem}
+    .form-group input,.form-group textarea{width:100%;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);border-radius:12px;padding:.875rem 1rem;color:var(--white);font-family:'DM Sans',sans-serif;font-size:.9rem;transition:border-color .2s;outline:none}
+    .form-group input::placeholder,.form-group textarea::placeholder{color:rgba(255,255,255,.45)}
+    .form-group input:focus,.form-group textarea:focus{border-color:rgba(255,255,255,.6)}
+    .form-group textarea{resize:vertical;min-height:120px}
+    .form-checkbox{display:flex;gap:.75rem;align-items:flex-start;font-size:.8rem;color:rgba(255,255,255,.65)}
+    .form-checkbox input{margin-top:3px;flex-shrink:0}
+    .btn-send{background:var(--terra);color:var(--white);border:none;padding:.875rem 2rem;border-radius:100px;font-size:.95rem;font-weight:500;cursor:pointer;transition:background .2s,transform .15s;align-self:flex-start}
+    .btn-send:hover{background:var(--cream);color:var(--sage-dark);transform:translateY(-1px)}
+    @media(max-width:768px){.contact-grid{grid-template-columns:1fr}}
+
+    /* RODO */
+    #rodo{background:var(--cream-dark)}
+    .rodo-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2rem}
+    .rodo-box{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:1.75rem}
+    .rodo-box h3{font-size:1rem;color:var(--brown);margin-bottom:.75rem;display:flex;gap:.5rem;align-items:center}
+    .rodo-box p,.rodo-box li{font-size:.875rem;color:var(--text-muted);line-height:1.75}
+    .rodo-box ul{list-style:none;display:flex;flex-direction:column;gap:.4rem;padding-left:.5rem}
+    .rodo-box ul li::before{content:"·";margin-right:.5rem;color:var(--sage-dark)}
+    @media(max-width:768px){.rodo-grid{grid-template-columns:1fr}}
+
+    /* FOOTER */
+    footer{background:var(--brown);color:rgba(255,255,255,.65);padding:2.5rem 2rem;text-align:center}
+    .footer-logo{font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--white);margin-bottom:.75rem}
+    footer p{font-size:.82rem;line-height:1.8}
+    footer a{color:var(--sage-light)}
+    .footer-links{display:flex;justify-content:center;gap:1.5rem;margin:1rem 0;flex-wrap:wrap}
+    .footer-links a{font-size:.82rem;color:rgba(255,255,255,.6);transition:color .2s}
+    .footer-links a:hover{color:var(--white)}
+    .disclaimer{margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.12);font-size:.78rem;color:rgba(255,255,255,.4);max-width:700px;margin-left:auto;margin-right:auto;line-height:1.75}
+
+    /* ===== ADMIN PANEL ===== */
+    #admin-overlay{position:fixed;inset:0;z-index:20000;background:rgba(61,43,31,.6);backdrop-filter:blur(4px);display:flex;align-items:flex-start;justify-content:flex-end}
+    #admin-overlay.hidden{display:none}
+    #admin-panel{width:480px;max-width:100vw;height:100vh;background:var(--cream);display:flex;flex-direction:column;box-shadow:-8px 0 40px rgba(0,0,0,.15);overflow:hidden}
+    .ap-header{background:var(--sage-dark);color:var(--white);padding:1.25rem 1.5rem;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+    .ap-header h2{font-size:1.1rem;font-family:'Playfair Display',serif}
+    .ap-header small{font-size:.75rem;opacity:.7;display:block;margin-top:.1rem}
+    .ap-close{background:none;border:none;color:var(--white);font-size:1.5rem;cursor:pointer;line-height:1;opacity:.8;transition:opacity .2s}
+    .ap-close:hover{opacity:1}
+    .ap-tabs{display:flex;background:var(--cream-dark);border-bottom:1px solid var(--border);flex-shrink:0}
+    .ap-tab{flex:1;padding:.75rem .5rem;font-size:.78rem;font-weight:500;text-align:center;cursor:pointer;color:var(--text-muted);border:none;background:none;transition:all .2s;border-bottom:2px solid transparent}
+    .ap-tab.active{color:var(--sage-dark);border-bottom-color:var(--sage-dark);background:var(--cream)}
+    .ap-body{flex:1;overflow-y:auto;padding:1.5rem}
+    .ap-section{margin-bottom:2rem}
+    .ap-section h3{font-size:.85rem;font-weight:600;color:var(--brown);text-transform:uppercase;letter-spacing:.08em;margin-bottom:1rem;padding-bottom:.5rem;border-bottom:1px solid var(--border)}
+    .ap-item{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:.875rem 1rem;margin-bottom:.75rem;display:flex;align-items:flex-start;gap:.75rem}
+    .ap-item-info{flex:1;min-width:0}
+    .ap-item-icon{font-size:1.4rem;flex-shrink:0;margin-top:.1rem}
+    .ap-item-title{font-size:.9rem;font-weight:500;color:var(--brown);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .ap-item-sub{font-size:.78rem;color:var(--text-muted);margin-top:.15rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .ap-item-actions{display:flex;gap:.4rem;flex-shrink:0}
+    .ap-btn-sm{padding:.35rem .7rem;border-radius:8px;font-size:.75rem;font-weight:500;cursor:pointer;border:none;transition:all .2s}
+    .ap-btn-edit{background:var(--cream-dark);color:var(--sage-dark)}
+    .ap-btn-edit:hover{background:var(--sage-light)}
+    .ap-btn-del{background:#fee2e2;color:#dc2626}
+    .ap-btn-del:hover{background:#fecaca}
+    .ap-btn-add{display:flex;align-items:center;justify-content:center;gap:.5rem;width:100%;padding:.75rem;border:1.5px dashed var(--sage-light);border-radius:12px;background:none;color:var(--sage-dark);font-size:.875rem;font-weight:500;cursor:pointer;transition:all .2s;margin-top:.5rem}
+    .ap-btn-add:hover{background:var(--sage-light);border-style:solid}
+    .ap-form{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:1.25rem;margin-bottom:1rem}
+    .ap-form h4{font-size:.9rem;color:var(--brown);margin-bottom:1rem;font-family:'Playfair Display',serif}
+    .ap-field{margin-bottom:.875rem}
+    .ap-field label{display:block;font-size:.78rem;font-weight:500;color:var(--text-muted);margin-bottom:.35rem;text-transform:uppercase;letter-spacing:.06em}
+    .ap-field input,.ap-field textarea,.ap-field select{width:100%;padding:.6rem .875rem;border:1px solid var(--border);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:.875rem;color:var(--text);background:var(--cream);outline:none;transition:border-color .2s}
+    .ap-field input:focus,.ap-field textarea:focus{border-color:var(--sage-dark)}
+    .ap-field textarea{resize:vertical;min-height:80px}
+    .ap-field-row{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+    .ap-form-btns{display:flex;gap:.5rem;margin-top:1rem}
+    .ap-btn-save{background:var(--sage-dark);color:var(--white);border:none;padding:.6rem 1.25rem;border-radius:100px;font-size:.85rem;font-weight:500;cursor:pointer;transition:background .2s}
+    .ap-btn-save:hover{background:var(--terra)}
+    .ap-btn-cancel{background:var(--cream-dark);color:var(--text-muted);border:1px solid var(--border);padding:.6rem 1.25rem;border-radius:100px;font-size:.85rem;font-weight:500;cursor:pointer;transition:all .2s}
+    .ap-btn-cancel:hover{background:var(--border)}
+    .ap-photo-preview{width:100%;aspect-ratio:3/2;border-radius:12px;overflow:hidden;background:var(--cream-dark);margin-bottom:.75rem;display:flex;align-items:center;justify-content:center;font-size:2rem;color:var(--text-muted)}
+    .ap-photo-preview img{width:100%;height:100%;object-fit:cover}
+    .ap-toggle-row{display:flex;align-items:center;justify-content:space-between;padding:.875rem 1rem;background:var(--white);border:1px solid var(--border);border-radius:12px;margin-bottom:.75rem}
+    .ap-toggle-label{font-size:.9rem;color:var(--brown);font-weight:500}
+    .ap-toggle-sub{font-size:.78rem;color:var(--text-muted);margin-top:.1rem}
+    .ap-toggle{position:relative;width:44px;height:24px;flex-shrink:0}
+    .ap-toggle input{opacity:0;width:0;height:0}
+    .ap-toggle-slider{position:absolute;inset:0;background:#ddd;border-radius:100px;cursor:pointer;transition:.3s}
+    .ap-toggle-slider::before{content:'';position:absolute;width:18px;height:18px;left:3px;bottom:3px;background:var(--white);border-radius:50%;transition:.3s}
+    .ap-toggle input:checked+.ap-toggle-slider{background:var(--sage-dark)}
+    .ap-toggle input:checked+.ap-toggle-slider::before{transform:translateX(20px)}
+    .ap-footer{padding:1rem 1.5rem;border-top:1px solid var(--border);display:flex;gap:.75rem;flex-shrink:0;background:var(--cream)}
+    .ap-btn-export{flex:1;background:var(--cream-dark);color:var(--sage-dark);border:1px solid var(--sage-light);padding:.6rem 1rem;border-radius:100px;font-size:.8rem;font-weight:500;cursor:pointer;transition:all .2s;text-align:center}
+    .ap-btn-export:hover{background:var(--sage-light)}
+    .ap-btn-import{flex:1;background:var(--cream-dark);color:var(--text-muted);border:1px solid var(--border);padding:.6rem 1rem;border-radius:100px;font-size:.8rem;font-weight:500;cursor:pointer;transition:all .2s;text-align:center}
+    .ap-btn-import:hover{background:var(--border)}
+    .ap-btn-reset{background:#fee2e2;color:#dc2626;border:1px solid #fecaca;padding:.6rem 1rem;border-radius:100px;font-size:.8rem;font-weight:500;cursor:pointer;transition:all .2s}
+    .ap-btn-reset:hover{background:#fecaca}
+
+    /* PIN modal */
+    #pin-modal{position:fixed;inset:0;z-index:21000;background:rgba(61,43,31,.7);display:flex;align-items:center;justify-content:center}
+    #pin-modal.hidden{display:none}
+    .pin-box{background:var(--white);border-radius:24px;padding:2rem;width:300px;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.2)}
+    .pin-box h3{font-family:'Playfair Display',serif;color:var(--brown);margin-bottom:.5rem}
+    .pin-box p{font-size:.85rem;color:var(--text-muted);margin-bottom:1.5rem}
+    .pin-input{width:100%;text-align:center;font-size:1.5rem;letter-spacing:.5rem;padding:.75rem;border:2px solid var(--border);border-radius:12px;font-family:'DM Sans',sans-serif;outline:none;transition:border-color .2s;margin-bottom:1rem}
+    .pin-input:focus{border-color:var(--sage-dark)}
+    .pin-error{font-size:.8rem;color:var(--terra);min-height:1.2rem;margin-bottom:.75rem}
+    .ap-logo-hint{position:fixed;bottom:5rem;right:1rem;background:var(--sage-dark);color:var(--white);font-size:.75rem;padding:.4rem .875rem;border-radius:100px;opacity:0;transition:opacity .3s;pointer-events:none;z-index:15000}
+    .ap-logo-hint.show{opacity:1}
+  </style>
+</head>
+<body>
+
+<!-- PIN MODAL -->
+<div id="pin-modal" class="hidden" role="dialog">
+  <div class="pin-box">
+    <h3>Panel Administratora</h3>
+    <p>Wprowadź PIN, aby uzyskać dostęp</p>
+    <input type="password" class="pin-input" id="pin-input" maxlength="6" placeholder="••••" inputmode="numeric" autocomplete="off"/>
+    <div class="pin-error" id="pin-error"></div>
+    <button class="ap-btn-save" style="width:100%" onclick="checkPin()">Wejdź</button>
+    <br><br>
+    <button class="ap-btn-cancel" style="width:100%" onclick="closePinModal()">Anuluj</button>
+  </div>
+</div>
+
+<!-- ADMIN PANEL -->
+<div id="admin-overlay" class="hidden">
+  <div id="admin-panel">
+    <div class="ap-header">
+      <div><h2>⚙️ Panel Administratora</h2><small>Kliknij logo 5× aby otworzyć ponownie</small></div>
+      <button class="ap-close" onclick="closeAdmin()">✕</button>
+    </div>
+    <div class="ap-tabs">
+      <button class="ap-tab active" onclick="switchTab('oferta',this)">🛍️ Oferta</button>
+      <button class="ap-tab" onclick="switchTab('blog',this)">📝 Blog</button>
+      <button class="ap-tab" onclick="switchTab('zdjecia',this)">📸 Zdjęcia</button>
+      <button class="ap-tab" onclick="switchTab('ustawienia',this)">⚙️ Widoczność</button>
+    </div>
+    <div class="ap-body">
+      <div id="tab-oferta">
+        <div class="ap-section"><h3>Usługi i pakiety</h3><div id="offers-list"></div><button class="ap-btn-add" onclick="showOfferForm()">＋ Dodaj nową usługę</button></div>
+        <div id="offer-form-wrap" style="display:none"></div>
+      </div>
+      <div id="tab-blog" style="display:none">
+        <div class="ap-section"><h3>Artykuły</h3><div id="blog-list"></div><button class="ap-btn-add" onclick="showBlogForm()">＋ Dodaj artykuł</button></div>
+        <div id="blog-form-wrap" style="display:none"></div>
+      </div>
+      <div id="tab-zdjecia" style="display:none">
+        <div class="ap-section">
+          <h3>Zdjęcie główne (Hero)</h3>
+          <p style="font-size:.82rem;color:var(--text-muted);margin-bottom:.75rem">Ścieżka względna, np. <code>./images/hero.jpg</code></p>
+          <div class="ap-photo-preview" id="hero-preview">🌿</div>
+          <div class="ap-field"><label>Ścieżka do pliku</label><input type="text" id="hero-path" placeholder="./images/hero.jpg" oninput="previewPhoto('hero')"/></div>
+          <button class="ap-btn-save" onclick="savePhoto('hero')" style="width:100%">Zapisz zdjęcie główne</button>
+        </div>
+        <div class="ap-section">
+          <h3>Zdjęcie „O mnie"</h3>
+          <p style="font-size:.82rem;color:var(--text-muted);margin-bottom:.75rem">Ścieżka względna, np. <code>./images/about.jpg</code></p>
+          <div class="ap-photo-preview" id="about-preview">🌾</div>
+          <div class="ap-field"><label>Ścieżka do pliku</label><input type="text" id="about-path" placeholder="./images/about.jpg" oninput="previewPhoto('about')"/></div>
+          <button class="ap-btn-save" onclick="savePhoto('about')" style="width:100%">Zapisz zdjęcie „O mnie"</button>
+        </div>
+        <div style="background:var(--terra-light);border-radius:12px;padding:1rem;font-size:.82rem;color:var(--brown);line-height:1.65">
+          <strong>📁 GitHub:</strong> Utwórz folder <code>images/</code> obok pliku HTML, wgraj zdjęcia i wpisz ścieżkę <code>./images/nazwa.jpg</code>
+        </div>
+      </div>
+      <div id="tab-ustawienia" style="display:none">
+        <div class="ap-section">
+          <h3>Widoczność sekcji</h3>
+          <div class="ap-toggle-row">
+            <div><div class="ap-toggle-label">Sekcja Blog</div><div class="ap-toggle-sub">Pokaż / ukryj sekcję z artykułami</div></div>
+            <label class="ap-toggle"><input type="checkbox" id="toggle-blog" onchange="saveVisibility()"/><span class="ap-toggle-slider"></span></label>
+          </div>
+          <div class="ap-toggle-row">
+            <div><div class="ap-toggle-label">Sekcja Ebooki</div><div class="ap-toggle-sub">Pokaż / ukryj sekcję z ebookami</div></div>
+            <label class="ap-toggle"><input type="checkbox" id="toggle-ebooki" onchange="saveVisibility()"/><span class="ap-toggle-slider"></span></label>
+          </div>
+        </div>
+        <div class="ap-section">
+          <h3>PIN dostępu</h3>
+          <p style="font-size:.82rem;color:var(--text-muted);margin-bottom:.875rem">Zmień PIN otwierający panel administratora</p>
+          <div class="ap-field"><label>Nowy PIN (cyfry)</label><input type="password" id="new-pin" placeholder="np. 1234" maxlength="6" inputmode="numeric"/></div>
+          <button class="ap-btn-save" onclick="changePin()">Zmień PIN</button>
+          <p id="pin-change-msg" style="font-size:.8rem;color:var(--sage-dark);margin-top:.5rem;min-height:1rem"></p>
+        </div>
+      </div>
+    </div>
+    <div class="ap-footer">
+      <button class="ap-btn-export" onclick="exportData()">⬇️ Eksportuj</button>
+      <label class="ap-btn-import" style="cursor:pointer">⬆️ Importuj<input type="file" accept=".json" style="display:none" onchange="importData(event)"/></label>
+      <button class="ap-btn-reset" onclick="resetData()">↺ Reset</button>
+    </div>
+  </div>
+</div>
+
+<div class="ap-logo-hint" id="logo-hint">🔒 Jeszcze <span id="hint-count">5</span> kliknięć</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo" id="nav-logo">Paweł Depta</div>
+  <ul class="nav-links">
+    <li><a href="#o-mnie">O mnie</a></li>
+    <li><a href="#oferta">Oferta</a></li>
+    <li><a href="#kontakt">Kontakt</a></li>
+    <li><a href="https://www.naffy.io/pawel-depta" target="_blank" class="nav-cta">Umów wizytę</a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#o-mnie" onclick="closeMenu()">O mnie</a>
+  <a href="#oferta" onclick="closeMenu()">Oferta</a>
+  <a href="#kontakt" onclick="closeMenu()">Kontakt</a>
+  <a href="https://www.naffy.io/pawel-depta" target="_blank" class="btn-primary" style="text-align:center">Umów wizytę</a>
+</div>
+
+<!-- 1. HERO -->
+<section id="hero">
+  <div class="container" style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center">
+    <div>
+      <div class="hero-badge">Doradztwo żywieniowe</div>
+      <h1 class="hero-title">Cześć, jestem Paweł —<br><em>Pokazuję, jak żywienie<br>może zmienić Twoje samopoczucie</em></h1>
+      <p class="hero-desc">Tworzę edukacyjne propozycje menu i materiały żywieniowe dla zdrowych dorosłych, oparte na aktualnej wiedzy naukowej. Konsultuję w zakresie nawyków żywieniowych i uczę, jak świadomie komponować posiłki każdego dnia.
+        <strong style="display:block;margin-top:.75rem;font-size:.85rem;color:var(--terra)">⚠️ Jestem studentem dietetyki — moje usługi mają charakter edukacyjny, nie zastępują diagnozy lekarskiej.</strong>
+      </p>
+      <div class="hero-btns">
+        <a href="https://www.naffy.io/pawel-depta" target="_blank" class="btn-primary">Umów konsultację</a>
+        <a href="#oferta" class="btn-outline">Zobacz ofertę</a>
+      </div>
+    </div>
+    <div class="hero-image-wrap" id="hero-image-wrap"></div>
+  </div>
+</section>
+
+<!-- 2. O MNIE -->
+<section id="o-mnie">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img-wrap" id="about-image-wrap"></div>
+      <div>
+        <span class="section-tag">O mnie</span>
+        <h2 class="section-title">Pasja do żywienia<br>i nauki</h2>
+        <p class="section-sub">Jestem studentem dietetyki. Od lat interesuję się związkiem żywienia z samopoczuciem — szczególnie w kontekście migren (sam z nimi walczę), wpływu diety na hormony, metabolizm i komfort trawienny. Układam też propozycje żywieniowe wspierające redukcję wagi i budowę mięśni w połączeniu z treningiem oporowym.</p>
+        <ul class="about-list">
+          <li>Oferuję analizę potencjalnych wyzwalaczy migreny</li>
+          <li>Tworzę propozycje menu oparte na aktualnych wytycznych naukowych</li>
+          <li>Pracuję zdalnie — konsultacje online</li>
+        </ul>
+        <div class="student-note">⚠️ <strong>Ważna informacja:</strong> Jestem studentem dietetyki, nie posiadam jeszcze tytułu zawodowego. Moje usługi mają charakter doradztwa żywieniowego i edukacji dla osób zdrowych i nie zastępują porady lekarskiej.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. OFERTA -->
+<section id="oferta">
+  <div class="container">
+    <div class="offer-intro">
+      <span class="section-tag">Oferta</span>
+      <h2 class="section-title">Co mogę<br>dla Ciebie zrobić?</h2>
+      <p class="section-sub">Wybieram podejście indywidualne — każdy klient jest inny. Poniżej znajdziesz dostępne pakiety i usługi.</p>
+    </div>
+    <div class="offer-grid" id="offer-grid"></div>
+  </div>
+</section>
+
+<!-- 4. EBOOKI (ukryte) -->
+<section id="ebooki" style="display:none">
+  <div class="container">
+    <span class="section-tag">Wiedza w pigułce</span>
+    <h2 class="section-title">Ebooki</h2>
+    <p class="section-sub">Praktyczne przewodniki, które możesz czytać we własnym tempie.</p>
+  </div>
+</section>
+
+<!-- 5. REZERWACJA -->
+<section id="rezerwacja">
+  <div class="container">
+    <div class="booking-grid">
+      <div>
+        <span class="section-tag">Umów wizytę</span>
+        <h2 class="section-title">Jak przebiega<br>współpraca?</h2>
+        <div class="booking-steps">
+          <div class="step"><div class="step-num">1</div><div class="step-text"><strong>Wybierz termin</strong><span>Kliknij „Umów wizytę" i wybierz wolny slot w kalendarzu Naffy.</span></div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-text"><strong>Wypełnij ankietę</strong><span>Krótka ankieta wstępna — piszesz o swoim celu i historii zdrowotnej.</span></div></div>
+          <div class="step"><div class="step-num">3</div><div class="step-text"><strong>Konsultacja online</strong><span>Spotkanie przez Naffy lub wybraną platformę, ok. 45–60 minut.</span></div></div>
+          <div class="step"><div class="step-num">4</div><div class="step-text"><strong>Otrzymujesz materiały</strong><span>Jadłospis, wskazówki i rekomendacje w ciągu 3–5 dni roboczych.</span></div></div>
+        </div>
+      </div>
+      <div class="booking-widget">
+        <p style="font-size:2.5rem;margin-bottom:.5rem">📅</p>
+        <h3 style="font-family:'Playfair Display',serif;color:var(--brown);margin-bottom:1rem">Zarezerwuj wizytę</h3>
+        <p>Rezerwacja odbywa się przez platformę <strong>Naffy.io</strong>. Wybierz typ wizyty, termin i opłać online. Otrzymasz potwierdzenie e-mailem.</p>
+        <a href="https://www.naffy.io/pawel-depta" target="_blank" class="btn-naffy-big">📅 Umów wizytę przez Naffy</a>
+        <p style="margin-top:1.25rem;font-size:.78rem;color:var(--text-muted)">Masz pytania? Napisz najpierw na <a href="#kontakt" style="color:var(--sage-dark)">formularzu kontaktowym</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. BLOG (ukryty) -->
+<section id="blog" style="display:none">
+  <div class="container">
+    <div class="blog-header">
+      <div><span class="section-tag">Wiedza & Inspiracje</span><h2 class="section-title">Blog</h2></div>
+    </div>
+    <div class="blog-grid" id="blog-grid"></div>
+  </div>
+</section>
+
+<!-- 7. KONTAKT -->
+<section id="kontakt">
+  <div class="container">
+    <span class="section-tag">Kontakt</span>
+    <h2 class="section-title">Napisz do mnie</h2>
+    <p class="section-sub">Masz pytanie o ofertę? Chcesz dowiedzieć się więcej? Odpisuję w ciągu 24–48 godzin.</p>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-item-icon">📧</div>
+          <div class="contact-item-text"><strong>E-mail</strong><span>dietetyka.pawel.depta@gmail.com</span></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">📱</div>
+          <div class="contact-item-text">
+            <strong>Facebook</strong><span><a href="https://www.facebook.com/dietetyka.pawel.depta/" target="_blank">@dietetyka_pawel_depta</a></span>
+            <strong style="margin-top:.5rem;display:block">Instagram</strong><span><a href="https://www.instagram.com/dietetyka.pawel.depta/" target="_blank">@dietetyka_pawel_depta</a></span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">📍</div>
+          <div class="contact-item-text"><strong>Konsultacje</strong><span>Online (cała Polska)</span></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">⏰</div>
+          <div class="contact-item-text"><strong>Czas odpowiedzi</strong><span>24–48 godzin roboczych</span></div>
+        </div>
+      </div>
+      <form class="contact-form" action="https://formspree.io/f/xykbaodl" method="POST" onsubmit="handleFormSubmit(event)">
+        <div class="form-group"><input type="text" name="name" placeholder="Twoje imię" required/></div>
+        <div class="form-group"><input type="email" name="email" placeholder="Adres e-mail" required/></div>
+        <div class="form-group"><textarea name="message" placeholder="Twoja wiadomość..." required></textarea></div>
+        <div class="form-checkbox">
+          <input type="checkbox" id="rodo-consent" name="rodo" required/>
+          <label for="rodo-consent">Wyrażam zgodę na przetwarzanie moich danych osobowych w celu odpowiedzi na pytanie, zgodnie z <a href="#rodo" style="color:rgba(255,255,255,.8)">Polityką Prywatności</a>. *</label>
+        </div>
+        <button type="submit" class="btn-send">Wyślij wiadomość ✉️</button>
+        <p id="form-success" style="display:none;color:rgba(255,255,255,.8);font-size:.875rem;margin-top:.5rem">✅ Wiadomość wysłana! Odezwę się wkrótce.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- 8. RODO (po formularzu, przed stopką) -->
+<section id="rodo">
+  <div class="container">
+    <span class="section-tag">Bezpieczeństwo danych</span>
+    <h2 class="section-title">Polityka Prywatności & RODO</h2>
+    <p class="section-sub">Twoje dane są bezpieczne. Działam zgodnie z RODO (Rozporządzenie UE 2016/679).</p>
+    <div class="rodo-grid">
+      <div class="rodo-box">
+        <h3>👤 Administrator danych</h3>
+        <p>Administratorem Twoich danych osobowych jest:<br><strong>Paweł Depta</strong> — student dietetyki świadczący usługi doradztwa żywieniowego o charakterze edukacyjnym.<br><br>e-mail: <strong>dietetyka.pawel.depta@gmail.com</strong></p>
+      </div>
+      <div class="rodo-box">
+        <h3>📋 Cel i podstawa przetwarzania</h3>
+        <ul>
+          <li>Realizacja zamówionych usług (art. 6 ust. 1 lit. b RODO)</li>
+          <li>Obsługa formularza kontaktowego (prawnie uzasadniony interes)</li>
+          <li>Wystawianie dokumentów sprzedaży (obowiązek prawny)</li>
+          <li>Komunikacja e-mailowa dot. zlecenia</li>
+        </ul>
+      </div>
+      <div class="rodo-box">
+        <h3>⏳ Okres przechowywania danych</h3>
+        <p>Dane przechowuję przez czas niezbędny do realizacji usługi. Dokumentacja finansowa — 5 lat (wymogi podatkowe). Korespondencja e-mailowa — do 2 lat. Możesz w każdej chwili zażądać usunięcia lub poprawienia swoich danych.</p>
+      </div>
+      <div class="rodo-box">
+        <h3>🔒 Twoje prawa (art. 15–22 RODO)</h3>
+        <ul>
+          <li>Prawo dostępu do danych</li>
+          <li>Prawo do sprostowania danych</li>
+          <li>Prawo do usunięcia danych</li>
+          <li>Prawo do ograniczenia przetwarzania</li>
+          <li>Prawo do przenoszenia danych</li>
+          <li>Prawo do wniesienia skargi do UODO (uodo.gov.pl)</li>
+        </ul>
+      </div>
+      <div class="rodo-box">
+        <h3>🍪 Pliki cookie — tylko niezbędne</h3>
+        <p>Ta strona używa <strong>wyłącznie niezbędnych plików cookie</strong>. <strong>Nie korzystam</strong> z Google Analytics, Facebook Pixel, remarketingu ani żadnych narzędzi śledzących. Dane o odwiedzinach nie są zbierane ani przekazywane osobom trzecim.</p>
+      </div>
+      <div class="rodo-box">
+        <h3>📤 Podmioty trzecie</h3>
+        <p>Dane do płatności przekazywane są do <strong>Naffy.io</strong> — działającego zgodnie z RODO. Strona hostowana jest na <strong>GitHub Pages</strong> (Microsoft) zgodnie z RODO/SCC. Dane nie są przekazywane poza EOG.</p>
+      </div>
+    </div>
+    <div style="margin-top:2rem;background:var(--terra-light);border-left:3px solid var(--terra);border-radius:0 12px 12px 0;padding:1.25rem 1.5rem">
+      <p style="font-size:.875rem;color:var(--brown);line-height:1.8">⚠️ <strong>Zastrzeżenie prawne:</strong> Usługi świadczone na tej stronie mają charakter doradztwa żywieniowego i edukacji prozdrowotnej dla zdrowych dorosłych. Nie stanowią diagnozy, terapii ani leczenia chorób i <strong>nie zastępują porady lekarskiej</strong>. Paweł Depta jest studentem kierunku dietetyka i nie posiada tytułu zawodowego „dietetyk" w rozumieniu Ustawy z dnia 17 sierpnia 2023 r. o niektórych zawodach medycznych (Dz.U. 2023 poz. 1972).</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Paweł Depta</div>
+  <div class="footer-links">
+    <a href="#o-mnie">O mnie</a>
+    <a href="#oferta">Oferta</a>
+    <a href="#rodo">Polityka Prywatności</a>
+    <a href="#kontakt">Kontakt</a>
+  </div>
+  <p>© 2026 Paweł Depta | Doradztwo żywieniowe (charakter edukacyjny) | dietetyka.pawel.depta@gmail.com</p>
+  <p style="margin-top:.5rem;font-size:.75rem;color:rgba(255,255,255,.35)">🍪 Ta strona nie używa ciasteczek śledzących ani analitycznych.</p>
+  <div class="disclaimer">
+    <strong style="color:rgba(255,255,255,.75);display:block;margin-bottom:.5rem">⚠️ Zastrzeżenie prawne</strong>
+    Jestem <strong>studentem kierunku dietetyka</strong> i nie posiadam tytułu zawodowego „dietetyk" w rozumieniu Ustawy z dnia 17 sierpnia 2023 r. o niektórych zawodach medycznych (Dz.U. 2023 poz. 1972). Wszelkie treści i usługi mają charakter wyłącznie <strong>edukacyjny i informacyjny</strong> — nie stanowią diagnozy medycznej, terapii żywieniowej ani indywidualnych zaleceń leczniczych.
+  </div>
+</footer>
+
+<script>
+const DEFAULT_PIN='1234';
+const DEFAULT_DATA={
+  offers:[
+    {id:'o1',icon:'🥗',title:'Jadłospis indywidualny',desc:'14-dniowy jadłospis dopasowany do Twoich potrzeb, preferencji smakowych, trybu życia i celu zdrowotnego.',price:'od 179 zł',priceUnit:'jednorazowo',url:'https://www.naffy.io/pawel-depta/jadlospis-indywidualny-lPd',btn:'Zamów jadłospis'},
+    {id:'o2',icon:'🧠',title:'Pakiet: Propozycja menu + analiza nawyków',desc:'Przeglądamy Twój 7-dniowy dzienniczek żywieniowy. Otrzymujesz pisemne omówienie nawyków oraz propozycję menu uwzględniającą Twoje preferencje. Materiał oparty na literaturze naukowej.',price:'od 299 zł',priceUnit:'jednorazowo',url:'https://www.naffy.io/pawel-depta/pakiet-jadlospis-dzienniczek-migren-V7C',btn:'Zamów pakiet'},
+    {id:'o3',icon:'💬',title:'Konsultacja żywieniowa',desc:'45-minutowa rozmowa online. Omówimy Twój cel, nawyki żywieniowe i plan działania.',price:'159 zł',priceUnit:'/ 45 min',url:'https://www.naffy.io/pawel-depta/jadlospis-indywidualny-iQf',btn:'Umów konsultację'},
+    {id:'o4',icon:'📦',title:'Pakiet Premium',desc:'2 konsultacje + jadłospis miesięczny + analiza dzienniczka + możliwość przesłania 3 pytań mailowych przez 30 dni od zakupu. (Odpowiedzi mają charakter edukacyjny)',price:'od 649 zł',priceUnit:'/ miesiąc',url:'https://www.naffy.io/pawel-depta/pakiet-premium-jr0',btn:'Zamów Pakiet Premium'},
+    {id:'o5',icon:'✉️',title:'Analiza jadłospisu (e-mail)',desc:'Przesyłasz mi swój obecny jadłospis z 3 dni, ja analizuję i odsyłam pisemne wskazówki w ciągu 48h.',price:'99 zł',priceUnit:'jednorazowo',url:'https://naffy.io/pawel-depta',btn:'Zamów analizę'}
+  ],
+  blog:[
+    {id:'b1',emoji:'🥦',tag:'Migreny',title:'5 produktów, które mogą nasilać migreny',excerpt:'Odkryj, które składniki diety są najczęściej wymieniane jako wyzwalacze bólu głowy i jak je zastąpić.',date:'15 marca 2025',url:'#'},
+    {id:'b2',emoji:'🧪',tag:'Badania naukowe',title:'Magnez a migreny — co mówią badania?',excerpt:'Przegląd aktualnych badań dotyczących suplementacji magnezem i jego wpływu na częstotliwość napadów migreny.',date:'2 kwietnia 2025',url:'#'},
+    {id:'b3',emoji:'📝',tag:'Porady',title:'Jak prowadzić dzienniczek żywieniowy?',excerpt:'Krok po kroku — jak śledzić jedzenie, sen i dolegliwości, by znaleźć wzorce wpływające na Twoje zdrowie.',date:'20 kwietnia 2025',url:'#'}
+  ],
+  photos:{hero:'',about:''},
+  visibility:{blog:false,ebooki:false},
+  pin:DEFAULT_PIN
+};
+
+function getData(){try{return JSON.parse(localStorage.getItem('pd_data'))||structuredClone(DEFAULT_DATA);}catch{return structuredClone(DEFAULT_DATA);}}
+function saveData(d){localStorage.setItem('pd_data',JSON.stringify(d));}
+function uid(){return '_'+Math.random().toString(36).slice(2,9);}
+
+function renderOffers(){
+  const d=getData();
+  const grid=document.getElementById('offer-grid');
+  if(!grid)return;
+  grid.innerHTML=d.offers.map(o=>`<div class="offer-card"><div class="offer-icon">${o.icon}</div><h3>${o.title}</h3><p>${o.desc}</p><div class="offer-price">${o.price} <span>${o.priceUnit}</span></div><a href="${o.url}" target="_blank" class="btn-offer">${o.btn}</a></div>`).join('');
+}
+
+function renderBlog(){
+  const d=getData();
+  const grid=document.getElementById('blog-grid');
+  if(!grid)return;
+  grid.innerHTML=d.blog.map(p=>`<article class="blog-card"><div class="blog-thumb"><div class="blog-thumb-placeholder">${p.emoji}</div></div><div class="blog-body"><span class="blog-tag">${p.tag}</span><h3>${p.title}</h3><p>${p.excerpt}</p><div class="blog-meta">${p.date}</div><a href="${p.url}" class="blog-link">Czytaj więcej →</a></div></article>`).join('');
+}
+
+function renderPhotos(){
+  const{photos}=getData();
+  const hw=document.getElementById('hero-image-wrap');
+  if(hw){hw.innerHTML=photos.hero?`<img src="${photos.hero}" alt="Paweł Depta" class="hero-img"><div class="hero-card"><div class="hero-card-icon">📋</div><div class="hero-card-text"><strong>Spersonalizowane podejście</strong><span>Każdy plan tworzę indywidualnie</span></div></div>`:`<div class="hero-img-placeholder"><span>🌿</span><strong>Twoje zdjęcie</strong><small>Dodaj przez Panel Admina → Zdjęcia</small></div><div class="hero-card"><div class="hero-card-icon">📋</div><div class="hero-card-text"><strong>Spersonalizowane podejście</strong><span>Każdy plan tworzę indywidualnie</span></div></div>`;}
+  const aw=document.getElementById('about-image-wrap');
+  if(aw){aw.innerHTML=photos.about?`<img src="${photos.about}" alt="Paweł Depta" style="width:100%;height:100%;object-fit:cover">`:`<div class="about-img-placeholder"><span>🌾</span><strong>Twoje zdjęcie</strong><small>Dodaj przez Panel Admina → Zdjęcia</small></div>`;}
+}
+
+function renderVisibility(){
+  const{visibility}=getData();
+  document.getElementById('blog').style.display=visibility.blog?'block':'none';
+  document.getElementById('ebooki').style.display=visibility.ebooki?'block':'none';
+}
+
+let logoClicks=0,clickTimer=null;
+document.getElementById('nav-logo').addEventListener('click',function(){
+  logoClicks++;
+  const hint=document.getElementById('logo-hint');
+  const rem=5-logoClicks;
+  if(rem>0){document.getElementById('hint-count').textContent=rem;hint.classList.add('show');clearTimeout(clickTimer);clickTimer=setTimeout(()=>{logoClicks=0;hint.classList.remove('show');},2500);}
+  else{logoClicks=0;hint.classList.remove('show');document.getElementById('pin-modal').classList.remove('hidden');document.getElementById('pin-input').value='';document.getElementById('pin-error').textContent='';setTimeout(()=>document.getElementById('pin-input').focus(),100);}
+});
+document.getElementById('pin-input').addEventListener('keydown',e=>{if(e.key==='Enter')checkPin();});
+
+function checkPin(){
+  const val=document.getElementById('pin-input').value;
+  if(val===(getData().pin||DEFAULT_PIN)){document.getElementById('pin-modal').classList.add('hidden');openAdmin();}
+  else{document.getElementById('pin-error').textContent='❌ Nieprawidłowy PIN';document.getElementById('pin-input').value='';document.getElementById('pin-input').focus();}
+}
+function closePinModal(){document.getElementById('pin-modal').classList.add('hidden');}
+
+function openAdmin(){
+  const d=getData();
+  document.getElementById('admin-overlay').classList.remove('hidden');
+  document.getElementById('toggle-blog').checked=d.visibility.blog;
+  document.getElementById('toggle-ebooki').checked=d.visibility.ebooki;
+  document.getElementById('hero-path').value=d.photos.hero||'';
+  document.getElementById('about-path').value=d.photos.about||'';
+  updatePhotoPreview('hero',d.photos.hero);
+  updatePhotoPreview('about',d.photos.about);
+  renderAdminOffers();renderAdminBlog();
+  switchTab('oferta',document.querySelector('.ap-tab'));
+}
+function closeAdmin(){document.getElementById('admin-overlay').classList.add('hidden');document.getElementById('offer-form-wrap').style.display='none';document.getElementById('blog-form-wrap').style.display='none';}
+document.getElementById('admin-overlay').addEventListener('click',e=>{if(e.target===document.getElementById('admin-overlay'))closeAdmin();});
+
+function switchTab(name,btn){
+  ['oferta','blog','zdjecia','ustawienia'].forEach(t=>document.getElementById('tab-'+t).style.display=t===name?'block':'none');
+  document.querySelectorAll('.ap-tab').forEach(t=>t.classList.remove('active'));
+  if(btn)btn.classList.add('active');
+}
+
+function renderAdminOffers(){
+  const d=getData();
+  document.getElementById('offers-list').innerHTML=d.offers.map(o=>`<div class="ap-item"><div class="ap-item-icon">${o.icon}</div><div class="ap-item-info"><div class="ap-item-title">${o.title}</div><div class="ap-item-sub">${o.price} · ${o.priceUnit}</div></div><div class="ap-item-actions"><button class="ap-btn-sm ap-btn-edit" onclick="editOffer('${o.id}')">Edytuj</button><button class="ap-btn-sm ap-btn-del" onclick="deleteOffer('${o.id}')">Usuń</button></div></div>`).join('');
+}
+function showOfferForm(id){
+  const d=getData();
+  const o=id?d.offers.find(x=>x.id===id):{id:uid(),icon:'🌿',title:'',desc:'',price:'',priceUnit:'jednorazowo',url:'',btn:'Zamów'};
+  const w=document.getElementById('offer-form-wrap');
+  w.style.display='block';
+  w.innerHTML=`<div class="ap-form"><h4>${id?'Edytuj usługę':'Nowa usługa'}</h4><div class="ap-field-row"><div class="ap-field"><label>Ikona</label><input id="of-icon" value="${o.icon}"/></div><div class="ap-field"><label>Cena</label><input id="of-price" value="${o.price}"/></div></div><div class="ap-field"><label>Tytuł</label><input id="of-title" value="${o.title}"/></div><div class="ap-field"><label>Opis</label><textarea id="of-desc">${o.desc}</textarea></div><div class="ap-field-row"><div class="ap-field"><label>Jednostka ceny</label><input id="of-unit" value="${o.priceUnit}"/></div><div class="ap-field"><label>Tekst przycisku</label><input id="of-btn" value="${o.btn}"/></div></div><div class="ap-field"><label>Link Naffy.io</label><input id="of-url" value="${o.url}"/></div><div class="ap-form-btns"><button class="ap-btn-save" onclick="saveOffer('${o.id}','${id?'edit':'new'}')">💾 Zapisz</button><button class="ap-btn-cancel" onclick="document.getElementById('offer-form-wrap').style.display='none'">Anuluj</button></div></div>`;
+  w.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+function editOffer(id){showOfferForm(id);}
+function saveOffer(id,mode){
+  const d=getData();
+  const o={id,icon:document.getElementById('of-icon').value||'🌿',title:document.getElementById('of-title').value,desc:document.getElementById('of-desc').value,price:document.getElementById('of-price').value,priceUnit:document.getElementById('of-unit').value,url:document.getElementById('of-url').value,btn:document.getElementById('of-btn').value};
+  if(mode==='new')d.offers.push(o);else{const i=d.offers.findIndex(x=>x.id===id);if(i>-1)d.offers[i]=o;}
+  saveData(d);renderOffers();renderAdminOffers();document.getElementById('offer-form-wrap').style.display='none';
+}
+function deleteOffer(id){if(!confirm('Usunąć tę usługę?'))return;const d=getData();d.offers=d.offers.filter(o=>o.id!==id);saveData(d);renderOffers();renderAdminOffers();}
+
+function renderAdminBlog(){
+  const d=getData();
+  document.getElementById('blog-list').innerHTML=d.blog.map(p=>`<div class="ap-item"><div class="ap-item-icon">${p.emoji}</div><div class="ap-item-info"><div class="ap-item-title">${p.title}</div><div class="ap-item-sub">${p.tag} · ${p.date}</div></div><div class="ap-item-actions"><button class="ap-btn-sm ap-btn-edit" onclick="editPost('${p.id}')">Edytuj</button><button class="ap-btn-sm ap-btn-del" onclick="deletePost('${p.id}')">Usuń</button></div></div>`).join('');
+}
+function showBlogForm(id){
+  const d=getData();
+  const p=id?d.blog.find(x=>x.id===id):{id:uid(),emoji:'📝',tag:'',title:'',excerpt:'',date:'',url:'#'};
+  const w=document.getElementById('blog-form-wrap');
+  w.style.display='block';
+  w.innerHTML=`<div class="ap-form"><h4>${id?'Edytuj artykuł':'Nowy artykuł'}</h4><div class="ap-field-row"><div class="ap-field"><label>Emoji</label><input id="bp-emoji" value="${p.emoji}"/></div><div class="ap-field"><label>Kategoria</label><input id="bp-tag" value="${p.tag}"/></div></div><div class="ap-field"><label>Tytuł</label><input id="bp-title" value="${p.title}"/></div><div class="ap-field"><label>Opis</label><textarea id="bp-excerpt">${p.excerpt}</textarea></div><div class="ap-field-row"><div class="ap-field"><label>Data</label><input id="bp-date" value="${p.date}"/></div><div class="ap-field"><label>Link do artykułu</label><input id="bp-url" value="${p.url}"/></div></div><div class="ap-form-btns"><button class="ap-btn-save" onclick="savePost('${p.id}','${id?'edit':'new'}')">💾 Zapisz</button><button class="ap-btn-cancel" onclick="document.getElementById('blog-form-wrap').style.display='none'">Anuluj</button></div></div>`;
+  w.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+function editPost(id){showBlogForm(id);}
+function savePost(id,mode){
+  const d=getData();
+  const p={id,emoji:document.getElementById('bp-emoji').value||'📝',tag:document.getElementById('bp-tag').value,title:document.getElementById('bp-title').value,excerpt:document.getElementById('bp-excerpt').value,date:document.getElementById('bp-date').value,url:document.getElementById('bp-url').value||'#'};
+  if(mode==='new')d.blog.push(p);else{const i=d.blog.findIndex(x=>x.id===id);if(i>-1)d.blog[i]=p;}
+  saveData(d);renderBlog();renderAdminBlog();document.getElementById('blog-form-wrap').style.display='none';
+}
+function deletePost(id){if(!confirm('Usunąć ten artykuł?'))return;const d=getData();d.blog=d.blog.filter(p=>p.id!==id);saveData(d);renderBlog();renderAdminBlog();}
+
+function updatePhotoPreview(type,path){const el=document.getElementById(type+'-preview');if(!el)return;el.innerHTML=path?`<img src="${path}" alt="podgląd" onerror="this.parentElement.innerHTML='❌ Nie znaleziono'">`:(type==='hero'?'🌿':'🌾');}
+function previewPhoto(type){updatePhotoPreview(type,document.getElementById(type+'-path').value);}
+function savePhoto(type){const d=getData();d.photos[type]=document.getElementById(type+'-path').value;saveData(d);renderPhotos();alert('✅ Zdjęcie zapisane!');}
+
+function saveVisibility(){const d=getData();d.visibility.blog=document.getElementById('toggle-blog').checked;d.visibility.ebooki=document.getElementById('toggle-ebooki').checked;saveData(d);renderVisibility();}
+
+function changePin(){const p=document.getElementById('new-pin').value.trim();if(!p||p.length<4){document.getElementById('pin-change-msg').textContent='⚠️ Min. 4 znaki';return;}const d=getData();d.pin=p;saveData(d);document.getElementById('new-pin').value='';document.getElementById('pin-change-msg').textContent='✅ PIN zmieniony!';setTimeout(()=>document.getElementById('pin-change-msg').textContent='',3000);}
+
+function exportData(){const blob=new Blob([JSON.stringify(getData(),null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='pawel-depta-site-data.json';a.click();}
+function importData(e){const file=e.target.files[0];if(!file)return;const r=new FileReader();r.onload=ev=>{try{saveData(JSON.parse(ev.target.result));renderOffers();renderBlog();renderPhotos();renderVisibility();openAdmin();alert('✅ Dane zaimportowane!');}catch{alert('❌ Błąd pliku JSON');}};r.readAsText(file);e.target.value='';}
+function resetData(){if(!confirm('Przywrócić domyślne dane?'))return;localStorage.removeItem('pd_data');renderOffers();renderBlog();renderPhotos();renderVisibility();openAdmin();}
+
+function toggleMenu(){document.getElementById('mobile-menu').classList.toggle('open');}
+function closeMenu(){document.getElementById('mobile-menu').classList.remove('open');}
+function handleFormSubmit(e){const a=e.target.getAttribute('action');if(a&&a.includes('formspree.io')&&!a.includes('TWOJ'))return;e.preventDefault();document.getElementById('form-success').style.display='block';e.target.reset();}
+
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){const t=document.querySelector(this.getAttribute('href'));if(t){e.preventDefault();window.scrollTo({top:t.getBoundingClientRect().top+window.pageYOffset-80,behavior:'smooth'});}});});
+
+window.addEventListener('load',()=>{renderOffers();renderBlog();renderPhotos();renderVisibility();});
+</script>
+</body>
+</html>
