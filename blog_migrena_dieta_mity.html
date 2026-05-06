@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mity o diecie i migrenie | Blog studenta dietetyki</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green-deep:#1e4d2b;--green-mid:#2d6a3f;--green-bright:#3a8c52;
+      --green-light:#7bc47f;--green-pale:#d4edda;--green-mist:#f0f8f1;
+      --cream:#fdf9f3;--cream-dark:#f5efe4;--sand:#e8dcc8;
+      --text-dark:#1a2e1c;--text-body:#2c3e2d;--text-muted:#6b7c6d;
+      --accent-warm:#c8864a;--accent-light:#f5d5b0;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background-color:var(--cream);color:var(--text-body);font-family:'Source Serif 4',Georgia,serif;font-size:18px;line-height:1.85;font-weight:300}
+    .scroll-progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--green-bright),var(--green-light));z-index:999;width:0%;transition:width .1s linear}
+    .top-bar{background:var(--green-deep);color:#fff;text-align:center;padding:10px 20px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase}
+    .top-bar a{color:var(--green-light);text-decoration:none}
+    .hero{position:relative;background:linear-gradient(160deg,var(--green-deep) 0%,var(--green-mid) 55%,var(--green-bright) 100%);padding:90px 24px 80px;text-align:center;overflow:hidden}
+    .hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(ellipse 60% 60% at 20% 80%,rgba(255,255,255,.05) 0%,transparent 70%),radial-gradient(ellipse 40% 40% at 80% 20%,rgba(200,255,200,.08) 0%,transparent 60%)}
+    .hero-tag{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:50px;padding:5px 18px;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--green-light);margin-bottom:28px;position:relative}
+    .hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,6vw,4rem);font-weight:900;line-height:1.15;color:#fff;max-width:820px;margin:0 auto 20px;position:relative}
+    .hero h1 em{font-style:italic;color:var(--green-light)}
+    .hero-sub{font-family:'Source Serif 4',serif;font-size:1.05rem;font-style:italic;color:rgba(255,255,255,.75);max-width:600px;margin:0 auto 36px;position:relative}
+    .hero-meta{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;position:relative}
+    .hero-meta span{font-family:'DM Sans',sans-serif;font-size:12px;font-weight:400;color:rgba(255,255,255,.6);letter-spacing:.05em}
+    .hero-meta span strong{color:rgba(255,255,255,.9);font-weight:500}
+    .leaf-divider{text-align:center;font-size:24px;color:var(--green-mid);padding:32px 0 0}
+    .container{max-width:740px;margin:0 auto;padding:0 24px 80px}
+    .lead{font-size:1.15rem;line-height:1.9;color:var(--text-dark);font-weight:400;margin:44px 0 36px;padding-left:24px;border-left:3px solid var(--green-light)}
+    .section-label{font-family:'DM Sans',sans-serif;font-size:10px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--text-muted);margin:52px 0 24px;display:flex;align-items:center;gap:12px}
+    .section-label::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--sand),transparent)}
+    .myth-card{margin-bottom:48px;opacity:0;transform:translateY(22px);animation:fadeUp .6s ease forwards}
+    .myth-card:nth-child(1){animation-delay:.05s}.myth-card:nth-child(2){animation-delay:.1s}.myth-card:nth-child(3){animation-delay:.15s}.myth-card:nth-child(4){animation-delay:.2s}.myth-card:nth-child(5){animation-delay:.25s}.myth-card:nth-child(6){animation-delay:.3s}.myth-card:nth-child(7){animation-delay:.35s}.myth-card:nth-child(8){animation-delay:.4s}.myth-card:nth-child(9){animation-delay:.45s}
+    @keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+    .myth-header{display:flex;align-items:flex-start;gap:16px;margin-bottom:4px}
+    .myth-number{display:flex;align-items:center;justify-content:center;width:44px;height:44px;flex-shrink:0;background:linear-gradient(135deg,var(--green-mid),var(--green-bright));border-radius:12px;font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:#fff;margin-top:4px}
+    .myth-label-wrap{flex:1}
+    .myth-label{font-family:'DM Sans',sans-serif;font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent-warm);margin-bottom:4px;display:block}
+    h2{font-family:'Playfair Display',serif;font-size:1.55rem;font-weight:700;color:var(--green-deep);line-height:1.3;margin-bottom:0}
+    .fact-bar{display:flex;align-items:center;gap:10px;margin:14px 0 18px;padding:10px 16px;background:var(--green-pale);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--green-deep)}
+    .fact-bar::before{content:'✓';display:flex;align-items:center;justify-content:center;width:22px;height:22px;background:var(--green-bright);color:#fff;border-radius:50%;font-size:12px;flex-shrink:0}
+    p{margin-bottom:20px}p:last-child{margin-bottom:0}
+    strong{font-weight:600;color:var(--text-dark)}em{font-style:italic}
+    .myth-divider{width:100%;height:1px;background:linear-gradient(90deg,var(--green-pale),transparent);margin:8px 0 48px}
+    .callout{background:linear-gradient(135deg,var(--green-mist),var(--green-pale));border:1px solid rgba(61,140,82,.2);border-radius:16px;padding:28px 32px;margin:28px 0;position:relative;overflow:hidden}
+    .callout::before{content:'!';position:absolute;top:-10px;right:20px;font-family:'Playfair Display',serif;font-size:120px;font-weight:900;color:var(--green-pale);line-height:1;pointer-events:none;z-index:0}
+    .callout p{position:relative;z-index:1;margin:0;font-size:.97rem;color:var(--green-deep)}
+    .callout .callout-label{font-family:'DM Sans',sans-serif;font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--green-bright);margin-bottom:10px;display:block;position:relative;z-index:1}
+    .warning-box{background:linear-gradient(135deg,#fdf6ee,var(--accent-light));border:1px solid rgba(200,134,74,.3);border-left:4px solid var(--accent-warm);border-radius:0 12px 12px 0;padding:22px 28px;margin:28px 0}
+    .warning-box p{margin:0;font-size:.96rem;color:#5a3a1a}
+    .warning-box .warn-label{font-family:'DM Sans',sans-serif;font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent-warm);margin-bottom:8px;display:block}
+    .research-card{background:var(--green-deep);color:#fff;border-radius:20px;padding:36px;margin:36px 0;position:relative;overflow:hidden}
+    .research-card::before{content:'"';position:absolute;top:-20px;left:20px;font-family:'Playfair Display',serif;font-size:200px;color:rgba(255,255,255,.05);line-height:1;pointer-events:none}
+    .research-card .rc-label{font-family:'DM Sans',sans-serif;font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--green-light);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+    .research-card .rc-label::before{content:'';width:24px;height:2px;background:var(--green-light)}
+    .research-card p{position:relative;font-size:1rem;line-height:1.8;color:rgba(255,255,255,.88);margin-bottom:16px}
+    .research-card p:last-child{margin:0}
+    .research-card .rc-source{font-family:'DM Sans',sans-serif;font-size:12px;color:rgba(255,255,255,.45);font-style:italic}
+    .food-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0}
+    @media(max-width:560px){.food-grid{grid-template-columns:1fr}}
+    .food-item{background:var(--green-mist);border:1px solid rgba(58,140,82,.2);border-radius:12px;padding:16px 18px}
+    .food-item-title{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--green-bright);margin-bottom:6px}
+    .food-item p{font-size:.9rem;color:var(--text-body);margin:0;line-height:1.6}
+    .badge-row{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+    .badge{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;padding:4px 12px;border-radius:20px;letter-spacing:.04em}
+    .badge-yes{background:var(--green-pale);color:var(--green-deep)}
+    .badge-no{background:#fce8e8;color:#a02020}
+    .badge-ltd{background:var(--accent-light);color:#7a4a10}
+    .closing{background:linear-gradient(135deg,var(--green-mist) 0%,var(--cream-dark) 100%);border-radius:20px;padding:40px;margin-top:52px;text-align:center;border:1px solid var(--sand);opacity:0;transform:translateY(22px);animation:fadeUp .6s ease forwards;animation-delay:.5s}
+    .closing h2{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--green-deep);margin-bottom:18px}
+    .closing p{font-size:1rem;color:var(--text-body)}
+    .sources{border-top:1px solid var(--sand);padding-top:32px;margin-top:52px}
+    .sources-title{font-family:'DM Sans',sans-serif;font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px}
+    .sources p{font-size:.82rem;color:var(--text-muted);font-style:italic;line-height:1.7;margin-bottom:6px}
+    .disclaimer{margin-top:20px;font-family:'DM Sans',sans-serif;font-size:.8rem;color:var(--text-muted);padding:14px 18px;background:var(--cream-dark);border-radius:8px}
+    @media(max-width:600px){.hero{padding:60px 20px 56px}.callout,.research-card,.closing{padding:24px}}
+  </style>
+</head>
+<body>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<div class="top-bar">
+  <a href="#">Blog studenta dietetyki</a> &nbsp;·&nbsp; Żywienie oparte na dowodach
+</div>
+
+<header class="hero">
+  <div class="hero-tag">Neurologia i żywienie kliniczne</div>
+  <h1>Co dieta naprawdę robi z <em>migreną</em>? Fakty zamiast mitów</h1>
+  <p class="hero-sub">Sześć mitów żywieniowych i dwa mity dotyczące stylu życia skonfrontowane z wynikami aktualnych badań naukowych</p>
+  <div class="hero-meta">
+    <span>✍️ <strong>Student dietetyki</strong></span>
+    <span>📖 <strong>ok. 11 min czytania</strong></span>
+    <span>🔬 <strong>Oparte na badaniach naukowych</strong></span>
+  </div>
+</header>
+
+<div class="leaf-divider">🌿</div>
+
+<main class="container">
+
+  <p class="lead">
+    Migrena dotyczy ponad miliarda osób na świecie i pozostaje jedną z najczęstszych przyczyn niepełnosprawności według WHO. Jako student dietetyki uważam za szczególnie istotne to, że związek między żywieniem a przebiegiem migreny jest obszarem, w którym narosło wyjątkowo dużo niepotwierdzonych przekonań. W tym artykule skupiam się na sześciu mitach dotyczących diety oraz dwóch dotyczących stylu życia, konfrontując je z wynikami aktualnych badań naukowych. Artykuł pomija zagadnienia farmakologicznego leczenia migreny i koncentruje się wyłącznie na interwencjach żywieniowych i niefarmakologicznych.
+  </p>
+
+  <!-- SEKCJA: DIETA -->
+  <div class="section-label">🥗 Część I: Mity dotyczące diety (6 z 8)</div>
+
+  <!-- MIT 1 -->
+  <div class="myth-card">
+    <div class="myth-header">
+      <div class="myth-number">1</div>
+      <div class="myth-label-wrap">
+        <span class="myth-label">Mit żywieniowy</span>
+        <h2>Czekolada wyzwala migrenę, więc osoby z migreną powinny jej unikać</h2>
+      </div>
+    </div>
+    <div class="fact-bar">Fakt: dowody łączące czekoladę z migreną są słabe i niespójne</div>
+    <p>
+      Czekolada jest jednym z najczęściej wymienianych wyzwalaczy migreny w badaniach ankietowych. Warto jednak zaznaczyć, że dane z badań ankietowych mają istotne ograniczenie: opierają się na subiektywnym przypomnieniu sobie zdarzeń przez pacjentów, co jest obarczone dużym błędem poznawczym. Gazerani (<em>Nutrients</em>, 2020) w przeglądzie systematycznym dotyczącym diety i migreny wskazuje, że wyniki kontrolowanych badań klinicznych nie potwierdzają jednoznacznego związku przyczynowo-skutkowego między spożyciem czekolady a wywoływaniem ataków.
+    </p>
+    <p>
+      Co więcej, mechanizm, który miałby tłumaczyć to działanie, jest dyskusyjny. Przez długi czas wskazywano na fenyloetylaminę i tyraminę zawarte w czekoladzie. Jednak stężenia tych substancji w czekoladzie są na tyle niskie, że ich bezpośrednie działanie wazomotoryczne u osób bez deficytu enzymatycznego wydaje się mało prawdopodobne. Bardziej wiarygodną hipotezą pozostaje to, że zachcianki na czekoladę mogą być objawem fazy prodromalnej ataku migreny, a nie jego przyczyną. Innymi słowy: mózg chorującego na migrenę może sygnalizować nadchodzący atak w postaci łaknienia czekolady, co sprawia, że spożycie czekolady i atak migreny następują po sobie, choć nie pozostają w związku przyczynowym.
+    </p>
+    <div class="callout">
+      <span class="callout-label">📌 Praktyczna wskazówka</span>
+      <p>Eliminacja czekolady z diety bez potwierdzenia jej jako indywidualnego wyzwalacza w dzienniczku migreny nie jest uzasadniona. Prowadzenie szczegółowego dzienniczka przez minimum 4-8 tygodni pozwala z większą pewnością ocenić, czy dany produkt rzeczywiście koreluje z atakami u konkretnej osoby.</p>
+    </div>
+  </div>
+  <div class="myth-divider"></div>
+
+  <!-- MIT 2 -->
+  <div class="myth-card">
+    <div class="myth-header">
+      <div class="myth-number">2</div>
+      <div class="myth-label-wrap">
+        <span class="myth-label">Mit żywieniowy</span>
+        <h2>Osoby z migreną powinny stosować dietę eliminującą wszystkie produkty bogate w tyraminę</h2>
+      </div>
+    </div>
+    <div class="fact-bar">Fakt: diety eliminacyjne bez indywidualnej weryfikacji mogą przynosić więcej szkód niż korzyści</div>
+    <p>
+      Tyramina jest aminokwasem powstającym w wyniku rozkładu tyrozyny podczas dojrzewania i fermentacji produktów spożywczych. Hipoteza tyraminowa migreny zakłada, że u części chorych dochodzi do niedoboru enzymu MAO (monoaminooksydazy), odpowiedzialnego za metabolizm tyraminy, co prowadzi do jej kumulacji i działania wazomotorycznego. Dotyczy to jednak wyłącznie osób przyjmujących inhibitory MAO lub tych z udokumentowanym niedoborem tego enzymu.
+    </p>
+    <p>
+      W praktyce klinicznej diety eliminujące tyraminę, obejmujące ser dojrzewający, wędzone ryby, mięso przetworzone, fermentowane produkty mleczne i niektóre alkohole, są stosowane szerzej, niż wskazują na to dostępne dowody. Gazerani (<em>Nutrients</em>, 2020) podkreśla, że zmienność osobnicza odpowiedzi na tyraminę jest bardzo duża, a kontrolowane badania kliniczne z podwójnie ślepą próbą nie wykazały jednoznacznego związku między spożyciem tyraminy a wywoływaniem ataków w populacji ogólnej chorych na migrenę.
+    </p>
+    <div class="warning-box">
+      <span class="warn-label">⚠️ Ryzyko restrykcyjnych diet eliminacyjnych</span>
+      <p>Dieta niskotyraminowa wyklucza szeroką grupę produktów fermentowanych i dojrzewających, będących wartościowym źródłem białka, wapnia, probiotyków i witamin z grupy B. Długotrwałe jej stosowanie bez nadzoru dietetyka może prowadzić do niedoborów pokarmowych. Wprowadzenie tej diety jest uzasadnione wyłącznie po indywidualnej weryfikacji tyraminy jako wyzwalacza w dzienniczku migreny.</p>
+    </div>
+  </div>
+  <div class="myth-divider"></div>
+
+  <!-- MIT 3 -->
+  <div class="myth-card">
+    <div class="myth-header">
+      <div class="myth-number">3</div>
+      <div class="myth-label-wrap">
+        <span class="myth-label">Mit żywieniowy</span>
+        <h2>Kofeina zawsze pogarsza przebieg migreny i należy jej całkowicie unikać</h2>
+      </div>
+    </div>
+    <div class="fact-bar">Fakt: kofeina ma dwojakie działanie w migrenie i jej rola zależy od dawki i wzorca spożycia</div>
+    <p>
+      Kofeina jest substancją, której rola w migrenie jest szczególnie złożona. Z jednej strony, w wysokich dawkach i przy regularnym spożyciu może obniżać próg wyzwalania ataków. Z drugiej strony, w niskich dawkach działa jako adjuwant analgetyczny, czyli wzmacnia działanie leków przeciwbólowych, i dlatego jest składnikiem wielu złożonych preparatów stosowanych w leczeniu bólu głowy.
+    </p>
+    <p>
+      Eigenbrodt i wsp. (<em>Nat Rev Neurol</em>, 2021) wskazują, że nagłe odstawienie kofeiny u osób spożywających ją regularnie jest dobrze udokumentowanym wyzwalaczem ataku migreny. Oznacza to, że decyzja o ograniczeniu spożycia kofeiny powinna być podejmowana stopniowo i pod nadzorem specjalisty, a nie poprzez jej nagłe wyeliminowanie. Warto zaznaczyć, że według dostępnych danych spożycie powyżej trzech filiżanek kawy dziennie jest związane ze zwiększonym ryzykiem ataków, natomiast umiarkowane spożycie może mieć działanie neuroochronne.
+    </p>
+
+    <div class="food-grid">
+      <div class="food-item">
+        <div class="food-item-title">Spożycie umiarkowane (1-2 filiżanki/dzień)</div>
+        <p>Może działać adjuwantowo. Nie jest jednoznacznie powiązane ze zwiększeniem częstotliwości ataków.</p>
+      </div>
+      <div class="food-item">
+        <div class="food-item-title">Spożycie wysokie (&gt;3 filiżanek/dzień)</div>
+        <p>Powiązane ze zwiększonym ryzykiem ataków i powikłaniem w postaci bólu głowy z nadużywania substancji.</p>
+      </div>
+      <div class="food-item">
+        <div class="food-item-title">Nagłe odstawienie</div>
+        <p>Dobrze udokumentowany wyzwalacz ataku. Ból głowy odstawienny może pojawić się już po 12-24 godzinach.</p>
+      </div>
+      <div class="food-item">
+        <div class="food-item-title">Stopniowa redukcja</div>
+        <p>Zalecana strategia dla osób chcących ograniczyć spożycie kofeiny bez ryzyka wywołania ataku.</p>
+      </div>
+    </div>
+  </div>
+  <div class="myth-divider"></div>
+
+  <!-- MIT 4 -->
+  <div class="myth-card">
+    <div class="myth-header">
+      <div class="myth-number">4</div>
+      <div class="myth-label-wrap">
+        <span class="myth-label">Mit żywieniowy</span>
+        <h2>Kwasy tłuszczowe omega-3 to tylko modny suplement bez udokumentowanego wpływu na migrenę</h2>
+      </div>
+    </div>
+    <div class="fact-bar">Fakt: zwiększenie stosunku omega-3 do omega-6 w diecie jest związane z redukcją częstotliwości ataków</div>
+    <p>
+      W tej części skupiam się na zagadnieniu, które jako student dietetyki uważam za szczególnie istotne, ponieważ dotyczy konkretnej, modyfikowalnej interwencji żywieniowej. Kwasy tłuszczowe omega-3, w szczególności EPA (kwas eikozapentaenowy) i DHA (kwas dokozaheksaenowy), wykazują działanie przeciwzapalne poprzez konkurencję z kwasem arachidonowym o enzymy cyklooksygenazy. Zmniejsza to syntezę prozapalnych prostaglandyn, które są zaangażowane w patofizjologię migreny.
+    </p>
+
+    <div class="research-card">
+      <div class="rc-label">Wyniki badań klinicznych</div>
+      <p>
+        W randomizowanym badaniu klinicznym (Maghsoumi-Norouzabad i wsp., dostępnym w PMC) u chorych z migreną epizodyczną, którzy przez 12 tygodni zwiększali spożycie kwasów omega-3 przy jednoczesnym ograniczeniu omega-6, zaobserwowano istotne statystycznie zmniejszenie częstotliwości ataków i ich nasilenia. Efekt był bardziej wyrażony u osób, u których wyjściowy stosunek omega-6 do omega-3 w diecie był wysoki, co jest typowe dla zachodniego modelu żywienia opartego na dużym spożyciu olejów roślinnych bogatych w kwas linolowy.
+      </p>
+      <p>
+        Warto zaznaczyć, że wyniki te wymagają potwierdzenia w badaniach z większą grupą i dłuższym czasem obserwacji. Niemniej jednak mechanizm biologiczny jest dobrze opisany, a modyfikacja stosunku omega-3 do omega-6 w diecie stanowi interwencję o korzystnym profilu bezpieczeństwa.
+      </p>
+      <p class="rc-source">Źródło: Gazerani P. (2020). Migraine and Diet. Nutrients, 12(6), 1658. PMC7352457</p>
+    </div>
+
+    <p>
+      W praktyce zwiększenie spożycia omega-3 można osiągnąć poprzez spożywanie tłustych ryb morskich (łosoś, makrela, sardynki) co najmniej dwa razy w tygodniu, a także nasion lnu i orzechów włoskich jako źródeł ALA. Równie ważne jest ograniczenie spożycia olejów bogatych w kwas linolowy, takich jak olej słonecznikowy i kukurydziany, na rzecz oliwy z oliwek.
+    </p>
+  </div>
+  <div class="myth-divider"></div>
+
+  <!-- MIT 5 -->
+  <div class="myth-card">
+    <div class="myth-header">
+      <div class="myth-number">5</div>
+      <div class="myth-label-wrap">
+        <span class="myth-label">Mit żywieniowy</span>
+        <h2>Dieta ketogeniczna jest zbyt ekstremalna i nie ma zastosowania w migrenie</h2>
+      </div>
+    </div>
+    <div class="fact-bar">Fakt: dieta ketogeniczna, szczególnie w wariancie śródziemnomorskim, wykazuje obiecujące wyniki w redukcji migreny przewlekłej</div>
+    <p>
+      Dieta ketogeniczna, czyli sposób żywienia oparty na znacznym ograniczeniu węglowodanów i zwiększeniu udziału tłuszczów, budzi kontrowersje w kontekście jej restrykcyjności. Warto jednak zaznaczyć, że jej zastosowanie w migrenie ma uzasadnienie biologiczne. Mózg chorujących na migrenę wykazuje tendencje do metabolicznej dysfunkcji energetycznej i zmniejszonej rezerwy energetycznej. Ciała ketonowe, będące alternatywnym paliwem dla mózgu w stanie ketozy, mogą stabilizować ten metabolizm.
+    </p>
+    <p>
+      Olivito i wsp. (<em>Clin Nutr</em>, 2024) opublikowali wyniki badania pilotażowego, w którym chorzy z przewlekłą migreną stosowali śródziemnomorską dietę ketogeniczną (MMKD) przez 3 miesiące. Zaobserwowano istotne zmniejszenie zarówno częstotliwości, jak i nasilenia bólu. Mechanizmy, które mogą odpowiadać za ten efekt, obejmują zmniejszenie stężenia CGRP (neuropeptydu kluczowego w patofizjologii migreny), działanie przeciwzapalne ciał ketonowych oraz stabilizację napięcia naczyniowego.
+    </p>
+    <div class="callout">
+      <span class="callout-label">📌 Ważne zastrzeżenie</span>
+      <p>Badanie Olivito i wsp. (2024) jest badaniem pilotażowym z małą grupą uczestników. Wyniki są obiecujące, jednak wymagają potwierdzenia w większych randomizowanych badaniach klinicznych. Dieta ketogeniczna nie jest interwencją pierwszego wyboru i powinna być rozważana wyłącznie przy braku zadowalającej odpowiedzi na standardowe leczenie, pod ścisłym nadzorem dietetyka i neurologa.</p>
+    </div>
+  </div>
+  <div class="myth-divider"></div>
+
+  <!-- MIT 6 -->
+  <div class="myth-card">
+    <div class="myth-header">
+      <div class="myth-number">6</div>
+      <div class="myth-label-wrap">
+        <span class="myth-label">Mit żywieniowy</span>
+        <h2>Nieregularne posiłki to drobiazg, który nie ma realnego wpływu na częstotliwość ataków</h2>
+      </div>
+    </div>
+    <div class="fact-bar">Fakt: pomijanie posiłków i głodzenie się są jednymi z najlepiej udokumentowanych wyzwalaczy migreny</div>
+    <p>
+      Spośród wszystkich interwencji żywieniowych omawianych w tym artykule, regularność spożywania posiłków jest tą, która ma najsilniejsze i najspójniejsze oparcie w literaturze. Ha i Gonzalez (<em>Am Fam Physician</em>, 2019) oraz Eigenbrodt i wsp. (<em>Nat Rev Neurol</em>, 2021) wymieniają głodzenie się jako jeden z kluczowych, modyfikowalnych czynników wyzwalających ataki migreny. Mechanizm jest wieloczynnikowy: obejmuje hipoglikemię reaktywną, aktywację osi podwzgórzowo-przysadkowej oraz zmiany w stężeniu serotoniny i neuropeptydów regulujących apetyt.
+    </p>
+    <p>
+      W praktyce oznacza to, że nawet u osób stosujących w pełni poprawną dietę, pomijanie śniadania lub wydłużanie przerw między posiłkami powyżej 4-5 godzin może stanowić wystarczający bodziec do wywołania ataku. Warto zaznaczyć, że dotyczy to również osób stosujących posty przerywane (intermittent fasting). Dostępne dane nie pozwalają jednoznacznie ocenić bezpieczeństwa postów przerywanych u osób z migreną, dlatego ich wprowadzenie powinno być poprzedzone konsultacją z neurologiem i dietetykiem.
+    </p>
+
+    <div class="badge-row">
+      <span class="badge badge-yes">✓ Regularne posiłki co 3-5 h</span>
+      <span class="badge badge-yes">✓ Spożycie śniadania</span>
+      <span class="badge badge-yes">✓ Odpowiednie nawodnienie</span>
+      <span class="badge badge-no">✗ Pomijanie posiłków</span>
+      <span class="badge badge-ltd">? Post przerywany (wymagana konsultacja)</span>
+    </div>
+  </div>
+  <div class="myth-divider"></div>
+
+  <!-- SEKCJA: STYL ŻYCIA -->
+  <div class="section-label">🏃 Część II: Mity dotyczące stylu życia (2 z 8)</div>
+
+  <!-- MIT 7 -->
+  <div class="myth-card">
+    <div class="myth-header">
+      <div class="myth-number">7</div>
+      <div class="myth-label-wrap">
+        <span class="myth-label">Mit stylu życia</span>
+        <h2>Wysiłek fizyczny pogarsza migrenę, więc osoby chorujące powinny go unikać</h2>
+      </div>
+    </div>
+    <div class="fact-bar">Fakt: regularny umiarkowany wysiłek fizyczny zmniejsza częstotliwość i nasilenie ataków migreny</div>
+    <p>
+      Mit ten wynika z obserwacji, że ostry wysiłek fizyczny może wyzwolić atak migreny u części chorych, szczególnie przy dużej intensywności lub w połączeniu z innymi czynnikami wyzwalającymi. Warto jednak odróżnić wysiłek ostry jako potencjalny wyzwalacz od regularnej aktywności fizycznej jako strategii profilaktycznej.
+    </p>
+    <p>
+      Simmonds i wsp. (<em>Handb Clin Neurol</em>, 2023) wskazują, że regularna, umiarkowana aktywność fizyczna, taka jak spacery, pływanie czy jazda na rowerze, jest powiązana z mniejszą częstotliwością ataków migreny. Mechanizm obejmuje zwiększone wydzielanie endorfin, regulację osi podwzgórzowo-przysadkowej i zmniejszenie reaktywności na stres. Warto zaznaczyć, że kluczowe znaczenie ma tutaj regularność i umiarkowanie intensywność, a nie sporadyczny, intensywny wysiłek.
+    </p>
+    <div class="warning-box">
+      <span class="warn-label">⚠️ Kiedy wysiłek może wyzwolić atak</span>
+      <p>Ryzyko wyzwolenia ataku przez wysiłek jest wyższe w połączeniu z innymi czynnikami: głodzeniem się przed treningiem, odwodnieniem, treningiem w wysokich temperaturach lub przy bardzo dużej intensywności. Kontrola tych zmiennych towarzyszących jest ważniejsza niż rezygnacja z aktywności fizycznej.</p>
+    </div>
+  </div>
+  <div class="myth-divider"></div>
+
+  <!-- MIT 8 -->
+  <div class="myth-card">
+    <div class="myth-header">
+      <div class="myth-number">8</div>
+      <div class="myth-label-wrap">
+        <span class="myth-label">Mit stylu życia</span>
+        <h2>Sen ma znaczenie tylko wtedy, gdy go brakuje – za dużo snu nie wyzwala migreny</h2>
+      </div>
+    </div>
+    <div class="fact-bar">Fakt: zarówno niedobór, jak i nadmiar snu są udokumentowanymi wyzwalaczami ataków migreny</div>
+    <p>
+      Zaburzenia snu należą do najczęstszych i najlepiej udokumentowanych wyzwalaczy migreny. Co ważne, relacja ta jest dwukierunkowa: migrena zaburza sen, a zaburzenia snu zwiększają podatność na ataki. Eigenbrodt i wsp. (<em>Nat Rev Neurol</em>, 2021) wskazują, że zarówno skrócenie snu poniżej optymalnego czasu, jak i jego wydłużenie, klasycznie obserwowane w postaci ataków „weekendowych" po spaniu dłużej niż zwykle, są rozpoznanym wzorcem wyzwalania ataków.
+    </p>
+    <p>
+      Mechanizm „migreny weekendowej" jest związany z nagłą zmianą rytmu dobowego, obniżeniem poziomu kortyzolu po okresie wysokiego stresu w tygodniu pracy oraz zmianami w uwalnianiu serotoniny podczas długiego snu. W praktyce oznacza to, że regularność godzin snu, w tym w weekendy, jest ważnym elementem niefarmakologicznej profilaktyki migreny. Stabilny rytm snu o zbliżonych porach każdego dnia jest zalecany przez wytyczne kliniczne jako jeden z podstawowych elementów postępowania niefarmakologicznego.
+    </p>
+  </div>
+
+  <!-- PODSUMOWANIE -->
+  <div class="closing">
+    <h2>Podsumowanie</h2>
+    <p>
+      Związek diety z migreną jest obszarem, w którym dane naukowe są często bardziej zniuansowane niż popularne przekonania. Jak wykazano powyżej, część mitów, takich jak przekonanie o konieczności eliminacji czekolady lub całkowitego unikania kofeiny, nie znajduje jednoznacznego potwierdzenia w badaniach kontrolowanych. Inne zalecenia, w szczególności regularność posiłków, modyfikacja stosunku omega-3 do omega-6 i regularna aktywność fizyczna, mają solidne oparcie w literaturze i powinny być uwzględniane w postępowaniu dietetycznym.
+    </p>
+    <p>
+      Warto zaznaczyć, że odpowiedź na wyzwalacze żywieniowe jest wysoce indywidualna. Prowadzenie dzienniczka migreny przez minimum 4-8 tygodni pozostaje podstawowym narzędziem identyfikacji indywidualnych wyzwalaczy, zanim wprowadzone zostaną jakiekolwiek restrykcje żywieniowe. W razie pytań zapraszam do kontaktu przez formularz lub sekcję komentarzy.
+    </p>
+  </div>
+
+  <!-- ŹRÓDŁA -->
+  <div class="sources">
+    <div class="sources-title">📚 Źródła naukowe</div>
+    <p>Eigenbrodt A.K. et al. (2021). Diagnosis and management of migraine in ten steps. <em>Nature Reviews Neurology</em>, 17(8), 501-514. doi:10.1038/s41582-021-00509-5</p>
+    <p>Olivito I. et al. (2024). Mediterranean ketogenic diet accounts for reduced pain frequency and intensity in patients with chronic migraine: A pilot study. <em>Clinical Nutrition</em>, 43(8), 1781-1787. doi:10.1016/j.clnu.2024.06.015</p>
+    <p>Pensato U., Cevoli S., Pierangeli G., Cortelli P. (2023). The evolutionary meaning of migraine. <em>Cephalalgia</em>, 43(12). doi:10.1177/03331024231209303</p>
+    <p>Ha H., Gonzalez A. (2019). Migraine Headache Prophylaxis. <em>American Family Physician</em>, 99(1), 17-24. PMID:30600979</p>
+    <p>Simmonds M. et al. (2023). Handbook of Clinical Neurology. doi:10.1016/B978-0-12-823356-6.00017-2</p>
+    <p>Chiang C.C., Chen P.K. (2024). Handbook of Clinical Neurology. doi:10.1016/B978-0-12-823357-3.00021-5</p>
+    <p>Gazerani P. (2020). Migraine and Diet. <em>Nutrients</em>, 12(6), 1658. doi:10.3390/nu12061658. PMC7352457</p>
+    <div class="disclaimer">
+      Wpis ma charakter edukacyjny i nie zastępuje indywidualnej porady medycznej ani dietetycznej. W razie pytań dotyczących migreny lub zmiany diety skonsultuj się z lekarzem neurologiem lub dietetykiem klinicznym.
+    </div>
+  </div>
+
+</main>
+
+<script>
+  const bar = document.getElementById('scrollProgress');
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY;
+    const total = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (scrolled / total * 100) + '%';
+  }, { passive: true });
+</script>
+</body>
+</html>
