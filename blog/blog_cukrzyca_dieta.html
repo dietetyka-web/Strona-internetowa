@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dieta i suplementacja w cukrzycy | Blog studenta dietetyki</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --green-deep:   #1e4d2b;
+      --green-mid:    #2d6a3f;
+      --green-bright: #3a8c52;
+      --green-light:  #7bc47f;
+      --green-pale:   #d4edda;
+      --green-mist:   #f0f8f1;
+      --cream:        #fdf9f3;
+      --cream-dark:   #f5efe4;
+      --sand:         #e8dcc8;
+      --text-dark:    #1a2e1c;
+      --text-body:    #2c3e2d;
+      --text-muted:   #6b7c6d;
+      --accent-warm:  #c8864a;
+      --accent-light: #f5d5b0;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--cream);
+      color: var(--text-body);
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: 18px;
+      line-height: 1.85;
+      font-weight: 300;
+    }
+
+    /* SCROLL BAR */
+    .scroll-progress {
+      position: fixed; top: 0; left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--green-bright), var(--green-light));
+      z-index: 999; width: 0%;
+      transition: width 0.1s linear;
+    }
+
+    /* TOP BAR */
+    .top-bar {
+      background: var(--green-deep);
+      color: #fff;
+      text-align: center;
+      padding: 10px 20px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px; font-weight: 500;
+      letter-spacing: 0.18em; text-transform: uppercase;
+    }
+    .top-bar a { color: var(--green-light); text-decoration: none; }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      background: linear-gradient(160deg, var(--green-deep) 0%, var(--green-mid) 55%, var(--green-bright) 100%);
+      padding: 90px 24px 80px;
+      text-align: center; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        radial-gradient(ellipse 60% 60% at 20% 80%, rgba(255,255,255,0.05) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 80% 20%, rgba(200,255,200,0.08) 0%, transparent 60%);
+    }
+    .hero-tag {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 50px;
+      padding: 5px 18px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--green-light); margin-bottom: 28px;
+      position: relative;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 6vw, 4rem);
+      font-weight: 900; line-height: 1.15;
+      color: #fff; max-width: 820px;
+      margin: 0 auto 20px; position: relative;
+    }
+    .hero h1 em { font-style: italic; color: var(--green-light); }
+    .hero-sub {
+      font-family: 'Source Serif 4', serif;
+      font-size: 1.05rem; font-style: italic;
+      color: rgba(255,255,255,0.75);
+      max-width: 580px; margin: 0 auto 36px;
+      position: relative;
+    }
+    .hero-meta {
+      display: flex; justify-content: center;
+      gap: 28px; flex-wrap: wrap; position: relative;
+    }
+    .hero-meta span {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px; font-weight: 400;
+      color: rgba(255,255,255,0.6); letter-spacing: 0.05em;
+    }
+    .hero-meta span strong { color: rgba(255,255,255,0.9); font-weight: 500; }
+
+    .leaf-divider {
+      text-align: center; font-size: 24px;
+      line-height: 1; color: var(--green-mid);
+      padding: 32px 0 0;
+    }
+
+    /* LAYOUT */
+    .container {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    .lead {
+      font-size: 1.15rem; line-height: 1.9;
+      color: var(--text-dark); font-weight: 400;
+      margin: 44px 0 36px;
+      padding-left: 24px;
+      border-left: 3px solid var(--green-light);
+    }
+
+    /* SECTIONS */
+    .article-section {
+      margin-bottom: 52px;
+      opacity: 0; transform: translateY(22px);
+      animation: fadeUp 0.6s ease forwards;
+    }
+    .article-section:nth-child(1) { animation-delay: 0.1s; }
+    .article-section:nth-child(2) { animation-delay: 0.2s; }
+    .article-section:nth-child(3) { animation-delay: 0.3s; }
+    .article-section:nth-child(4) { animation-delay: 0.4s; }
+    .article-section:nth-child(5) { animation-delay: 0.5s; }
+    .article-section:nth-child(6) { animation-delay: 0.6s; }
+    .article-section:nth-child(7) { animation-delay: 0.7s; }
+    .article-section:nth-child(8) { animation-delay: 0.8s; }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.75rem; font-weight: 700;
+      color: var(--green-deep);
+      margin-bottom: 18px; line-height: 1.3;
+      position: relative; padding-bottom: 14px;
+    }
+    h2::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0;
+      width: 44px; height: 2px;
+      background: linear-gradient(90deg, var(--green-bright), var(--green-light));
+      border-radius: 2px;
+    }
+    p { margin-bottom: 20px; }
+    p:last-child { margin-bottom: 0; }
+    strong { font-weight: 600; color: var(--text-dark); }
+    em { font-style: italic; }
+
+    /* MACRO GRID - karty makroskładników */
+    .macro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin: 24px 0;
+    }
+    @media (max-width: 560px) {
+      .macro-grid { grid-template-columns: 1fr; }
+    }
+    .macro-card {
+      background: var(--cream-dark);
+      border-radius: 14px;
+      padding: 20px 22px;
+      border-top: 3px solid var(--green-bright);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .macro-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(30,77,43,0.1);
+    }
+    .macro-card-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--green-bright); margin-bottom: 8px;
+      display: block;
+    }
+    .macro-card-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem; font-weight: 700;
+      color: var(--green-deep); line-height: 1.2;
+      margin-bottom: 6px;
+    }
+    .macro-card p {
+      font-size: 0.88rem; color: var(--text-muted);
+      margin: 0; line-height: 1.6;
+    }
+
+    /* PLANT CARDS */
+    .plant-list {
+      display: grid; gap: 16px;
+      margin: 20px 0;
+    }
+    .plant-card {
+      background: var(--green-mist);
+      border: 1px solid rgba(58,140,82,0.2);
+      border-radius: 14px;
+      padding: 22px 26px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 16px;
+      align-items: start;
+      transition: box-shadow 0.2s ease;
+    }
+    .plant-card:hover {
+      box-shadow: 0 6px 20px rgba(30,77,43,0.1);
+    }
+    .plant-icon {
+      width: 44px; height: 44px;
+      background: linear-gradient(135deg, var(--green-mid), var(--green-bright));
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; flex-shrink: 0;
+    }
+    .plant-name {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--green-bright); margin-bottom: 4px;
+    }
+    .plant-latin {
+      font-size: 0.85rem; font-style: italic;
+      color: var(--text-muted); margin-bottom: 8px;
+    }
+    .plant-card p {
+      font-size: 0.93rem; color: var(--text-body);
+      margin: 0; line-height: 1.7;
+    }
+    .plant-prep {
+      display: inline-block;
+      margin-top: 8px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px; font-weight: 600;
+      color: var(--green-deep);
+      background: var(--green-pale);
+      border-radius: 20px;
+      padding: 3px 12px;
+    }
+
+    /* CALLOUT */
+    .callout {
+      background: linear-gradient(135deg, var(--green-mist), var(--green-pale));
+      border: 1px solid rgba(61,140,82,0.2);
+      border-radius: 16px;
+      padding: 28px 32px;
+      margin: 32px 0;
+      position: relative; overflow: hidden;
+    }
+    .callout::before {
+      content: '!';
+      position: absolute; top: -10px; right: 20px;
+      font-family: 'Playfair Display', serif;
+      font-size: 120px; font-weight: 900;
+      color: var(--green-pale); line-height: 1;
+      pointer-events: none; z-index: 0;
+    }
+    .callout p { position: relative; z-index: 1; margin: 0; font-size: 0.97rem; color: var(--green-deep); }
+    .callout .callout-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--green-bright); margin-bottom: 10px;
+      display: block; position: relative; z-index: 1;
+    }
+
+    /* WARNING BOX */
+    .warning-box {
+      background: linear-gradient(135deg, #fdf6ee, var(--accent-light));
+      border: 1px solid rgba(200,134,74,0.3);
+      border-left: 4px solid var(--accent-warm);
+      border-radius: 0 12px 12px 0;
+      padding: 22px 28px; margin: 32px 0;
+    }
+    .warning-box p { margin: 0; font-size: 0.96rem; color: #5a3a1a; }
+    .warning-box .warn-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--accent-warm); margin-bottom: 8px; display: block;
+    }
+
+    /* RESEARCH CARD */
+    .research-card {
+      background: var(--green-deep);
+      color: #fff; border-radius: 20px;
+      padding: 36px 36px; margin: 36px 0;
+      position: relative; overflow: hidden;
+    }
+    .research-card::before {
+      content: '"';
+      position: absolute; top: -20px; left: 20px;
+      font-family: 'Playfair Display', serif;
+      font-size: 200px; color: rgba(255,255,255,0.05);
+      line-height: 1; pointer-events: none;
+    }
+    .research-card .rc-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--green-light); margin-bottom: 16px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .research-card .rc-label::before {
+      content: ''; width: 24px; height: 2px;
+      background: var(--green-light);
+    }
+    .research-card p {
+      position: relative;
+      font-size: 1rem; line-height: 1.8;
+      color: rgba(255,255,255,0.88); margin-bottom: 16px;
+    }
+    .research-card p:last-child { margin: 0; }
+    .research-card .rc-source {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px; color: rgba(255,255,255,0.45); font-style: italic;
+    }
+
+    /* SUPPLEMENT TABLE */
+    .suppl-table {
+      width: 100%; border-collapse: collapse;
+      margin: 20px 0; font-size: 0.9rem;
+      border-radius: 12px; overflow: hidden;
+    }
+    .suppl-table thead tr {
+      background: var(--green-deep);
+      color: #fff;
+    }
+    .suppl-table thead th {
+      padding: 12px 16px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      text-align: left;
+    }
+    .suppl-table tbody tr:nth-child(odd) {
+      background: var(--cream-dark);
+    }
+    .suppl-table tbody tr:nth-child(even) {
+      background: var(--green-mist);
+    }
+    .suppl-table tbody tr:hover {
+      background: var(--green-pale);
+    }
+    .suppl-table td {
+      padding: 11px 16px;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      vertical-align: top;
+      color: var(--text-body);
+    }
+    .suppl-table td:first-child {
+      font-weight: 600; color: var(--green-deep);
+    }
+    .badge {
+      display: inline-block;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10px; font-weight: 600;
+      padding: 2px 10px; border-radius: 20px;
+      letter-spacing: 0.05em;
+    }
+    .badge-yes { background: var(--green-pale); color: var(--green-deep); }
+    .badge-no  { background: #fce8e8; color: #a02020; }
+    .badge-ltd { background: var(--accent-light); color: #7a4a10; }
+
+    /* CLOSING */
+    .closing {
+      background: linear-gradient(135deg, var(--green-mist) 0%, var(--cream-dark) 100%);
+      border-radius: 20px; padding: 40px 40px;
+      margin-top: 52px; text-align: center;
+      border: 1px solid var(--sand);
+    }
+    .closing h2 { text-align: center; }
+    .closing h2::after { left: 50%; transform: translateX(-50%); }
+    .closing p { font-size: 1rem; color: var(--text-body); }
+
+    /* SOURCES */
+    .sources {
+      border-top: 1px solid var(--sand);
+      padding-top: 32px; margin-top: 52px;
+    }
+    .sources-title {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--text-muted); margin-bottom: 16px;
+    }
+    .sources p {
+      font-size: 0.82rem; color: var(--text-muted);
+      font-style: italic; line-height: 1.7; margin-bottom: 6px;
+    }
+    .disclaimer {
+      margin-top: 20px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.8rem; color: var(--text-muted);
+      padding: 14px 18px;
+      background: var(--cream-dark); border-radius: 8px;
+    }
+
+    @media (max-width: 600px) {
+      .hero { padding: 60px 20px 56px; }
+      .callout, .research-card, .closing { padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <div class="top-bar">
+    <a href="#">Blog studenta dietetyki</a> &nbsp;·&nbsp; Żywienie oparte na dowodach
+  </div>
+
+  <header class="hero">
+    <div class="hero-tag">Żywienie kliniczne i suplementacja</div>
+    <h1>Dieta i suplementacja w cukrzycy: co mówią <em>aktualne zalecenia</em>?</h1>
+    <p class="hero-sub">Omówienie wytycznych PTD 2025 i wybranych preparatów roślinnych wspomagających kontrolę glikemii</p>
+    <div class="hero-meta">
+      <span>✍️ <strong>Student dietetyki</strong></span>
+      <span>📖 <strong>ok. 9 min czytania</strong></span>
+      <span>🔬 <strong>Oparte na badaniach naukowych</strong></span>
+    </div>
+  </header>
+
+  <div class="leaf-divider">🌿</div>
+
+  <main class="container">
+
+    <p class="lead">
+      Cukrzyca jest jedną z najczęściej diagnozowanych chorób metabolicznych. Zgodnie z definicją WHO, charakteryzuje się przewlekłą hiperglikemią wynikającą z niedostatecznego wydzielania lub działania insuliny. Dieta odgrywa w jej leczeniu rolę pierwszoplanową. W tym wpisie skupiam się na omówieniu aktualnych zaleceń dietetycznych dla osób z cukrzycą, sformułowanych przez Polskie Towarzystwo Diabetologiczne w dokumencie PTD 2025, a także na wybranych preparatach roślinnych, dla których dostępne są dane z badań klinicznych.
+    </p>
+
+    <!-- SECTION 1 -->
+    <article class="article-section">
+      <h2>Ogólne cele leczenia dietetycznego w cukrzycy</h2>
+      <p>
+        Zgodnie z zaleceniami PTD 2025, leczenie dietetyczne osób z cukrzycą ma cztery podstawowe cele: utrzymanie stężenia glukozy w osoczu bliskiego normy, optymalizację profilu lipidowego, utrzymanie prawidłowych wartości ciśnienia tętniczego oraz osiągnięcie i utrzymanie pożądanej masy ciała.
+      </p>
+      <p>
+        Warto podkreślić, że PTD 2025 nie zaleca jednej, uniwersalnej diety dla wszystkich osób z cukrzycą. W leczeniu mogą być stosowane różne strategie, m.in. dieta środziemnomorska, dieta DASH, dieta fleksitariańska czy diety roślinne. Wymienione modele mają jednak wspólne cechy: zakładają znaczący udział warzyw nieskrobiowych, ograniczenie cukrów dodanych i rafinowanych zbóż oraz przewagę produktów minimalnie przetworzonych.
+      </p>
+      <p>
+        Zalecenia dietetyczne powinny być indywidualizowane z uwzględnieniem wieku, płci, aktywności fizycznej, obecności powikłań i schorzeń dodatkowych. Edukacja dietetyczna powinna być przeprowadzona już przy rozpoznaniu choroby, a jej weryfikacja powinna odbywać się corocznie.
+      </p>
+    </article>
+
+    <!-- SECTION 2 -->
+    <article class="article-section">
+      <h2>Makroskładniki diety w liczbach</h2>
+      <p>
+        W dalszej części skupiam się na szczegółowych zaleceniach dotyczących poszczególnych makroskładników diety. Poniżej przedstawiam zestawienie wartości docelowych według PTD 2025.
+      </p>
+
+      <div class="macro-grid">
+        <div class="macro-card">
+          <span class="macro-card-label">Węglowodany</span>
+          <div class="macro-card-value">ok. 45%</div>
+          <p>Udział w całkowitej energii diety. Przy produktach o niskim IG i dużym udziale błonnika możliwy wzrost do 60%.</p>
+        </div>
+        <div class="macro-card">
+          <span class="macro-card-label">Tłuszcze</span>
+          <div class="macro-card-value">25-40%</div>
+          <p>Udział w energii diety. Jakość tłuszczu jest ważniejsza niż jego całkowita ilość.</p>
+        </div>
+        <div class="macro-card">
+          <span class="macro-card-label">Białko</span>
+          <div class="macro-card-value">15-20%</div>
+          <p>Standardowy udział w energii. Przy nadwadze z cukrzycą t. 2 możliwy wzrost do 20-30%.</p>
+        </div>
+        <div class="macro-card">
+          <span class="macro-card-label">Błonnik</span>
+          <div class="macro-card-value">min. 25 g</div>
+          <p>Minimalna dzienna podaż lub 15 g na 1000 kcal. Zaleca się frakcje rozpuszczalne.</p>
+        </div>
+      </div>
+
+      <p>
+        Jeśli chodzi o węglowodany, podstawowe ograniczenie powinno dotyczyć cukrów prostych (jedno- i dwucukrów). Dotyczy to zarówno cukru dodanego do potraw, jak i miodu, soków i napojów owocowych. Głównym źródłem węglowodanów powinny być pełnoziarniste produkty zbożowe o niskim indeksie glikemicznym (IG poniżej 55). Warto też odnotować, że kolejność spożywania produktów w ramach jednego posiłku wpływa na glikemię poposiłkową. Korzystne jest spożywanie warzyw i produktów białkowych przed produktami skrobiowymi.
+      </p>
+
+      <div class="callout">
+        <span class="callout-label">📌 Indeks i ładunek glikemiczny</span>
+        <p>PTD 2025 wskazuje, że wartości indeksu glikemicznego (IG) i ładunku glikemicznego (ŁG) produktów mogą być pomocnym narzędziem przy wyborze żywności, szczególnie u osób z cukrzycą typu 1. Równocześnie zalecenia podkreślają, że obserwuje się duże zróżnicowanie indywidualnej odpowiedzi glikemicznej po spożyciu tego samego produktu, dlatego wyniki nie powinny być traktowane schematycznie.
+        </p>
+      </div>
+
+      <p>
+        W przypadku tłuszczów, PTD 2025 zwraca uwagę na ich jakość. Tłuszcze nasycone powinny stanowić mniej niż 10% energii, jednonienasycone do 20%, a wielonienasycone 6-10%. Rekomendowane są tłuszcze roślinne, z wyjątkiem oleju palmowego i kokosowego. Zaleca się też maksymalne ograniczenie izomerów trans kwasów tłuszczowych, obecnych przede wszystkim w żywności przetworzonej.
+      </p>
+    </article>
+
+    <!-- SECTION 3 -->
+    <article class="article-section">
+      <h2>Błonnik i substancje słodzące w diecie cukrzycowej</h2>
+      <p>
+        Błonnik pokarmowy zasługuje na osobne omówienie ze względu na jego znaczenie w kontroli glikemii. PTD 2025 zaleca minimalną podaż 25 g błonnika dziennie. W praktyce oznacza to spożywanie co najmniej 2 porcji pełnoziarnistych produktów zbożowych i 3 porcji warzyw bogatych w błonnik. W przypadku braku możliwości osiągnięcia tej ilości z diety, należy rozważyć suplementację błonnika, szczególnie w postaci frakcji rozpuszczalnych w wodzie, takich jak pektyny czy beta-glukany.
+      </p>
+      <p>
+        Substancje słodzące, czyli słodziki, mogą być stosowane przez osoby z cukrzycą z umiarem, w dawkach nieprzekraczających wartości ADI (acceptable daily intake) określonych dla poszczególnych środków. Na przykład dla aspartamu (E951) ADI wynosi 0-40 mg/kg masy ciała na dzień, a dla sukralozy (E955) 0-15 mg/kg m.c. Warto zapamiętać, że słodziki nie są substytutami cukru w diecie odchudzającej, a ich stosowanie powinno być przemyślane.
+      </p>
+
+      <div class="warning-box">
+        <span class="warn-label">⚠️ Alkohol a hipoglikemia</span>
+        <p>PTD 2025 wyraźnie wskazuje, że alkohol nie jest zalecany osobom z cukrzycą, gdyż brak jest bezpiecznej dawki. Alkohol hamuje uwalnianie glukozy przez wątrobę, co oznacza, że jego spożycie, szczególnie bez jednoczesnego spożycia przekąski, może sprzyjać wystąpieniu hipoglikemii. Ryzyko to jest szczególnie istotne po wysiłku fizycznym.
+        </p>
+      </div>
+    </article>
+
+    <!-- SECTION 4 -->
+    <article class="article-section">
+      <h2>Witaminy i mikroelementy: kiedy suplementacja ma sens?</h2>
+      <p>
+        Zagadnienie suplementacji witamin i mikroelementów u osób z cukrzycą jest często poruszane zarówno przez pacjentów, jak i specjalistów. PTD 2025 zajmuje w tej kwestii jednoznaczne stanowisko: suplementacja witaminami lub mikroelementami u osób, u których nie stwierdza się ich niedoborów, jest niewskazana.
+      </p>
+      <p>
+        Wyjątki od tej zasady są trzy. Po pierwsze, witamina D3 powinna być suplementowana zgodnie z zaleceniami dla populacji ogólnej. Po drugie, kwas foliowy w ilości 400 µg dziennie jest zalecany kobietom ciężarnym i karmiącym z cukrzycą. Po trzecie, witamina B12 powinna być suplementowana u osób leczonych długotrwale metforminą, u których potwierdzono jej niedobór, gdyż lek ten zaburza jej wchłanianie.
+      </p>
+
+      <table class="suppl-table">
+        <thead>
+          <tr>
+            <th>Składnik</th>
+            <th>Wskazanie do suplementacji</th>
+            <th>Zalecenie PTD 2025</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Witamina D3</td>
+            <td>Populacja ogólna</td>
+            <td><span class="badge badge-yes">Zalecana</span></td>
+          </tr>
+          <tr>
+            <td>Witamina B12</td>
+            <td>Leczenie metforminą + potwierdzony niedobór</td>
+            <td><span class="badge badge-yes">Zalecana</span></td>
+          </tr>
+          <tr>
+            <td>Kwas foliowy</td>
+            <td>Ciąża i karmienie piersią</td>
+            <td><span class="badge badge-yes">Zalecana (400 µg)</span></td>
+          </tr>
+          <tr>
+            <td>Multiwitaminy</td>
+            <td>Osoby starsze, weganie, diety badzo niskokaloryczne</td>
+            <td><span class="badge badge-ltd">Rozważyć</span></td>
+          </tr>
+          <tr>
+            <td>Inne mikroelementy</td>
+            <td>Brak potwierdzonych niedoborów</td>
+            <td><span class="badge badge-no">Niezalecana</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+        Warto tu wskazać na chrom, magnez czy cynk, które są często reklamowane jako suplementy wspomagające kontrolę glikemii. PTD 2025 nie zaleca ich rutynowej suplementacji u osób bez potwierdzonych niedoborów. Decyzję o ewentualnej suplementacji mikroelementów powinno poprzedzać badanie laboratoryjne potwierdzające ich deficyt.
+      </p>
+    </article>
+
+    <!-- SECTION 5 -->
+    <article class="article-section">
+      <h2>Preparaty roślinne wspomagające kontrolę glikemii</h2>
+      <p>
+        Poza farmakoterapią i leczeniem dietetycznym, w literaturze naukowej opisywane są preparaty roślinne o potencjalnym działaniu wspomagającym kontrolę glikemii. W tej części skupiam się wyłącznie na tych, które przeszły testy kliniczne z udziałem ludzi lub zostały dopuszczone do obrotu w Polsce jako preparaty uzupełniające leczenie cukrzycy.
+      </p>
+
+      <div class="plant-list">
+
+        <div class="plant-card">
+          <div class="plant-icon">🌿</div>
+          <div>
+            <div class="plant-name">Morwa biała</div>
+            <div class="plant-latin">Morus alba</div>
+            <p>Liście morwy białej zawierają azotowe cukry złożone, w tym 1-dezoksynojirimycynę, które wykazują działanie inhibicyjne wobec alfa- i beta-glukozydazy. Mechanizm jest zbliżony do syntetycznych leków przeciwcukrzycowych, ale bez typowych dla nich skutków ubocznych, takich jak biegunka czy wzdęcia. Badania kliniczne z preparatem zawierającym ekstrakt z morwy i propolisu wykazały u pacjentów z cukrzycą typu 2 znaczny spadek glikemii na czczo i hemoglobiny glikowanej HbA1c. Ponadto liście morwy zawierają flawonoidy hamujące enzym odpowiedzialny za syntezę sorbitolu z nadmiaru glukozy, co może ograniczać ryzyko powikłań neuropatycznych i zaćmy.</p>
+          </div>
+        </div>
+
+        <div class="plant-card">
+          <div class="plant-icon">🌳</div>
+          <div>
+            <div class="plant-name">Figowiec pospolity</div>
+            <div class="plant-latin">Ficus carica</div>
+            <p>Liście figowca wykazują działanie podobne do morwy białej w zakresie obniżania glikemii poposiłkowej, jednak liczba badań klinicznych jest wciąż mała. W dostępnych badaniach odwar z liści figowca podawany pacjentom z wieloletnią cukrzycą typu 1 powodował obniżenie glikemii poposiłkowej oraz zmniejszenie koniecznej dawki insuliny o ok. 15%. Mechanizm działania i aktywne składniki biologiczne pozostają jak dotąd niedostatecznie zbadane. Warto zaznaczyć, że na polskim rynku nie ma jeszcze żadnego dopuszczonego preparatu zawierającego liście figowca.</p>
+          
+          </div>
+        </div>
+
+        <div class="plant-card">
+          <div class="plant-icon">🍂</div>
+          <div>
+            <div class="plant-name">Cynamonowiec wonny</div>
+            <div class="plant-latin">Cinnamomum cassia</div>
+            <p>Kora cynamonowca zawiera bioflawonoid MHCP, który naśladuje działanie insuliny poprzez aktywizację jej receptorów i zwiększenie ich wrażliwości. Badania kliniczne wykazały korzystny wpływ kory stosowanej jako uzupełnienie właściwej diety przeciwcukrzycowej na dynamikę metabolizmu węglowodanów u chorych z cukrzycą typu 2. Aktywnym biologicznie składnikiem wpływającym na stężenie hemoglobiny glikowanej HbA1c może być też cinnamaldehyd. Należy jednak zaznaczyć, że surowy proszek cynamonowy zawiera kumarynę o właściwościach rakotwórczych, dlatego zastosowanie terapeutyczne ma wyłącznie oczyszczony ekstrakt z kory, pozbawiony tej substancji.</p>
+
+          </div>
+        </div>
+
+        <div class="plant-card">
+          <div class="plant-icon">🌱</div>
+          <div>
+            <div class="plant-name">Mieszanki ziołowe</div>
+            <div class="plant-latin">Fitoterapia złożona</div>
+            <p>Odpowiednio dobrane zestawy ziół mogą korzystnie wpływać na metabolizm węglowodanów i są stosowane jako środki wspomagające klasyczną farmakoterapię przeciwcukrzycową. Przykładami roślin leczniczych stosowanych tradycyjnie w tym kontekście są: liść borówki czarnej, strąk fasoli zwyczajnej, ziele rutwicy lekarskiej, kłącze perzu właściwego oraz korzeń cykorii. Wymienione surowce znalazły zastosowanie w dopuszczonych do obrotu preparatach złożonych.</p>
+
+          </div>
+        </div>
+
+      </div>
+
+      <div class="research-card">
+        <div class="rc-label">Kontekst naukowy</div>
+        <p>
+          Warto zaznaczyć, że większość badań nad preparatami roślinnymi dotyczy dotychczas modeli zwierzęcych (myszy, szczury, króliki z cukrzycą wywołaną farmakologicznie lub genetycznie). Opisane powyżej preparaty to nieliczne przypadki, dla których dostępne są wyniki testów klinicznych z udziałem ludzi. Stosowanie jakiegokolwiek suplementu roślinnego powinno być skonsultowane z lekarzem, gdyż preparaty te mogą wchodzić w interakcje z lekami przeciwcukrzycowymi i prowadzić do hipoglikemii.
+        </p>
+        <p class="rc-source">Na podstawie: Rzepa M. (2008). Cukrzyca i wspomaganie jej leczenia środkami pochodzenia roślinnego. Akademia Medyczna we Wrocławiu.</p>
+      </div>
+    </article>
+
+    <!-- SECTION 6 -->
+    <article class="article-section">
+      <h2>Praktyczne wskazówki dotyczące organizacji żywienia</h2>
+      <p>
+        Oprócz składu diety, PTD 2025 zwraca uwagę na kilka praktycznych aspektów jej organizacji. Warto je omówić, gdyż często są pomijane w popularnych materiałach na temat diety cukrzycowej.
+      </p>
+
+      <p>
+        Po pierwsze, PTD zaleca regularne spożywanie posiłków, w tym śniadania, oraz wolne tempo ich jedzenia. Pomaga to stabilizować glikemię poposiłkową i ogranicza ryzyko jej gwałtownych wahań. Po drugie, ilość soli kuchennej (ze wszystkich źródeł) nie powinna przekraczać 5 g dziennie, co odpowiada 2300 mg sodu. W uzasadnionych przypadkach, szczególnie u osób z nadciśnieniem tętniczym, zaleca się dalsze restrykcje zgodne z zasadami diety DASH.
+      </p>
+      <p>
+        W przypadku osób z cukrzycą typu 2 z nadwagą lub otyłością, podstawowym celem jest redukcja masy ciała. PTD 2025 zaleca deficyt energetyczny na poziomie 500-750 kcal dziennie, co powinno zapewnić tempo redukcji ok. 0,5-1 kg tygodniowo. Zmniejszenie masy ciała o co najmniej 5% rocznie przynosi wymierną poprawę kontroli glikemii, natomiast wynik optymalny to redukcja co najmniej 7% masy wyjściowej rocznie.
+      </p>
+    </article>
+
+    <!-- CLOSING -->
+    <div class="closing article-section">
+      <h2>Podsumowanie</h2>
+      <p>
+        Dieta jest integralnym elementem leczenia cukrzycy, niezależnie od jej typu. Aktualne zalecenia PTD 2025 nie wskazują jednego, optymalnego modelu żywieniowego, lecz podkreślają konieczność indywidualizacji. Wspólnym mianownikiem skutecznych strategii dietetycznych jest ograniczenie cukrów prostych, wysoki udział błonnika i produktów o niskim IG oraz dbałość o jakość tłuszczów.
+      </p>
+      <p>
+        Suplementacja witaminami i mikroelementami, poza udokumentowanymi wyjątkami (witamina D3, B12 przy niedoborze, kwas foliowy), nie jest rutynowo zalecana. Preparaty roślinne mogą stanowić uzupełnienie leczenia, jednak ich stosowanie wymaga konsultacji lekarskiej. W razie pytań dotyczących diety lub suplementacji zachęcam do kontaktu przez formularz na stronie.
+      </p>
+    </div>
+
+    <!-- SOURCES -->
+    <div class="sources">
+      <div class="sources-title">📚 Źródła</div>
+      <p>Polskie Towarzystwo Diabetologiczne (2025). Zalecenia kliniczne dotyczące postępowania u osób z cukrzycą 2025. <em>Current Topics in Diabetes</em>, 5(1).</p>
+      <p>Rzepa M. (2008). <em>Cukrzyca i wspomaganie jej leczenia środkami pochodzenia roślinnego.</em> Akademia Medyczna im. Piastów Śląskich we Wrocławiu.</p>
+      <p>Światowa Organizacja Zdrowia (WHO). Definicja cukrzycy (diabetes mellitus), 1979. Zaktualizowana 2006.</p>
+      <p>Khan A. et al. (2003). Cinnamon improves glucose and lipids of people with type 2 diabetes. <em>Diabetes Care</em>, 26, 3215-3218.</p>
+      <p>Kimura T. et al. (2006). Inhibitory effects of extractives from leaves of Morus alba on human and rat small intestinal disaccharidase activity. <em>British Journal of Nutrition</em>, 95(5), 933-938.</p>
+      <div class="disclaimer">
+        Wpis ma charakter edukacyjny i nie zastępuje indywidualnej porady medycznej ani dietetycznej. Przed wprowadzeniem jakichkolwiek zmian w diecie lub suplementacji skonsultuj się z lekarzem lub dietetykiem.
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    const bar = document.getElementById('scrollProgress');
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY;
+      const total = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.width = (scrolled / total * 100) + '%';
+    }, { passive: true });
+  </script>
+</body>
+</html>
