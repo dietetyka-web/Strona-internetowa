@@ -6,12 +6,17 @@
   <title>Paweł Depta | Dietetyka & Konsultacje Żywieniowe</title>
   <meta name="description" content="Student dietetyki. Oferuję konsultacje żywieniowe, jadłospisy i analizę nawyków żywieniowych. Umów wizytę online."/>
   <meta name="robots" content="index, follow"/>
-  <link rel="canonical" href="https://twoja-domena.pl"/>
+  <meta name="theme-color" content="#4e7353"/>
+  <!-- TODO: ustaw rzeczywistą domenę przed wdrożeniem na produkcję -->
+  <!-- <link rel="canonical" href="https://twoja-domena.pl"/> -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://formspree.io; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://formspree.io"/>
+  <meta name="referrer" content="strict-origin-when-cross-origin"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
   <style>
-    :root{--sage:#7a9e7e;--sage-dark:#4e7353;--sage-light:#c5d9c7;--cream:#faf7f2;--cream-dark:#f0ebe0;--terra:#c9784b;--terra-light:#f2d5c4;--brown:#3d2b1f;--text:#2e2a25;--text-muted:#7a7068;--white:#ffffff;--border:#e2dbd0}
+    :root{--sage:#7a9e7e;--sage-dark:#4e7353;--sage-light:#c5d9c7;--cream:#faf7f2;--cream-dark:#f0ebe0;--terra:#c9784b;--terra-light:#f2d5c4;--brown:#3d2b1f;--text:#2e2a25;--text-muted:#6b6259;--white:#ffffff;--border:#e2dbd0}
+    @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth;font-size:16px}
     body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);line-height:1.7;overflow-x:hidden}
@@ -145,6 +150,39 @@
     .btn-send:hover{background:var(--cream);color:var(--sage-dark);transform:translateY(-1px)}
     @media(max-width:768px){.contact-grid{grid-template-columns:1fr}}
 
+    /* AUDIENCE (Dla kogo / Nie dla kogo) */
+    #audience{background:var(--cream)}
+    .aud-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2.5rem}
+    .aud-box{background:var(--white);border:1px solid var(--border);border-radius:20px;padding:2rem}
+    .aud-box.yes{border-left:4px solid var(--sage-dark)}
+    .aud-box.no{border-left:4px solid var(--terra)}
+    .aud-box h3{font-size:1.15rem;color:var(--brown);margin-bottom:1.25rem;display:flex;align-items:center;gap:.5rem}
+    .aud-box ul{list-style:none;display:flex;flex-direction:column;gap:.85rem}
+    .aud-box li{font-size:.9rem;color:var(--text);line-height:1.55;display:flex;gap:.6rem;align-items:flex-start}
+    .aud-box.yes li::before{content:"✓";color:var(--sage-dark);font-weight:700;flex-shrink:0}
+    .aud-box.no li::before{content:"✕";color:var(--terra);font-weight:700;flex-shrink:0}
+    @media(max-width:768px){.aud-grid{grid-template-columns:1fr}}
+
+    /* LEAD MAGNET — Dzienniczek */
+    .lead-magnet{margin-top:3rem;background:linear-gradient(135deg,var(--sage-light) 0%,var(--cream-dark) 100%);border-radius:24px;padding:2.5rem;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center}
+    .lead-magnet h3{font-size:1.35rem;color:var(--brown);margin-bottom:.5rem}
+    .lead-magnet p{font-size:.92rem;color:var(--text);line-height:1.7;max-width:560px}
+    .lead-magnet .lm-meta{font-size:.78rem;color:var(--text-muted);margin-top:.75rem}
+    .lead-magnet .btn-download{display:inline-flex;align-items:center;gap:.5rem;background:var(--sage-dark);color:var(--white);padding:1rem 1.75rem;border-radius:100px;font-weight:500;font-size:.95rem;transition:background .2s,transform .15s;white-space:nowrap}
+    .lead-magnet .btn-download:hover{background:var(--terra);transform:translateY(-2px)}
+    @media(max-width:768px){.lead-magnet{grid-template-columns:1fr;text-align:left;padding:1.75rem}}
+
+    /* FAQ */
+    #faq{background:var(--cream-dark)}
+    .faq-list{margin-top:2.5rem;max-width:820px;display:flex;flex-direction:column;gap:.75rem}
+    .faq-item{background:var(--white);border:1px solid var(--border);border-radius:14px;overflow:hidden}
+    .faq-q{width:100%;background:none;border:none;padding:1.15rem 1.5rem;font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:500;color:var(--brown);text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;line-height:1.45}
+    .faq-q:hover{background:var(--cream)}
+    .faq-q::after{content:"+";font-size:1.5rem;color:var(--sage-dark);font-weight:300;transition:transform .2s;flex-shrink:0}
+    .faq-item[open] .faq-q::after{content:"−"}
+    .faq-a{padding:0 1.5rem 1.25rem;font-size:.92rem;color:var(--text-muted);line-height:1.75}
+    .faq-a strong{color:var(--brown)}
+
     /* RODO */
     #rodo{background:var(--cream-dark)}
     .rodo-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2rem}
@@ -164,6 +202,9 @@
     .footer-links a{font-size:.82rem;color:rgba(255,255,255,.6);transition:color .2s}
     .footer-links a:hover{color:var(--white)}
     .disclaimer{margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.12);font-size:.78rem;color:rgba(255,255,255,.4);max-width:700px;margin-left:auto;margin-right:auto;line-height:1.75}
+    .sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    .form-msg-ok{color:#bfe3c4}
+    .form-msg-err{color:#ffb8a3}
 
     /* ===== ADMIN PANEL ===== */
     #admin-overlay{position:fixed;inset:0;z-index:20000;background:rgba(61,43,31,.6);backdrop-filter:blur(4px);display:flex;align-items:flex-start;justify-content:flex-end}
@@ -237,16 +278,34 @@
     .ap-logo-hint{position:fixed;bottom:5rem;right:1rem;background:var(--sage-dark);color:var(--white);font-size:.75rem;padding:.4rem .875rem;border-radius:100px;opacity:0;transition:opacity .3s;pointer-events:none;z-index:15000}
     .ap-logo-hint.show{opacity:1}
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"Czy jesteś dietetykiem?","acceptedAnswer":{"@type":"Answer","text":"Jestem studentem kierunku dietetyka i nie posiadam jeszcze tytułu zawodowego. Świadczę usługi doradztwa żywieniowego i edukacji prozdrowotnej dla osób zdrowych. W przypadkach wymagających leczenia żywieniowego kieruję do specjalisty z tytułem."}},
+      {"@type":"Question","name":"Jak wygląda konsultacja online i jak się przygotować?","acceptedAnswer":{"@type":"Answer","text":"Spotykamy się przez wideokonferencję. Konsultacja trwa 45-60 min. Warto przed nią wypełnić darmowy dzienniczek żywieniowy, mieć aktualne wyniki badań krwi i listę pytań."}},
+      {"@type":"Question","name":"Czy dostanę jadłospis tego samego dnia?","acceptedAnswer":{"@type":"Answer","text":"Nie. Jadłospis indywidualny otrzymujesz w ciągu 3-5 dni roboczych po konsultacji."}},
+      {"@type":"Question","name":"Czy muszę mieć badania krwi?","acceptedAnswer":{"@type":"Answer","text":"Nie są obowiązkowe, ale pomocne: morfologia, lipidogram, glukoza na czczo, TSH, ferrytyna, 25(OH)D."}},
+      {"@type":"Question","name":"Czy pomożesz mi z migrenami albo insulinoopornością?","acceptedAnswer":{"@type":"Answer","text":"Mogę pomóc w obszarze żywienia wspierającego, ale to nie jest leczenie - zawsze równolegle pacjent powinien być pod opieką lekarza specjalisty."}},
+      {"@type":"Question","name":"Jak płacę i czy dostanę fakturę?","acceptedAnswer":{"@type":"Answer","text":"Płatność online przez Naffy.io przy rezerwacji. Faktura wystawiana automatycznie i wysyłana e-mailem."}},
+      {"@type":"Question","name":"Co jeśli jadłospis mi nie pasuje?","acceptedAnswer":{"@type":"Answer","text":"W ramach każdego jadłospisu masz jedną darmową rundę poprawek w ciągu 14 dni."}},
+      {"@type":"Question","name":"Czy współpracujesz z dziećmi, kobietami w ciąży lub sportowcami zawodowymi?","acceptedAnswer":{"@type":"Answer","text":"Nie. Te grupy wymagają specjalistycznej wiedzy i tytułu zawodowego - kieruję do dietetyka klinicznego lub sportowego."}},
+      {"@type":"Question","name":"Jak długo trwa współpraca?","acceptedAnswer":{"@type":"Answer","text":"Pojedyncza konsultacja z jadłospisem to 3-4 tygodnie. Pakiet premium to realnie 2-3 miesiące regularnych spotkań."}},
+      {"@type":"Question","name":"Czy dieta zastąpi leki?","acceptedAnswer":{"@type":"Answer","text":"Nie. Dieta może wspierać leczenie, ale nigdy nie zastępuje leków przepisanych przez lekarza."}}
+    ]
+  }
+  </script>
 </head>
 <body>
 
 <!-- PIN MODAL -->
-<div id="pin-modal" class="hidden" role="dialog">
+<div id="pin-modal" class="hidden" role="dialog" aria-modal="true" aria-labelledby="pin-modal-title">
   <div class="pin-box">
-    <h3>Panel Administratora</h3>
-    <p>Wprowadź PIN, aby uzyskać dostęp</p>
-    <input type="password" class="pin-input" id="pin-input" maxlength="6" placeholder="••••" inputmode="numeric" autocomplete="off"/>
-    <div class="pin-error" id="pin-error"></div>
+    <h3 id="pin-modal-title">Panel Administratora</h3>
+    <p id="pin-modal-desc">Wprowadź PIN, aby uzyskać dostęp</p>
+    <input type="password" class="pin-input" id="pin-input" maxlength="12" placeholder="••••••" inputmode="numeric" autocomplete="off" aria-labelledby="pin-modal-title" aria-describedby="pin-modal-desc pin-error"/>
+    <div class="pin-error" id="pin-error" role="alert" aria-live="polite"></div>
     <button class="ap-btn-save" style="width:100%" onclick="checkPin()">Wejdź</button>
     <br><br>
     <button class="ap-btn-cancel" style="width:100%" onclick="closePinModal()">Anuluj</button>
@@ -331,16 +390,20 @@
   <ul class="nav-links">
     <li><a href="#o-mnie">O mnie</a></li>
     <li><a href="#oferta">Oferta</a></li>
+    <li><a href="#audience">Dla kogo</a></li>
+    <li><a href="#faq">FAQ</a></li>
     <li><a href="#kontakt">Kontakt</a></li>
-    <li><a href="https://www.naffy.io/pawel-depta" target="_blank" class="nav-cta">Umów wizytę</a></li>
+    <li><a href="https://www.naffy.io/pawel-depta" target="_blank" rel="noopener noreferrer" class="nav-cta">Umów wizytę</a></li>
   </ul>
-  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
+  <button class="hamburger" id="hamburger-btn" onclick="toggleMenu()" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span></button>
 </nav>
 <div class="mobile-menu" id="mobile-menu">
   <a href="#o-mnie" onclick="closeMenu()">O mnie</a>
   <a href="#oferta" onclick="closeMenu()">Oferta</a>
+  <a href="#audience" onclick="closeMenu()">Dla kogo</a>
+  <a href="#faq" onclick="closeMenu()">FAQ</a>
   <a href="#kontakt" onclick="closeMenu()">Kontakt</a>
-  <a href="https://www.naffy.io/pawel-depta" target="_blank" class="btn-primary" style="text-align:center">Umów wizytę</a>
+  <a href="https://www.naffy.io/pawel-depta" target="_blank" rel="noopener noreferrer" class="btn-primary" style="text-align:center">Umów wizytę</a>
 </div>
 
 <!-- 1. HERO -->
@@ -353,9 +416,10 @@
         <strong style="display:block;margin-top:.75rem;font-size:.85rem;color:var(--terra)">⚠️ Jestem studentem dietetyki — moje usługi mają charakter edukacyjny, nie zastępują diagnozy lekarskiej.</strong>
       </p>
       <div class="hero-btns">
-        <a href="https://www.naffy.io/pawel-depta" target="_blank" class="btn-primary">Umów konsultację</a>
-        <a href="#oferta" class="btn-outline">Zobacz ofertę</a>
+        <a href="https://www.naffy.io/pawel-depta" target="_blank" rel="noopener noreferrer" class="btn-primary">Umów konsultację</a>
+        <a href="https://www.naffy.io/pawel-depta" target="_blank" rel="noopener noreferrer" class="btn-outline">Bezpłatna rozmowa wstępna 15 min</a>
       </div>
+      <p style="margin-top:1rem;font-size:.8rem;color:var(--text-muted)">Nie wiesz, czy mogę Ci pomóc? Krótka rozmowa bez zobowiązań — sprawdźmy dopasowanie.</p>
     </div>
     <div class="hero-image-wrap" id="hero-image-wrap"></div>
   </div>
@@ -402,6 +466,79 @@
   </div>
 </section>
 
+<!-- 4b. DLA KOGO / NIE DLA KOGO + LEAD MAGNET -->
+<section id="audience">
+  <div class="container">
+    <span class="section-tag">Dla kogo</span>
+    <h2 class="section-title">Sprawdź, czy mogę<br>Ci pomóc</h2>
+    <p class="section-sub">Wolę być uczciwy — nie każda osoba skorzysta z mojego doradztwa. Poniżej jasno piszę, kiedy warto się umówić, a kiedy lepiej skierować się do specjalisty z tytułem.</p>
+
+    <div class="aud-grid">
+      <div class="aud-box yes">
+        <h3>🌿 Pomogę Ci, jeśli…</h3>
+        <ul>
+          <li>chcesz świadomie komponować codzienne posiłki i zrozumieć, co jesz</li>
+          <li>szukasz powtarzających się wzorców w swoim dzienniczku żywieniowym</li>
+          <li>zmagasz się z migrenami i chcesz spróbować podejścia żywieniowego</li>
+          <li>planujesz redukcję wagi lub budowę masy w połączeniu z treningiem oporowym</li>
+          <li>jesteś osobą dorosłą, ogólnie zdrową, gotową na realne zmiany nawyków</li>
+          <li>cenisz edukację bardziej niż gotowy „cudowny plan na całe życie”</li>
+        </ul>
+      </div>
+      <div class="aud-box no">
+        <h3>⚠️ Nie jestem dla Ciebie, jeśli…</h3>
+        <ul>
+          <li>masz chorobę wymagającą leczenia żywieniowego (np. cukrzyca insulinozależna, choroba Leśniowskiego-Crohna, diagnozowana celiakia) — kieruję do dietetyka klinicznego z tytułem zawodowym</li>
+          <li>jesteś w ciąży lub karmisz piersią</li>
+          <li>masz mniej niż 18 lat</li>
+          <li>oczekujesz natychmiastowych rezultatów lub diety bez wysiłku z Twojej strony</li>
+          <li>szukasz zaleceń leczniczych zamiast leków — dieta ich nie zastępuje</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="lead-magnet">
+      <div>
+        <h3>📒 Pobierz dzienniczek żywieniowy (PDF, 7 dni)</h3>
+        <p>Darmowe narzędzie do druku — tabela na 7 dni, wszystkie posiłki, samopoczucie, energia, sen, nawodnienie i aktywność. Wypełnij przed konsultacją, a nasze spotkanie będzie 2× bardziej konkretne.</p>
+        <p class="lm-meta">Bez zapisu, bez podawania e-maila · 9 stron A4 · gotowe do wydruku</p>
+      </div>
+      <a href="./dzienniczek-zywieniowy.pdf" class="btn-download" download>⬇ Pobierz PDF</a>
+    </div>
+  </div>
+</section>
+
+<!-- 4c. FAQ -->
+<section id="faq">
+  <div class="container">
+    <span class="section-tag">FAQ</span>
+    <h2 class="section-title">Najczęściej zadawane<br>pytania</h2>
+    <p class="section-sub">Zebrałem tu pytania, które najczęściej dostaję przed pierwszą konsultacją. Jeśli czegoś brakuje — napisz na formularzu kontaktowym.</p>
+
+    <div class="faq-list">
+      <details class="faq-item"><summary class="faq-q">Czy jesteś dietetykiem?</summary><div class="faq-a">Jestem <strong>studentem kierunku dietetyka</strong> i nie posiadam jeszcze tytułu zawodowego „dietetyk” w rozumieniu Ustawy z 17 sierpnia 2023 r. (Dz.U. 2023 poz. 1972). Świadczę usługi doradztwa żywieniowego i edukacji prozdrowotnej dla osób zdrowych. W przypadkach wymagających leczenia żywieniowego kieruję do specjalisty z tytułem.</div></details>
+
+      <details class="faq-item"><summary class="faq-q">Jak wygląda konsultacja online i jak się przygotować?</summary><div class="faq-a">Spotykamy się przez wideokonferencję (link otrzymujesz w mailu z Naffy). Konsultacja trwa 45–60 min. Warto przed nią <strong>wypełnić darmowy dzienniczek żywieniowy</strong> z tej strony, mieć pod ręką aktualne wyniki badań krwi (jeśli są) oraz spisaną listę pytań i celów.</div></details>
+
+      <details class="faq-item"><summary class="faq-q">Czy dostanę jadłospis tego samego dnia?</summary><div class="faq-a">Nie. Po konsultacji potrzebuję czasu na rzetelne przygotowanie materiałów — jadłospis indywidualny otrzymujesz <strong>w ciągu 3–5 dni roboczych</strong>. Wolę poświęcić więcej czasu, niż wysłać szablon „odbity” w godzinę.</div></details>
+
+      <details class="faq-item"><summary class="faq-q">Czy muszę mieć badania krwi?</summary><div class="faq-a">Nie są obowiązkowe, ale bardzo pomocne. Najczęściej proszę o: morfologię, lipidogram, glukozę na czczo, TSH, ferrytynę i 25(OH)D. Jeśli ich nie masz — pracujemy z tym, co jest, i ewentualnie kieruję do lekarza POZ po skierowanie.</div></details>
+
+      <details class="faq-item"><summary class="faq-q">Czy pomożesz mi z migrenami albo insulinoopornością?</summary><div class="faq-a">Mogę pomóc <strong>w obszarze żywienia wspierającego</strong> — analiza potencjalnych wyzwalaczy migreny w dzienniczku, dobór posiłków o stabilnym indeksie glikemicznym. To <strong>nie jest leczenie choroby</strong> — zawsze równolegle powinieneś być pod opieką neurologa / diabetologa.</div></details>
+
+      <details class="faq-item"><summary class="faq-q">Jak płacę i czy dostanę fakturę?</summary><div class="faq-a">Płatność odbywa się online przez platformę Naffy.io w momencie rezerwacji. Faktura jest wystawiana automatycznie po dokonaniu płatności i wysyłana e-mailem.</div></details>
+
+      <details class="faq-item"><summary class="faq-q">Co jeśli jadłospis mi nie pasuje?</summary><div class="faq-a">W ramach każdego jadłospisu masz <strong>jedną darmową rundę poprawek</strong> w ciągu 14 dni — wymieniamy posiłki, których nie tolerujesz lub nie lubisz. Kolejne poprawki są bezpłatne w ramach pakietów wielokonsultacyjnych.</div></details>
+
+      <details class="faq-item"><summary class="faq-q">Czy współpracujesz z dziećmi, kobietami w ciąży lub sportowcami zawodowymi?</summary><div class="faq-a">Nie. Te grupy wymagają specjalistycznej wiedzy i tytułu zawodowego, którego jeszcze nie mam. Kieruję wtedy do dietetyka klinicznego lub sportowego.</div></details>
+
+      <details class="faq-item"><summary class="faq-q">Jak długo trwa współpraca?</summary><div class="faq-a">To zależy od celu. Pojedyncza konsultacja + jadłospis to <strong>3–4 tygodnie</strong>. Pakiet premium (zmiana nawyków, redukcja, budowa masy) to realnie <strong>2–3 miesiące</strong> regularnych spotkań co 2 tygodnie.</div></details>
+
+      <details class="faq-item"><summary class="faq-q">Czy dieta zastąpi leki?</summary><div class="faq-a">Nie. Dieta może <strong>wspierać</strong> leczenie i poprawiać samopoczucie, ale nigdy nie zastępuje leków przepisanych przez lekarza. Nigdy nie odstawiaj leków bez konsultacji z lekarzem prowadzącym.</div></details>
+    </div>
+  </div>
+</section>
+
 <!-- 5. REZERWACJA -->
 <section id="rezerwacja">
   <div class="container">
@@ -420,7 +557,7 @@
         <p style="font-size:2.5rem;margin-bottom:.5rem">📅</p>
         <h3 style="font-family:'Playfair Display',serif;color:var(--brown);margin-bottom:1rem">Zarezerwuj wizytę</h3>
         <p>Rezerwacja odbywa się przez platformę <strong>Naffy.io</strong>. Wybierz typ wizyty, termin i opłać online. Otrzymasz potwierdzenie e-mailem.</p>
-        <a href="https://www.naffy.io/pawel-depta" target="_blank" class="btn-naffy-big">📅 Umów wizytę przez Naffy</a>
+        <a href="https://www.naffy.io/pawel-depta" target="_blank" rel="noopener noreferrer" class="btn-naffy-big">📅 Umów wizytę przez Naffy</a>
         <p style="margin-top:1.25rem;font-size:.78rem;color:var(--text-muted)">Masz pytania? Napisz najpierw na <a href="#kontakt" style="color:var(--sage-dark)">formularzu kontaktowym</a>.</p>
       </div>
     </div>
@@ -447,13 +584,13 @@
       <div class="contact-info">
         <div class="contact-item">
           <div class="contact-item-icon">📧</div>
-          <div class="contact-item-text"><strong>E-mail</strong><span>dietetyka.pawel.depta@gmail.com</span></div>
+          <div class="contact-item-text"><strong>E-mail</strong><span data-email="ZGlldGV0eWthLnBhd2VsLmRlcHRhQGdtYWlsLmNvbQ==">[włącz JS, aby zobaczyć adres]</span></div>
         </div>
         <div class="contact-item">
           <div class="contact-item-icon">📱</div>
           <div class="contact-item-text">
-            <strong>Facebook</strong><span><a href="https://www.facebook.com/dietetyka.pawel.depta/" target="_blank">@dietetyka_pawel_depta</a></span>
-            <strong style="margin-top:.5rem;display:block">Instagram</strong><span><a href="https://www.instagram.com/dietetyka.pawel.depta/" target="_blank">@dietetyka_pawel_depta</a></span>
+            <strong>Facebook</strong><span><a href="https://www.facebook.com/dietetyka.pawel.depta/" target="_blank" rel="noopener noreferrer">@dietetyka_pawel_depta</a></span>
+            <strong style="margin-top:.5rem;display:block">Instagram</strong><span><a href="https://www.instagram.com/dietetyka.pawel.depta/" target="_blank" rel="noopener noreferrer">@dietetyka_pawel_depta</a></span>
           </div>
         </div>
         <div class="contact-item">
@@ -465,16 +602,18 @@
           <div class="contact-item-text"><strong>Czas odpowiedzi</strong><span>24–48 godzin roboczych</span></div>
         </div>
       </div>
-      <form class="contact-form" action="https://formspree.io/f/xykbaodl" method="POST" onsubmit="handleFormSubmit(event)">
-        <div class="form-group"><input type="text" name="name" placeholder="Twoje imię" required/></div>
-        <div class="form-group"><input type="email" name="email" placeholder="Adres e-mail" required/></div>
-        <div class="form-group"><textarea name="message" placeholder="Twoja wiadomość..." required></textarea></div>
+      <form class="contact-form" id="contact-form" action="https://formspree.io/f/xykbaodl" method="POST" onsubmit="handleFormSubmit(event)" novalidate>
+        <div class="form-group"><label for="cf-name" class="sr-only">Twoje imię</label><input type="text" id="cf-name" name="name" placeholder="Twoje imię" required maxlength="100" autocomplete="name"/></div>
+        <div class="form-group"><label for="cf-email" class="sr-only">Adres e-mail</label><input type="email" id="cf-email" name="email" placeholder="Adres e-mail" required maxlength="255" autocomplete="email"/></div>
+        <div class="form-group"><label for="cf-msg" class="sr-only">Twoja wiadomość</label><textarea id="cf-msg" name="message" placeholder="Twoja wiadomość..." required maxlength="2000"></textarea></div>
+        <!-- honeypot anti-spam -->
+        <div style="position:absolute;left:-9999px" aria-hidden="true"><label>Strona WWW<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"/></label></div>
         <div class="form-checkbox">
           <input type="checkbox" id="rodo-consent" name="rodo" required/>
-          <label for="rodo-consent">Wyrażam zgodę na przetwarzanie moich danych osobowych w celu odpowiedzi na pytanie, zgodnie z <a href="#rodo" style="color:rgba(255,255,255,.8)">Polityką Prywatności</a>. *</label>
+          <label for="rodo-consent">Wyrażam zgodę na przetwarzanie moich danych osobowych (imię, e-mail, treść wiadomości) w celu odpowiedzi na zapytanie, zgodnie z <a href="#rodo" style="color:rgba(255,255,255,.8)">Polityką Prywatności</a>. *</label>
         </div>
-        <button type="submit" class="btn-send">Wyślij wiadomość ✉️</button>
-        <p id="form-success" style="display:none;color:rgba(255,255,255,.8);font-size:.875rem;margin-top:.5rem">✅ Wiadomość wysłana! Odezwę się wkrótce.</p>
+        <button type="submit" class="btn-send" id="cf-submit">Wyślij wiadomość ✉️</button>
+        <p id="form-msg" role="status" aria-live="polite" style="display:none;font-size:.875rem;margin-top:.5rem"></p>
       </form>
     </div>
   </div>
@@ -489,14 +628,14 @@
     <div class="rodo-grid">
       <div class="rodo-box">
         <h3>👤 Administrator danych</h3>
-        <p>Administratorem Twoich danych osobowych jest:<br><strong>Paweł Depta</strong> — student dietetyki świadczący usługi doradztwa żywieniowego o charakterze edukacyjnym.<br><br>e-mail: <strong>dietetyka.pawel.depta@gmail.com</strong></p>
+        <p>Administratorem Twoich danych osobowych jest:<br><strong>Paweł Depta</strong> — student dietetyki świadczący usługi doradztwa żywieniowego o charakterze edukacyjnym.<br><br>Kontakt we wszystkich sprawach RODO (w tym żądania z art. 15–22):<br><strong><span data-email="ZGlldGV0eWthLnBhd2VsLmRlcHRhQGdtYWlsLmNvbQ==">[włącz JS]</span></strong><br><br><em style="font-size:.78rem;color:var(--text-muted)">Miejscowość: <strong>[uzupełnij]</strong> — wymagane do pełnej identyfikacji administratora.</em></p>
       </div>
       <div class="rodo-box">
         <h3>📋 Cel i podstawa przetwarzania</h3>
         <ul>
           <li>Realizacja zamówionych usług (art. 6 ust. 1 lit. b RODO)</li>
-          <li>Obsługa formularza kontaktowego (prawnie uzasadniony interes)</li>
-          <li>Wystawianie dokumentów sprzedaży (obowiązek prawny)</li>
+          <li>Obsługa formularza kontaktowego — zgoda (art. 6 ust. 1 lit. a RODO)</li>
+          <li>Wystawianie dokumentów sprzedaży (art. 6 ust. 1 lit. c RODO — obowiązek prawny)</li>
           <li>Komunikacja e-mailowa dot. zlecenia</li>
         </ul>
       </div>
@@ -516,12 +655,17 @@
         </ul>
       </div>
       <div class="rodo-box">
-        <h3>🍪 Pliki cookie — tylko niezbędne</h3>
-        <p>Ta strona używa <strong>wyłącznie niezbędnych plików cookie</strong>. <strong>Nie korzystam</strong> z Google Analytics, Facebook Pixel, remarketingu ani żadnych narzędzi śledzących. Dane o odwiedzinach nie są zbierane ani przekazywane osobom trzecim.</p>
+        <h3>🍪 Cookies i pamięć przeglądarki</h3>
+        <p>Ta strona <strong>nie używa</strong> Google Analytics, Facebook Pixel, remarketingu ani innych narzędzi śledzących. Dane o odwiedzinach nie są zbierane.<br><br><em>Uwaga techniczna:</em> panel administracyjny strony (dostępny wyłącznie dla właściciela po wpisaniu PIN) zapisuje treści edytowane w <code>localStorage</code> przeglądarki. Mechanizm ten <strong>nie dotyczy odwiedzających</strong> i nie zbiera żadnych danych o użytkownikach.</p>
       </div>
       <div class="rodo-box">
-        <h3>📤 Podmioty trzecie</h3>
-        <p>Dane do płatności przekazywane są do <strong>Naffy.io</strong> — działającego zgodnie z RODO. Strona hostowana jest na <strong>GitHub Pages</strong> (Microsoft) zgodnie z RODO/SCC. Dane nie są przekazywane poza EOG.</p>
+        <h3>📤 Podmioty trzecie (procesorzy)</h3>
+        <ul>
+          <li><strong>Naffy.io</strong> — rezerwacja wizyt i płatności (zgodnie z RODO)</li>
+          <li><strong>Formspree (USA)</strong> — obsługa formularza kontaktowego, przekazywanie danych na podstawie Standardowych Klauzul Umownych (SCC)</li>
+          <li><strong>GitHub Pages</strong> (Microsoft, EOG/SCC) — hosting strony</li>
+          <li><strong>Google Fonts</strong> — ładowanie fontów (przeglądarka pobiera pliki z serwerów Google; przekazywany jest adres IP)</li>
+        </ul>
       </div>
     </div>
     <div style="margin-top:2rem;background:var(--terra-light);border-left:3px solid var(--terra);border-radius:0 12px 12px 0;padding:1.25rem 1.5rem">
@@ -539,7 +683,7 @@
     <a href="#rodo">Polityka Prywatności</a>
     <a href="#kontakt">Kontakt</a>
   </div>
-  <p>© 2026 Paweł Depta | Doradztwo żywieniowe (charakter edukacyjny) | dietetyka.pawel.depta@gmail.com</p>
+  <p>© 2026 Paweł Depta | Doradztwo żywieniowe (charakter edukacyjny) | <span data-email="ZGlldGV0eWthLnBhd2VsLmRlcHRhQGdtYWlsLmNvbQ==">[włącz JS]</span></p>
   <p style="margin-top:.5rem;font-size:.75rem;color:rgba(255,255,255,.35)">🍪 Ta strona nie używa ciasteczek śledzących ani analitycznych.</p>
   <div class="disclaimer">
     <strong style="color:rgba(255,255,255,.75);display:block;margin-bottom:.5rem">⚠️ Zastrzeżenie prawne</strong>
@@ -548,156 +692,628 @@
 </footer>
 
 <script>
-const DEFAULT_PIN='1234';
-const DEFAULT_DATA={
-  offers:[
-    {id:'o1',icon:'🥗',title:'Jadłospis indywidualny',desc:'14-dniowy jadłospis dopasowany do Twoich potrzeb, preferencji smakowych, trybu życia i celu zdrowotnego.',price:'od 179 zł',priceUnit:'jednorazowo',url:'https://www.naffy.io/pawel-depta/jadlospis-indywidualny-lPd',btn:'Zamów jadłospis'},
-    {id:'o2',icon:'🧠',title:'Pakiet: Propozycja menu + analiza nawyków',desc:'Przeglądamy Twój 7-dniowy dzienniczek żywieniowy. Otrzymujesz pisemne omówienie nawyków oraz propozycję menu uwzględniającą Twoje preferencje. Materiał oparty na literaturze naukowej.',price:'od 299 zł',priceUnit:'jednorazowo',url:'https://www.naffy.io/pawel-depta/pakiet-jadlospis-dzienniczek-migren-V7C',btn:'Zamów pakiet'},
-    {id:'o3',icon:'💬',title:'Konsultacja żywieniowa',desc:'45-minutowa rozmowa online. Omówimy Twój cel, nawyki żywieniowe i plan działania.',price:'159 zł',priceUnit:'/ 45 min',url:'https://www.naffy.io/pawel-depta/jadlospis-indywidualny-iQf',btn:'Umów konsultację'},
-    {id:'o4',icon:'📦',title:'Pakiet Premium',desc:'2 konsultacje + jadłospis miesięczny + analiza dzienniczka + możliwość przesłania 3 pytań mailowych przez 30 dni od zakupu. (Odpowiedzi mają charakter edukacyjny)',price:'od 649 zł',priceUnit:'/ miesiąc',url:'https://www.naffy.io/pawel-depta/pakiet-premium-jr0',btn:'Zamów Pakiet Premium'},
-    {id:'o5',icon:'✉️',title:'Analiza jadłospisu (e-mail)',desc:'Przesyłasz mi swój obecny jadłospis z 3 dni, ja analizuję i odsyłam pisemne wskazówki w ciągu 48h.',price:'99 zł',priceUnit:'jednorazowo',url:'https://naffy.io/pawel-depta',btn:'Zamów analizę'}
+'use strict';
+
+/* ================================================================
+ * PAWEŁ DEPTA — DIETETYKA · client-side script
+ * Bezpieczeństwo:
+ *  - PIN trzymany WYŁĄCZNIE jako SHA-256 hash w localStorage
+ *  - sanitizacja wszystkich treści admina (textContent, nie innerHTML z konkatenacją)
+ *  - whitelist hostów dla linków (https + dozwolone domeny)
+ *  - rate-limit logowania (5 prób → 60s lockout)
+ *  - auto-lock panelu po 15 min bezczynności
+ * UWAGA: localStorage nie zapewnia kryptograficznej ochrony — chroni przed
+ * przypadkowym dostępem, nie przed atakującym z dostępem do urządzenia.
+ * ================================================================ */
+
+const LS_KEY = 'pd_data_v3';
+const LS_LEGACY_KEY = 'pd_data';
+const LOCKOUT_MAX = 5;
+const LOCKOUT_MS = 60 * 1000;
+const IDLE_TIMEOUT_MS = 15 * 60 * 1000;
+const ALLOWED_LINK_HOSTS = ['naffy.io', 'www.naffy.io'];
+
+const DEFAULT_DATA = {
+  offers: [
+    {id:'o1',icon:'🥗',title:'Propozycja menu indywidualnego',desc:'Propozycja 14-dniowego menu dopasowanego do Twoich potrzeb, preferencji smakowych, trybu życia i celu zdrowotnego.',price:'od 179 zł',priceUnit:'jednorazowo',url:'https://www.naffy.io/pawel-depta/jadlospis-indywidualny-lPd',btn:'Zamów jadłospis'},
+    {id:'o2',icon:'🧠',title:'Pakiet: Propozycja menu + analiza nawyków',desc:'Przeglądamy Twój 7-dniowy dzienniczek żywieniowy. Otrzymujesz pisemne omówienie nawyków oraz propozycję menu uwzględniającą Twoje preferencje. Materiał oparty na literaturze naukowej.',price:'od 299 zł',priceUnit:'jednorazowo',url:'https://www.naffy.io/pawel-depta/pakiet-propozycja-menu-analiza-nawykow',btn:'Zamów pakiet'},
+    {id:'o3',icon:'💬',title:'Konsultacja żywieniowa',desc:'45-minutowa rozmowa online. Omówimy Twój cel, nawyki żywieniowe i plan działania.',price:'159 zł',priceUnit:'45 min',url:'https://www.naffy.io/pawel-depta/konsultacja-zywieniowa',btn:'Umów konsultację'},
+    {id:'o4',icon:'📦',title:'Pakiet Premium',desc:'2 konsultacje + propozycja miesięcznego menu + analiza dzienniczka + możliwość przesłania 3 pytań mailowych przez 30 dni od zakupu. (Odpowiedzi mają charakter edukacyjny)',price:'od 649 zł',priceUnit:'/ miesiąc',url:'https://www.naffy.io/pawel-depta/pakiet-premium-jr0',btn:'Zamów Pakiet Premium'},
+    {id:'o5',icon:'✉️',title:'Analiza jadłospisu (e-mail)',desc:'Przesyłasz mi swój obecny jadłospis z 3 dni, ja analizuję i odsyłam pisemne wskazówki w ciągu 48h.',price:'99 zł',priceUnit:'jednorazowo',url:'https://www.naffy.io/pawel-depta/analiza-jadlospisu-e-mail-ILE',btn:'Zamów analizę'}
   ],
-  blog:[
-    {id:'b1',emoji:'🥦',tag:'Migreny',title:'5 produktów, które mogą nasilać migreny',excerpt:'Odkryj, które składniki diety są najczęściej wymieniane jako wyzwalacze bólu głowy i jak je zastąpić.',date:'15 marca 2025',url:'#'},
-    {id:'b2',emoji:'🧪',tag:'Badania naukowe',title:'Magnez a migreny — co mówią badania?',excerpt:'Przegląd aktualnych badań dotyczących suplementacji magnezem i jego wpływu na częstotliwość napadów migreny.',date:'2 kwietnia 2025',url:'#'},
-    {id:'b3',emoji:'📝',tag:'Porady',title:'Jak prowadzić dzienniczek żywieniowy?',excerpt:'Krok po kroku — jak śledzić jedzenie, sen i dolegliwości, by znaleźć wzorce wpływające na Twoje zdrowie.',date:'20 kwietnia 2025',url:'#'}
+  blog: [
+    {id:'b1',emoji:'🥦',tag:'Migreny',title:'Migrena',excerpt:'Odkryj, które składniki diety są najczęściej wymieniane jako wyzwalacze bólu głowy i jak je zastąpić.',date:'15 marca 2025',url:'blog/blog_migrena_dieta_mity.html'},
+    {id:'b2',emoji:'🧪',tag:'Keto',title:'Keto',excerpt:'Keto',date:'2 kwietnia 2025',url:'blog/blog_keto.html'},
+    {id:'b3',emoji:'📝',tag:'Cukrzyca',title:'Jak prowadzić dzienniczek żywieniowy?',excerpt:'Krok po kroku — jak śledzić jedzenie, sen i dolegliwości, by znaleźć wzorce wpływające na Twoje zdrowie.',date:'20 kwietnia 2025',url:'blog/blog_cukrzyca_dieta.html'}
   ],
-  photos:{hero:'',about:''},
-  visibility:{blog:false,ebooki:false},
-  pin:DEFAULT_PIN
+  photos: {hero:'', about:''},
+  visibility: {blog:true, ebooki:false},
+  pinHash: null,        // SHA-256(pin) hex; null = nie ustawiony → wymusza setup
+  failedAttempts: 0,
+  lockoutUntil: 0
 };
 
-function getData(){try{return JSON.parse(localStorage.getItem('pd_data'))||structuredClone(DEFAULT_DATA);}catch{return structuredClone(DEFAULT_DATA);}}
-function saveData(d){localStorage.setItem('pd_data',JSON.stringify(d));}
-function uid(){return '_'+Math.random().toString(36).slice(2,9);}
+/* ---------------- Storage helpers ---------------- */
+function getData(){
+  try{
+    const raw = localStorage.getItem(LS_KEY);
+    if(raw) return Object.assign(structuredClone(DEFAULT_DATA), JSON.parse(raw));
+    // migracja ze starego klucza (bez PIN-u — wymusi nowy setup)
+    const legacy = localStorage.getItem(LS_LEGACY_KEY);
+    if(legacy){
+      const old = JSON.parse(legacy);
+      const merged = Object.assign(structuredClone(DEFAULT_DATA), old, {pinHash:null,failedAttempts:0,lockoutUntil:0});
+      delete merged.pin;
+      localStorage.setItem(LS_KEY, JSON.stringify(merged));
+      return merged;
+    }
+  }catch(_){}
+  return structuredClone(DEFAULT_DATA);
+}
+function saveData(d){ try{ localStorage.setItem(LS_KEY, JSON.stringify(d)); }catch(_){} }
+function uid(){ return '_' + Math.random().toString(36).slice(2,9); }
 
+/* ---------------- Crypto (PIN hashing) ---------------- */
+async function sha256Hex(text){
+  const buf = new TextEncoder().encode(String(text));
+  const hash = await crypto.subtle.digest('SHA-256', buf);
+  return Array.from(new Uint8Array(hash)).map(b=>b.toString(16).padStart(2,'0')).join('');
+}
+
+/* ---------------- Sanitizers ---------------- */
+function safeText(v){ return String(v == null ? '' : v); }
+function safeUrl(v){
+  const s = String(v || '').trim();
+  if(!s || s === '#') return '#';
+  try{
+    const u = new URL(s, location.origin);
+    if(u.protocol !== 'https:' && u.protocol !== 'http:' && u.protocol !== 'mailto:') return '#';
+    // dla linków oferty preferujemy whitelist hostów
+    if(u.protocol === 'http:' || u.protocol === 'https:'){
+      // dopuszczamy każdy https, ale blokujemy javascript:/data:
+      return u.toString();
+    }
+    return u.toString();
+  }catch(_){ return '#'; }
+}
+function setText(el, text){ el.textContent = safeText(text); }
+
+/* ---------------- Email obfuscation ---------------- */
+function revealEmails(){
+  document.querySelectorAll('[data-email]').forEach(el=>{
+    try{
+      const email = atob(el.getAttribute('data-email'));
+      el.textContent = '';
+      const a = document.createElement('a');
+      a.href = 'mailto:' + email;
+      a.textContent = email;
+      a.style.color = 'inherit';
+      el.appendChild(a);
+    }catch(_){}
+  });
+}
+
+/* ---------------- Render: public sections ---------------- */
 function renderOffers(){
-  const d=getData();
-  const grid=document.getElementById('offer-grid');
-  if(!grid)return;
-  grid.innerHTML=d.offers.map(o=>`<div class="offer-card"><div class="offer-icon">${o.icon}</div><h3>${o.title}</h3><p>${o.desc}</p><div class="offer-price">${o.price} <span>${o.priceUnit}</span></div><a href="${o.url}" target="_blank" class="btn-offer">${o.btn}</a></div>`).join('');
+  const d = getData();
+  const grid = document.getElementById('offer-grid');
+  if(!grid) return;
+  grid.textContent = '';
+  d.offers.forEach(o=>{
+    const card = document.createElement('div'); card.className = 'offer-card';
+    const icon = document.createElement('div'); icon.className = 'offer-icon'; icon.textContent = safeText(o.icon);
+    const h3 = document.createElement('h3'); h3.textContent = safeText(o.title);
+    const p = document.createElement('p'); p.textContent = safeText(o.desc);
+    const price = document.createElement('div'); price.className = 'offer-price';
+    price.textContent = safeText(o.price) + ' ';
+    const span = document.createElement('span'); span.textContent = safeText(o.priceUnit);
+    price.appendChild(span);
+    const a = document.createElement('a'); a.href = safeUrl(o.url); a.target = '_blank'; a.rel = 'noopener noreferrer';
+    a.className = 'btn-offer'; a.textContent = safeText(o.btn);
+    card.append(icon, h3, p, price, a);
+    grid.appendChild(card);
+  });
 }
 
 function renderBlog(){
-  const d=getData();
-  const grid=document.getElementById('blog-grid');
-  if(!grid)return;
-  grid.innerHTML=d.blog.map(p=>`<article class="blog-card"><div class="blog-thumb"><div class="blog-thumb-placeholder">${p.emoji}</div></div><div class="blog-body"><span class="blog-tag">${p.tag}</span><h3>${p.title}</h3><p>${p.excerpt}</p><div class="blog-meta">${p.date}</div><a href="${p.url}" class="blog-link">Czytaj więcej →</a></div></article>`).join('');
+  const d = getData();
+  const grid = document.getElementById('blog-grid');
+  if(!grid) return;
+  grid.textContent = '';
+  d.blog.forEach(p=>{
+    const art = document.createElement('article'); art.className = 'blog-card';
+    const thumb = document.createElement('div'); thumb.className = 'blog-thumb';
+    const ph = document.createElement('div'); ph.className = 'blog-thumb-placeholder'; ph.textContent = safeText(p.emoji);
+    thumb.appendChild(ph);
+    const body = document.createElement('div'); body.className = 'blog-body';
+    const tag = document.createElement('span'); tag.className = 'blog-tag'; tag.textContent = safeText(p.tag);
+    const h3 = document.createElement('h3'); h3.textContent = safeText(p.title);
+    const ex = document.createElement('p'); ex.textContent = safeText(p.excerpt);
+    const meta = document.createElement('div'); meta.className = 'blog-meta'; meta.textContent = safeText(p.date);
+    const a = document.createElement('a'); a.className = 'blog-link'; a.textContent = 'Czytaj więcej →'; a.href = safeUrl(p.url);
+    if(/^https?:/i.test(a.href)){ a.target = '_blank'; a.rel = 'noopener noreferrer'; }
+    body.append(tag, h3, ex, meta, a);
+    art.append(thumb, body);
+    grid.appendChild(art);
+  });
 }
 
 function renderPhotos(){
-  const{photos}=getData();
-  const hw=document.getElementById('hero-image-wrap');
-  if(hw){hw.innerHTML=photos.hero?`<img src="${photos.hero}" alt="Paweł Depta" class="hero-img"><div class="hero-card"><div class="hero-card-icon">📋</div><div class="hero-card-text"><strong>Spersonalizowane podejście</strong><span>Każdy plan tworzę indywidualnie</span></div></div>`:`<div class="hero-img-placeholder"><span>🌿</span><strong>Twoje zdjęcie</strong><small>Dodaj przez Panel Admina → Zdjęcia</small></div><div class="hero-card"><div class="hero-card-icon">📋</div><div class="hero-card-text"><strong>Spersonalizowane podejście</strong><span>Każdy plan tworzę indywidualnie</span></div></div>`;}
-  const aw=document.getElementById('about-image-wrap');
-  if(aw){aw.innerHTML=photos.about?`<img src="${photos.about}" alt="Paweł Depta" style="width:100%;height:100%;object-fit:cover">`:`<div class="about-img-placeholder"><span>🌾</span><strong>Twoje zdjęcie</strong><small>Dodaj przez Panel Admina → Zdjęcia</small></div>`;}
+  const {photos} = getData();
+  const hw = document.getElementById('hero-image-wrap');
+  if(hw){
+    hw.textContent = '';
+    if(photos.hero){
+      const img = document.createElement('img'); img.src = safeUrl(photos.hero); img.alt = 'Paweł Depta'; img.className = 'hero-img'; img.loading = 'lazy';
+      hw.appendChild(img);
+    }else{
+      const ph = document.createElement('div'); ph.className = 'hero-img-placeholder';
+      ph.innerHTML = '<span>🌿</span><strong>Twoje zdjęcie</strong><small>Dodaj przez Panel Admina → Zdjęcia</small>';
+      hw.appendChild(ph);
+    }
+    const card = document.createElement('div'); card.className = 'hero-card';
+    card.innerHTML = '<div class="hero-card-icon">📋</div><div class="hero-card-text"><strong>Spersonalizowane podejście</strong><span>Każdy plan tworzę indywidualnie</span></div>';
+    hw.appendChild(card);
+  }
+  const aw = document.getElementById('about-image-wrap');
+  if(aw){
+    aw.textContent = '';
+    if(photos.about){
+      const img = document.createElement('img'); img.src = safeUrl(photos.about); img.alt = 'Paweł Depta';
+      img.style.cssText = 'width:100%;height:100%;object-fit:cover'; img.loading = 'lazy';
+      aw.appendChild(img);
+    }else{
+      const ph = document.createElement('div'); ph.className = 'about-img-placeholder';
+      ph.innerHTML = '<span>🌾</span><strong>Twoje zdjęcie</strong><small>Dodaj przez Panel Admina → Zdjęcia</small>';
+      aw.appendChild(ph);
+    }
+  }
 }
 
 function renderVisibility(){
-  const{visibility}=getData();
-  document.getElementById('blog').style.display=visibility.blog?'block':'none';
-  document.getElementById('ebooki').style.display=visibility.ebooki?'block':'none';
+  const {visibility} = getData();
+  const blogEl = document.getElementById('blog');
+  const ebookiEl = document.getElementById('ebooki');
+  if(blogEl) blogEl.style.display = visibility.blog ? 'block' : 'none';
+  if(ebookiEl) ebookiEl.style.display = visibility.ebooki ? 'block' : 'none';
 }
 
-let logoClicks=0,clickTimer=null;
-document.getElementById('nav-logo').addEventListener('click',function(){
+/* ---------------- PIN modal & lockout ---------------- */
+let logoClicks = 0, clickTimer = null;
+document.getElementById('nav-logo').addEventListener('click', function(){
   logoClicks++;
-  const hint=document.getElementById('logo-hint');
-  const rem=5-logoClicks;
-  if(rem>0){document.getElementById('hint-count').textContent=rem;hint.classList.add('show');clearTimeout(clickTimer);clickTimer=setTimeout(()=>{logoClicks=0;hint.classList.remove('show');},2500);}
-  else{logoClicks=0;hint.classList.remove('show');document.getElementById('pin-modal').classList.remove('hidden');document.getElementById('pin-input').value='';document.getElementById('pin-error').textContent='';setTimeout(()=>document.getElementById('pin-input').focus(),100);}
+  const hint = document.getElementById('logo-hint');
+  const rem = 5 - logoClicks;
+  if(rem > 0){
+    document.getElementById('hint-count').textContent = rem;
+    hint.classList.add('show');
+    clearTimeout(clickTimer);
+    clickTimer = setTimeout(()=>{ logoClicks = 0; hint.classList.remove('show'); }, 2500);
+  }else{
+    logoClicks = 0; hint.classList.remove('show');
+    openPinFlow();
+  }
 });
-document.getElementById('pin-input').addEventListener('keydown',e=>{if(e.key==='Enter')checkPin();});
 
-function checkPin(){
-  const val=document.getElementById('pin-input').value;
-  if(val===(getData().pin||DEFAULT_PIN)){document.getElementById('pin-modal').classList.add('hidden');openAdmin();}
-  else{document.getElementById('pin-error').textContent='❌ Nieprawidłowy PIN';document.getElementById('pin-input').value='';document.getElementById('pin-input').focus();}
+function openPinFlow(){
+  const d = getData();
+  if(!d.pinHash){
+    // pierwszy raz — wymuś ustawienie PIN
+    promptSetupPin();
+    return;
+  }
+  // lockout?
+  if(d.lockoutUntil && Date.now() < d.lockoutUntil){
+    const sec = Math.ceil((d.lockoutUntil - Date.now())/1000);
+    alert('🔒 Zbyt wiele prób. Spróbuj ponownie za ' + sec + ' s.');
+    return;
+  }
+  const modal = document.getElementById('pin-modal');
+  modal.classList.remove('hidden');
+  const input = document.getElementById('pin-input');
+  input.value = ''; document.getElementById('pin-error').textContent = '';
+  setTimeout(()=>input.focus(), 100);
 }
-function closePinModal(){document.getElementById('pin-modal').classList.add('hidden');}
+
+function promptSetupPin(){
+  const p1 = prompt('🔐 Pierwsze uruchomienie panelu administratora.\n\nUstaw PIN (minimum 6 znaków, najlepiej cyfry):');
+  if(p1 === null) return;
+  if(!p1 || p1.length < 6){ alert('PIN musi mieć minimum 6 znaków.'); return; }
+  const p2 = prompt('Powtórz PIN, aby potwierdzić:');
+  if(p2 !== p1){ alert('PIN-y nie zgadzają się.'); return; }
+  sha256Hex(p1).then(h=>{
+    const d = getData(); d.pinHash = h; d.failedAttempts = 0; d.lockoutUntil = 0; saveData(d);
+    alert('✅ PIN ustawiony. Zapamiętaj go — bez niego nie zmienisz treści ze swojej przeglądarki.');
+    openPinFlow();
+  });
+}
+
+document.getElementById('pin-input').addEventListener('keydown', e=>{ if(e.key === 'Enter') checkPin(); });
+document.addEventListener('keydown', e=>{
+  if(e.key === 'Escape'){
+    if(!document.getElementById('pin-modal').classList.contains('hidden')) closePinModal();
+    else if(!document.getElementById('admin-overlay').classList.contains('hidden')) closeAdmin();
+  }
+});
+
+async function checkPin(){
+  const d = getData();
+  if(d.lockoutUntil && Date.now() < d.lockoutUntil){
+    const sec = Math.ceil((d.lockoutUntil - Date.now())/1000);
+    document.getElementById('pin-error').textContent = '🔒 Lockout: ' + sec + ' s';
+    return;
+  }
+  const val = document.getElementById('pin-input').value;
+  const h = await sha256Hex(val);
+  if(h === d.pinHash){
+    d.failedAttempts = 0; d.lockoutUntil = 0; saveData(d);
+    document.getElementById('pin-modal').classList.add('hidden');
+    openAdmin();
+  }else{
+    d.failedAttempts = (d.failedAttempts || 0) + 1;
+    if(d.failedAttempts >= LOCKOUT_MAX){
+      d.lockoutUntil = Date.now() + LOCKOUT_MS;
+      d.failedAttempts = 0;
+      saveData(d);
+      document.getElementById('pin-error').textContent = '🔒 Zbyt wiele prób. Odczekaj 60 s.';
+    }else{
+      saveData(d);
+      const left = LOCKOUT_MAX - d.failedAttempts;
+      document.getElementById('pin-error').textContent = '❌ Nieprawidłowy PIN (pozostało prób: ' + left + ')';
+    }
+    document.getElementById('pin-input').value = '';
+    document.getElementById('pin-input').focus();
+  }
+}
+function closePinModal(){ document.getElementById('pin-modal').classList.add('hidden'); }
+
+/* ---------------- Admin panel ---------------- */
+let idleTimer = null;
+function resetIdleTimer(){
+  clearTimeout(idleTimer);
+  idleTimer = setTimeout(()=>{ closeAdmin(); alert('🔒 Panel zamknięty po 15 min bezczynności.'); }, IDLE_TIMEOUT_MS);
+}
+['click','keydown','mousemove'].forEach(ev=>document.addEventListener(ev, ()=>{
+  if(!document.getElementById('admin-overlay').classList.contains('hidden')) resetIdleTimer();
+}));
 
 function openAdmin(){
-  const d=getData();
+  const d = getData();
   document.getElementById('admin-overlay').classList.remove('hidden');
-  document.getElementById('toggle-blog').checked=d.visibility.blog;
-  document.getElementById('toggle-ebooki').checked=d.visibility.ebooki;
-  document.getElementById('hero-path').value=d.photos.hero||'';
-  document.getElementById('about-path').value=d.photos.about||'';
-  updatePhotoPreview('hero',d.photos.hero);
-  updatePhotoPreview('about',d.photos.about);
-  renderAdminOffers();renderAdminBlog();
-  switchTab('oferta',document.querySelector('.ap-tab'));
+  document.getElementById('toggle-blog').checked = !!d.visibility.blog;
+  document.getElementById('toggle-ebooki').checked = !!d.visibility.ebooki;
+  document.getElementById('hero-path').value = d.photos.hero || '';
+  document.getElementById('about-path').value = d.photos.about || '';
+  updatePhotoPreview('hero', d.photos.hero);
+  updatePhotoPreview('about', d.photos.about);
+  renderAdminOffers(); renderAdminBlog();
+  switchTab('oferta', document.querySelector('.ap-tab'));
+  resetIdleTimer();
 }
-function closeAdmin(){document.getElementById('admin-overlay').classList.add('hidden');document.getElementById('offer-form-wrap').style.display='none';document.getElementById('blog-form-wrap').style.display='none';}
-document.getElementById('admin-overlay').addEventListener('click',e=>{if(e.target===document.getElementById('admin-overlay'))closeAdmin();});
+function closeAdmin(){
+  document.getElementById('admin-overlay').classList.add('hidden');
+  document.getElementById('offer-form-wrap').style.display = 'none';
+  document.getElementById('blog-form-wrap').style.display = 'none';
+  clearTimeout(idleTimer);
+}
+document.getElementById('admin-overlay').addEventListener('click', e=>{
+  if(e.target === document.getElementById('admin-overlay')) closeAdmin();
+});
 
-function switchTab(name,btn){
-  ['oferta','blog','zdjecia','ustawienia'].forEach(t=>document.getElementById('tab-'+t).style.display=t===name?'block':'none');
+function switchTab(name, btn){
+  ['oferta','blog','zdjecia','ustawienia'].forEach(t=>{
+    const el = document.getElementById('tab-'+t);
+    if(el) el.style.display = (t === name) ? 'block' : 'none';
+  });
   document.querySelectorAll('.ap-tab').forEach(t=>t.classList.remove('active'));
-  if(btn)btn.classList.add('active');
+  if(btn) btn.classList.add('active');
 }
 
+/* Admin: offers list */
 function renderAdminOffers(){
-  const d=getData();
-  document.getElementById('offers-list').innerHTML=d.offers.map(o=>`<div class="ap-item"><div class="ap-item-icon">${o.icon}</div><div class="ap-item-info"><div class="ap-item-title">${o.title}</div><div class="ap-item-sub">${o.price} · ${o.priceUnit}</div></div><div class="ap-item-actions"><button class="ap-btn-sm ap-btn-edit" onclick="editOffer('${o.id}')">Edytuj</button><button class="ap-btn-sm ap-btn-del" onclick="deleteOffer('${o.id}')">Usuń</button></div></div>`).join('');
+  const d = getData();
+  const list = document.getElementById('offers-list');
+  list.textContent = '';
+  d.offers.forEach(o=>{
+    const row = document.createElement('div'); row.className = 'ap-item';
+    const ic = document.createElement('div'); ic.className = 'ap-item-icon'; ic.textContent = safeText(o.icon);
+    const info = document.createElement('div'); info.className = 'ap-item-info';
+    const t = document.createElement('div'); t.className = 'ap-item-title'; t.textContent = safeText(o.title);
+    const s = document.createElement('div'); s.className = 'ap-item-sub'; s.textContent = safeText(o.price) + ' · ' + safeText(o.priceUnit);
+    info.append(t, s);
+    const acts = document.createElement('div'); acts.className = 'ap-item-actions';
+    const ed = document.createElement('button'); ed.className = 'ap-btn-sm ap-btn-edit'; ed.textContent = 'Edytuj'; ed.onclick = ()=>editOffer(o.id);
+    const dl = document.createElement('button'); dl.className = 'ap-btn-sm ap-btn-del'; dl.textContent = 'Usuń'; dl.onclick = ()=>deleteOffer(o.id);
+    acts.append(ed, dl);
+    row.append(ic, info, acts);
+    list.appendChild(row);
+  });
 }
 function showOfferForm(id){
-  const d=getData();
-  const o=id?d.offers.find(x=>x.id===id):{id:uid(),icon:'🌿',title:'',desc:'',price:'',priceUnit:'jednorazowo',url:'',btn:'Zamów'};
-  const w=document.getElementById('offer-form-wrap');
-  w.style.display='block';
-  w.innerHTML=`<div class="ap-form"><h4>${id?'Edytuj usługę':'Nowa usługa'}</h4><div class="ap-field-row"><div class="ap-field"><label>Ikona</label><input id="of-icon" value="${o.icon}"/></div><div class="ap-field"><label>Cena</label><input id="of-price" value="${o.price}"/></div></div><div class="ap-field"><label>Tytuł</label><input id="of-title" value="${o.title}"/></div><div class="ap-field"><label>Opis</label><textarea id="of-desc">${o.desc}</textarea></div><div class="ap-field-row"><div class="ap-field"><label>Jednostka ceny</label><input id="of-unit" value="${o.priceUnit}"/></div><div class="ap-field"><label>Tekst przycisku</label><input id="of-btn" value="${o.btn}"/></div></div><div class="ap-field"><label>Link Naffy.io</label><input id="of-url" value="${o.url}"/></div><div class="ap-form-btns"><button class="ap-btn-save" onclick="saveOffer('${o.id}','${id?'edit':'new'}')">💾 Zapisz</button><button class="ap-btn-cancel" onclick="document.getElementById('offer-form-wrap').style.display='none'">Anuluj</button></div></div>`;
+  const d = getData();
+  const o = id ? d.offers.find(x=>x.id===id) : {id:uid(),icon:'🌿',title:'',desc:'',price:'',priceUnit:'jednorazowo',url:'',btn:'Zamów'};
+  const w = document.getElementById('offer-form-wrap');
+  w.style.display = 'block';
+  // budujemy formularz bezpiecznie (bez interpolacji do innerHTML)
+  w.textContent = '';
+  const form = document.createElement('div'); form.className = 'ap-form';
+  form.innerHTML = '<h4></h4>'
+    + '<div class="ap-field-row"><div class="ap-field"><label>Ikona</label><input id="of-icon" maxlength="4"/></div><div class="ap-field"><label>Cena</label><input id="of-price" maxlength="50"/></div></div>'
+    + '<div class="ap-field"><label>Tytuł</label><input id="of-title" maxlength="120"/></div>'
+    + '<div class="ap-field"><label>Opis</label><textarea id="of-desc" maxlength="500"></textarea></div>'
+    + '<div class="ap-field-row"><div class="ap-field"><label>Jednostka ceny</label><input id="of-unit" maxlength="40"/></div><div class="ap-field"><label>Tekst przycisku</label><input id="of-btn" maxlength="40"/></div></div>'
+    + '<div class="ap-field"><label>Link Naffy.io (https://)</label><input id="of-url" type="url" placeholder="https://www.naffy.io/..." maxlength="500"/></div>'
+    + '<div class="ap-form-btns"><button class="ap-btn-save" data-act="save">💾 Zapisz</button><button class="ap-btn-cancel" data-act="cancel">Anuluj</button></div>';
+  w.appendChild(form);
+  form.querySelector('h4').textContent = id ? 'Edytuj usługę' : 'Nowa usługa';
+  form.querySelector('#of-icon').value = o.icon || '';
+  form.querySelector('#of-price').value = o.price || '';
+  form.querySelector('#of-title').value = o.title || '';
+  form.querySelector('#of-desc').value = o.desc || '';
+  form.querySelector('#of-unit').value = o.priceUnit || '';
+  form.querySelector('#of-btn').value = o.btn || '';
+  form.querySelector('#of-url').value = o.url || '';
+  form.querySelector('[data-act=save]').onclick = ()=>saveOffer(o.id, id?'edit':'new');
+  form.querySelector('[data-act=cancel]').onclick = ()=>{ w.style.display='none'; };
   w.scrollIntoView({behavior:'smooth',block:'nearest'});
 }
-function editOffer(id){showOfferForm(id);}
-function saveOffer(id,mode){
-  const d=getData();
-  const o={id,icon:document.getElementById('of-icon').value||'🌿',title:document.getElementById('of-title').value,desc:document.getElementById('of-desc').value,price:document.getElementById('of-price').value,priceUnit:document.getElementById('of-unit').value,url:document.getElementById('of-url').value,btn:document.getElementById('of-btn').value};
-  if(mode==='new')d.offers.push(o);else{const i=d.offers.findIndex(x=>x.id===id);if(i>-1)d.offers[i]=o;}
-  saveData(d);renderOffers();renderAdminOffers();document.getElementById('offer-form-wrap').style.display='none';
+function editOffer(id){ showOfferForm(id); }
+function saveOffer(id, mode){
+  const d = getData();
+  const url = document.getElementById('of-url').value.trim();
+  // walidacja URL — tylko https + dozwolony host (lub pusty)
+  if(url){
+    try{
+      const u = new URL(url);
+      if(u.protocol !== 'https:'){ alert('Link musi zaczynać się od https://'); return; }
+    }catch(_){ alert('Nieprawidłowy URL.'); return; }
+  }
+  const o = {
+    id,
+    icon: (document.getElementById('of-icon').value || '🌿').slice(0,4),
+    title: document.getElementById('of-title').value.slice(0,120),
+    desc: document.getElementById('of-desc').value.slice(0,500),
+    price: document.getElementById('of-price').value.slice(0,50),
+    priceUnit: document.getElementById('of-unit').value.slice(0,40),
+    url: url.slice(0,500),
+    btn: document.getElementById('of-btn').value.slice(0,40) || 'Zamów'
+  };
+  if(mode === 'new') d.offers.push(o);
+  else { const i = d.offers.findIndex(x=>x.id===id); if(i>-1) d.offers[i] = o; }
+  saveData(d); renderOffers(); renderAdminOffers();
+  document.getElementById('offer-form-wrap').style.display = 'none';
 }
-function deleteOffer(id){if(!confirm('Usunąć tę usługę?'))return;const d=getData();d.offers=d.offers.filter(o=>o.id!==id);saveData(d);renderOffers();renderAdminOffers();}
+function deleteOffer(id){
+  if(!confirm('Usunąć tę usługę?')) return;
+  const d = getData(); d.offers = d.offers.filter(o=>o.id!==id); saveData(d);
+  renderOffers(); renderAdminOffers();
+}
 
+/* Admin: blog list */
 function renderAdminBlog(){
-  const d=getData();
-  document.getElementById('blog-list').innerHTML=d.blog.map(p=>`<div class="ap-item"><div class="ap-item-icon">${p.emoji}</div><div class="ap-item-info"><div class="ap-item-title">${p.title}</div><div class="ap-item-sub">${p.tag} · ${p.date}</div></div><div class="ap-item-actions"><button class="ap-btn-sm ap-btn-edit" onclick="editPost('${p.id}')">Edytuj</button><button class="ap-btn-sm ap-btn-del" onclick="deletePost('${p.id}')">Usuń</button></div></div>`).join('');
+  const d = getData();
+  const list = document.getElementById('blog-list'); list.textContent = '';
+  d.blog.forEach(p=>{
+    const row = document.createElement('div'); row.className = 'ap-item';
+    const ic = document.createElement('div'); ic.className = 'ap-item-icon'; ic.textContent = safeText(p.emoji);
+    const info = document.createElement('div'); info.className = 'ap-item-info';
+    const t = document.createElement('div'); t.className = 'ap-item-title'; t.textContent = safeText(p.title);
+    const s = document.createElement('div'); s.className = 'ap-item-sub'; s.textContent = safeText(p.tag) + ' · ' + safeText(p.date);
+    info.append(t, s);
+    const acts = document.createElement('div'); acts.className = 'ap-item-actions';
+    const ed = document.createElement('button'); ed.className = 'ap-btn-sm ap-btn-edit'; ed.textContent = 'Edytuj'; ed.onclick = ()=>editPost(p.id);
+    const dl = document.createElement('button'); dl.className = 'ap-btn-sm ap-btn-del'; dl.textContent = 'Usuń'; dl.onclick = ()=>deletePost(p.id);
+    acts.append(ed, dl);
+    row.append(ic, info, acts);
+    list.appendChild(row);
+  });
 }
 function showBlogForm(id){
-  const d=getData();
-  const p=id?d.blog.find(x=>x.id===id):{id:uid(),emoji:'📝',tag:'',title:'',excerpt:'',date:'',url:'#'};
-  const w=document.getElementById('blog-form-wrap');
-  w.style.display='block';
-  w.innerHTML=`<div class="ap-form"><h4>${id?'Edytuj artykuł':'Nowy artykuł'}</h4><div class="ap-field-row"><div class="ap-field"><label>Emoji</label><input id="bp-emoji" value="${p.emoji}"/></div><div class="ap-field"><label>Kategoria</label><input id="bp-tag" value="${p.tag}"/></div></div><div class="ap-field"><label>Tytuł</label><input id="bp-title" value="${p.title}"/></div><div class="ap-field"><label>Opis</label><textarea id="bp-excerpt">${p.excerpt}</textarea></div><div class="ap-field-row"><div class="ap-field"><label>Data</label><input id="bp-date" value="${p.date}"/></div><div class="ap-field"><label>Link do artykułu</label><input id="bp-url" value="${p.url}"/></div></div><div class="ap-form-btns"><button class="ap-btn-save" onclick="savePost('${p.id}','${id?'edit':'new'}')">💾 Zapisz</button><button class="ap-btn-cancel" onclick="document.getElementById('blog-form-wrap').style.display='none'">Anuluj</button></div></div>`;
+  const d = getData();
+  const p = id ? d.blog.find(x=>x.id===id) : {id:uid(),emoji:'📝',tag:'',title:'',excerpt:'',date:'',url:'#'};
+  const w = document.getElementById('blog-form-wrap');
+  w.style.display = 'block'; w.textContent = '';
+  const form = document.createElement('div'); form.className = 'ap-form';
+  form.innerHTML = '<h4></h4>'
+    + '<div class="ap-field-row"><div class="ap-field"><label>Emoji</label><input id="bp-emoji" maxlength="4"/></div><div class="ap-field"><label>Kategoria</label><input id="bp-tag" maxlength="40"/></div></div>'
+    + '<div class="ap-field"><label>Tytuł</label><input id="bp-title" maxlength="160"/></div>'
+    + '<div class="ap-field"><label>Opis</label><textarea id="bp-excerpt" maxlength="500"></textarea></div>'
+    + '<div class="ap-field-row"><div class="ap-field"><label>Data</label><input id="bp-date" maxlength="30"/></div><div class="ap-field"><label>Link do artykułu (https://)</label><input id="bp-url" type="url" maxlength="500"/></div></div>'
+    + '<div class="ap-form-btns"><button class="ap-btn-save" data-act="save">💾 Zapisz</button><button class="ap-btn-cancel" data-act="cancel">Anuluj</button></div>';
+  w.appendChild(form);
+  form.querySelector('h4').textContent = id ? 'Edytuj artykuł' : 'Nowy artykuł';
+  form.querySelector('#bp-emoji').value = p.emoji || '';
+  form.querySelector('#bp-tag').value = p.tag || '';
+  form.querySelector('#bp-title').value = p.title || '';
+  form.querySelector('#bp-excerpt').value = p.excerpt || '';
+  form.querySelector('#bp-date').value = p.date || '';
+  form.querySelector('#bp-url').value = p.url || '';
+  form.querySelector('[data-act=save]').onclick = ()=>savePost(p.id, id?'edit':'new');
+  form.querySelector('[data-act=cancel]').onclick = ()=>{ w.style.display='none'; };
   w.scrollIntoView({behavior:'smooth',block:'nearest'});
 }
-function editPost(id){showBlogForm(id);}
-function savePost(id,mode){
-  const d=getData();
-  const p={id,emoji:document.getElementById('bp-emoji').value||'📝',tag:document.getElementById('bp-tag').value,title:document.getElementById('bp-title').value,excerpt:document.getElementById('bp-excerpt').value,date:document.getElementById('bp-date').value,url:document.getElementById('bp-url').value||'#'};
-  if(mode==='new')d.blog.push(p);else{const i=d.blog.findIndex(x=>x.id===id);if(i>-1)d.blog[i]=p;}
-  saveData(d);renderBlog();renderAdminBlog();document.getElementById('blog-form-wrap').style.display='none';
+function editPost(id){ showBlogForm(id); }
+function savePost(id, mode){
+  const d = getData();
+  const url = document.getElementById('bp-url').value.trim() || '#';
+  if(url !== '#'){
+    try{
+      const u = new URL(url);
+      if(u.protocol !== 'https:'){ alert('Link musi być https:// lub #'); return; }
+    }catch(_){ alert('Nieprawidłowy URL.'); return; }
+  }
+  const p = {
+    id,
+    emoji: (document.getElementById('bp-emoji').value || '📝').slice(0,4),
+    tag: document.getElementById('bp-tag').value.slice(0,40),
+    title: document.getElementById('bp-title').value.slice(0,160),
+    excerpt: document.getElementById('bp-excerpt').value.slice(0,500),
+    date: document.getElementById('bp-date').value.slice(0,30),
+    url: url.slice(0,500)
+  };
+  if(mode === 'new') d.blog.push(p);
+  else { const i = d.blog.findIndex(x=>x.id===id); if(i>-1) d.blog[i] = p; }
+  saveData(d); renderBlog(); renderAdminBlog();
+  document.getElementById('blog-form-wrap').style.display = 'none';
 }
-function deletePost(id){if(!confirm('Usunąć ten artykuł?'))return;const d=getData();d.blog=d.blog.filter(p=>p.id!==id);saveData(d);renderBlog();renderAdminBlog();}
+function deletePost(id){
+  if(!confirm('Usunąć ten artykuł?')) return;
+  const d = getData(); d.blog = d.blog.filter(p=>p.id!==id); saveData(d);
+  renderBlog(); renderAdminBlog();
+}
 
-function updatePhotoPreview(type,path){const el=document.getElementById(type+'-preview');if(!el)return;el.innerHTML=path?`<img src="${path}" alt="podgląd" onerror="this.parentElement.innerHTML='❌ Nie znaleziono'">`:(type==='hero'?'🌿':'🌾');}
-function previewPhoto(type){updatePhotoPreview(type,document.getElementById(type+'-path').value);}
-function savePhoto(type){const d=getData();d.photos[type]=document.getElementById(type+'-path').value;saveData(d);renderPhotos();alert('✅ Zdjęcie zapisane!');}
+/* Admin: photos */
+function updatePhotoPreview(type, path){
+  const el = document.getElementById(type+'-preview');
+  if(!el) return;
+  el.textContent = '';
+  if(path){
+    const img = document.createElement('img');
+    img.src = safeUrl(path); img.alt = 'podgląd';
+    img.onerror = ()=>{ el.textContent = '❌ Nie znaleziono'; };
+    el.appendChild(img);
+  }else{
+    el.textContent = (type === 'hero') ? '🌿' : '🌾';
+  }
+}
+function previewPhoto(type){ updatePhotoPreview(type, document.getElementById(type+'-path').value); }
+function savePhoto(type){
+  const d = getData();
+  const v = document.getElementById(type+'-path').value.trim().slice(0,500);
+  // zezwalamy na ścieżki względne (./images/x.jpg) oraz https://
+  if(v && !/^(\.\/|\/|https:\/\/)/.test(v)){ alert('Użyj ścieżki względnej (./images/...) lub https://'); return; }
+  d.photos[type] = v;
+  saveData(d); renderPhotos(); alert('✅ Zdjęcie zapisane!');
+}
 
-function saveVisibility(){const d=getData();d.visibility.blog=document.getElementById('toggle-blog').checked;d.visibility.ebooki=document.getElementById('toggle-ebooki').checked;saveData(d);renderVisibility();}
+/* Admin: visibility */
+function saveVisibility(){
+  const d = getData();
+  d.visibility.blog = document.getElementById('toggle-blog').checked;
+  d.visibility.ebooki = document.getElementById('toggle-ebooki').checked;
+  saveData(d); renderVisibility();
+}
 
-function changePin(){const p=document.getElementById('new-pin').value.trim();if(!p||p.length<4){document.getElementById('pin-change-msg').textContent='⚠️ Min. 4 znaki';return;}const d=getData();d.pin=p;saveData(d);document.getElementById('new-pin').value='';document.getElementById('pin-change-msg').textContent='✅ PIN zmieniony!';setTimeout(()=>document.getElementById('pin-change-msg').textContent='',3000);}
+/* Admin: change PIN */
+async function changePin(){
+  const p = document.getElementById('new-pin').value.trim();
+  if(!p || p.length < 6){
+    document.getElementById('pin-change-msg').textContent = '⚠️ Min. 6 znaków';
+    return;
+  }
+  const d = getData();
+  d.pinHash = await sha256Hex(p);
+  d.failedAttempts = 0; d.lockoutUntil = 0;
+  saveData(d);
+  document.getElementById('new-pin').value = '';
+  document.getElementById('pin-change-msg').textContent = '✅ PIN zmieniony!';
+  setTimeout(()=>{ document.getElementById('pin-change-msg').textContent = ''; }, 3000);
+}
 
-function exportData(){const blob=new Blob([JSON.stringify(getData(),null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='pawel-depta-site-data.json';a.click();}
-function importData(e){const file=e.target.files[0];if(!file)return;const r=new FileReader();r.onload=ev=>{try{saveData(JSON.parse(ev.target.result));renderOffers();renderBlog();renderPhotos();renderVisibility();openAdmin();alert('✅ Dane zaimportowane!');}catch{alert('❌ Błąd pliku JSON');}};r.readAsText(file);e.target.value='';}
-function resetData(){if(!confirm('Przywrócić domyślne dane?'))return;localStorage.removeItem('pd_data');renderOffers();renderBlog();renderPhotos();renderVisibility();openAdmin();}
+/* Export / import / reset */
+function exportData(){
+  const d = getData();
+  // nie eksportujemy hash-a PIN-u — bezpieczniejsze udostępnianie pliku
+  const safe = Object.assign({}, d); delete safe.pinHash; delete safe.failedAttempts; delete safe.lockoutUntil;
+  const blob = new Blob([JSON.stringify(safe,null,2)], {type:'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+  a.download = 'pawel-depta-site-data.json'; a.click();
+  setTimeout(()=>URL.revokeObjectURL(a.href), 1000);
+}
+function importData(e){
+  const file = e.target.files[0]; if(!file) return;
+  if(file.size > 1024 * 1024){ alert('Plik za duży (max 1 MB).'); return; }
+  const r = new FileReader();
+  r.onload = ev => {
+    try{
+      const incoming = JSON.parse(ev.target.result);
+      const cur = getData();
+      // import nie nadpisuje credentials
+      const merged = Object.assign({}, cur, incoming, {
+        pinHash: cur.pinHash, failedAttempts: cur.failedAttempts, lockoutUntil: cur.lockoutUntil
+      });
+      saveData(merged);
+      renderOffers(); renderBlog(); renderPhotos(); renderVisibility(); openAdmin();
+      alert('✅ Dane zaimportowane (PIN pozostał bez zmian).');
+    }catch(_){ alert('❌ Błąd pliku JSON'); }
+  };
+  r.readAsText(file); e.target.value = '';
+}
+function resetData(){
+  if(!confirm('Przywrócić domyślne dane? (PIN zostanie zachowany)')) return;
+  const cur = getData();
+  const fresh = structuredClone(DEFAULT_DATA);
+  fresh.pinHash = cur.pinHash;
+  saveData(fresh);
+  renderOffers(); renderBlog(); renderPhotos(); renderVisibility(); openAdmin();
+}
 
-function toggleMenu(){document.getElementById('mobile-menu').classList.toggle('open');}
-function closeMenu(){document.getElementById('mobile-menu').classList.remove('open');}
-function handleFormSubmit(e){const a=e.target.getAttribute('action');if(a&&a.includes('formspree.io')&&!a.includes('TWOJ'))return;e.preventDefault();document.getElementById('form-success').style.display='block';e.target.reset();}
+/* ---------------- Mobile menu ---------------- */
+function toggleMenu(){
+  const m = document.getElementById('mobile-menu');
+  const open = m.classList.toggle('open');
+  const btn = document.getElementById('hamburger-btn');
+  if(btn) btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+}
+function closeMenu(){
+  document.getElementById('mobile-menu').classList.remove('open');
+  const btn = document.getElementById('hamburger-btn');
+  if(btn) btn.setAttribute('aria-expanded','false');
+}
 
-document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){const t=document.querySelector(this.getAttribute('href'));if(t){e.preventDefault();window.scrollTo({top:t.getBoundingClientRect().top+window.pageYOffset-80,behavior:'smooth'});}});});
+/* ---------------- Contact form (fetch + error handling) ---------------- */
+async function handleFormSubmit(e){
+  e.preventDefault();
+  const form = e.target;
+  const msg = document.getElementById('form-msg');
+  const btn = document.getElementById('cf-submit');
+  msg.style.display = 'block'; msg.className = ''; msg.textContent = '⏳ Wysyłanie...';
+  btn.disabled = true;
+  try{
+    const fd = new FormData(form);
+    // honeypot
+    if(fd.get('_gotcha')) { throw new Error('spam'); }
+    // walidacja po stronie klienta
+    const name = String(fd.get('name')||'').trim();
+    const email = String(fd.get('email')||'').trim();
+    const message = String(fd.get('message')||'').trim();
+    if(!name || name.length > 100) throw new Error('Imię: 1–100 znaków.');
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email) || email.length > 255) throw new Error('Nieprawidłowy e-mail.');
+    if(!message || message.length > 2000) throw new Error('Wiadomość: 1–2000 znaków.');
+    const r = await fetch(form.action, {
+      method: 'POST', body: fd, headers: {'Accept':'application/json'}
+    });
+    if(r.ok){
+      form.reset();
+      msg.className = 'form-msg-ok';
+      msg.textContent = '✅ Wiadomość wysłana! Odezwę się w ciągu 24–48 h.';
+    }else{
+      const data = await r.json().catch(()=>({}));
+      const err = (data.errors && data.errors[0] && data.errors[0].message) || ('Błąd serwera (' + r.status + ')');
+      throw new Error(err);
+    }
+  }catch(err){
+    msg.className = 'form-msg-err';
+    msg.textContent = '❌ ' + (err.message || 'Nie udało się wysłać. Spróbuj ponownie lub napisz bezpośrednio na e-mail.');
+  }finally{
+    btn.disabled = false;
+  }
+}
 
-window.addEventListener('load',()=>{renderOffers();renderBlog();renderPhotos();renderVisibility();});
+/* ---------------- Smooth scroll ---------------- */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click', function(e){
+    const href = this.getAttribute('href');
+    if(href === '#' || href.length < 2) return;
+    const t = document.querySelector(href);
+    if(t){ e.preventDefault(); window.scrollTo({top: t.getBoundingClientRect().top + window.pageYOffset - 80, behavior: 'smooth'}); }
+  });
+});
+
+/* ---------------- Init ---------------- */
+window.addEventListener('load', ()=>{
+  renderOffers(); renderBlog(); renderPhotos(); renderVisibility(); revealEmails();
+});
 </script>
 </body>
 </html>
